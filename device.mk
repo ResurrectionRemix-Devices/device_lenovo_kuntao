@@ -131,7 +131,7 @@ PRODUCT_PACKAGES += \
     libqdMetaData.system \
     libtinyxml \
     libdisplayconfig \
-    libhwc2on1adapter \
+    libhwc2on1adapter
 
 # Display Calibration
 PRODUCT_COPY_FILES += \
@@ -171,7 +171,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
     android.hardware.gatekeeper@1.0-service
-
 
 # GNSS HAL
 PRODUCT_PACKAGES += \
@@ -331,8 +330,12 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
 
-#PRODUCT_BOOT_JARS += \
-#    telephony-ext
+# Telephony-ext
+PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 # Properties
 include $(LOCAL_PATH)/vendor_prop.mk
