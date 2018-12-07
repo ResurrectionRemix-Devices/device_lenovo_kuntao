@@ -290,8 +290,6 @@ etc/firmware/a530_pm4.fw:vendor/firmware/a530_pm4.fw
 
 # NFC
 vendor/firmware/BCM20797B0_002.001.043.0005.0010_Generic_NCD_Unsigned_configdata.ncd
-etc/nfc_wallet.conf:vendor/etc/nfc_wallet.conf
-etc/nfcse.cfg:vendor/etc/nfcse.cfg
 lib64/hw/nfc_nci.bcm2079x.default.so:vendor/lib64/hw/nfc_nci.bcm2079x.msm8953.so|3c5bffba4519ebf1eac8a8b4e04d3a70ab38494a
 
 # Sensorhub
