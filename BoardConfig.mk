@@ -79,7 +79,7 @@ TARGET_TS_MAKEUP := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_USES_QTI_CAMERA_DEVICE := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
-	/vendor/bin/mm-qcamera-daemon=24
+    /vendor/bin/mm-qcamera-daemon=24
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -152,8 +152,7 @@ TARGET_KERNEL_CONFIG := kuntao_defconfig
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Lineage Hardware
-BOARD_HARDWARE_CLASS += \
-    device/lenovo/kuntao/lineagehw
+JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|device/lenovo/kuntao/lineagehw|**/*.java
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
