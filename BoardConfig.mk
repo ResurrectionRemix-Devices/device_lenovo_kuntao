@@ -205,6 +205,9 @@ USE_OPENGL_RENDERER := true
 # RIL
 TARGET_RIL_VARIANT := caf
 
+# Exclude serif fonts for saving system.img size.
+EXCLUDE_SERIF_FONTS := true
+
 # SELinux
 #BOARD_SEPOLICY_DIRS += device/lenovo/kuntao/sepolicy
 #include device/qcom/sepolicy/sepolicy.mk
