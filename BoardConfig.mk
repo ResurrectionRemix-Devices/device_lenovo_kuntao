@@ -212,6 +212,7 @@ EXCLUDE_SERIF_FONTS := true
 # SELinux
 #BOARD_SEPOLICY_DIRS += device/lenovo/kuntao/sepolicy
 #include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_VERS := 28.0
 
 # Vendor Security Patch Level
 VENDOR_SECURITY_PATCH := 2017-11-01
