@@ -8,12 +8,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.deep_buffer.media=true \
     audio.offload.min.duration.secs=30 \
     audio.offload.video=true \
-    audio.dolby.ds2.hardbypass=true \
+    audio.dolby.ds2.hardbypass=false \
     persist.vendor.audio.fluence.speaker=true \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicerec=false \
     ro.vendor.audio.sdk.fluencetype=none \
-    vendor.audio.dolby.ds2.enabled=true \
+    vendor.audio.dolby.ds2.enabled=false \
     vendor.audio_hal.period_size=192 \
     vendor.audio.hw.aac.encoder=true \
     vendor.audio.offload.buffer.size.kb=64 \
@@ -36,10 +36,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
+    camera.hal1.packagelist=com.skype.raider,com.android.facelock,com.whatsapp,com.google.android.talk \
     persist.vendor.camera.display.umax=1920x1080 \
     persist.vendor.camera.display.lmax=1280x720 \
     vidc.enc.dcvs.extra-buff-count=2 \
-    camera.lowpower.record.enable=1
+    camera.lowpower.record.enable=1 \
+    persist.camera.HAL3.enabled=1
 
 # Cne
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -56,13 +58,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.hwc.enable_vds=1 \
+    debug.sf.hw=0 \
+    debug.egl.hw=0 \
+    persist.hwc.mdpcomp.enable=true \
+    debug.mdpcomp.logs=0 \
+    dev.pm.dyn_samplingrate=1 \
+    persist.demo.hdmirotationlock=false \
+    debug.enable.sglscale=1 \
     debug.gralloc.enable_fb_ubwc=1 \
     ro.opengles.version=196610 \
     ro.vendor.display.cabl=0 \
-    ro.sf.lcd_density=480 \
     vendor.display.disable_rotator_downscale=1 \
-    sdm.debug.disable_skip_validate=1 \
-    sdm.perf_hint_window=50
+    ro.sf.lcd_density=480
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -72,15 +80,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/platform/soc/7824900.sdhci/by-name/config
 
-# Fp Gestures
+# Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.fp.navigation=1
+    persist.sys.fp.navigation=1 \
+    log.tag.synaFpHal=W \
+    log.tag.SynapticsLIB=W \
+    log.tag.synaTransport=W
+
+# Charger
+PRODUCT_PROPERTY_OVERRIDES += \
+    log.tag.smart_charger=W
 
 # IMS
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1
-    persist.dbg.wfc_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
     persist.radio.VT_CAM_INTERFACE=2 \
     persist.radio.VT_ENABLE=1 \
     persist.radio.VT_HYBRID_ENABLE=1 \
@@ -92,13 +106,28 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-http=true \
+    media.stagefright.enable-aac=true \
+    media.stagefright.enable-qcp=true \
+    media.stagefright.enable-fma2dp=true \
+    media.stagefright.enable-scan=true \
+    media.msm8956hw=0 \
+    mm.enable.smoothstreaming=true \
+    mmp.enable.3g2=true \
+    media.aac_51_output_enabled=true \
     media.stagefright.audio.sink=280 \
     vendor.vidc.dec.downscalar_width=1920 \
     vendor.vidc.dec.downscalar_height=1088 \
-    vendor.vidc.disable.split.mode=1 \
     vendor.vidc.enc.disable_bframes=1 \
     vendor.vidc.enc.disable_pframes=1 \
     vendor.vidc.enc.narrow.searchrange=1
+
+# MiraCast
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.wfd.nohdcp=1 \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0 \
 
 # NITZ
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -131,6 +160,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
     persist.data.netmgrd.qos.enable=true \
+    persist.radio.aosp_usr_pref_sel=true \
     persist.data.mode=concurrent
 
 # Fling velocities
