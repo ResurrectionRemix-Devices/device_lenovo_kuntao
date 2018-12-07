@@ -101,7 +101,6 @@ PRODUCT_PACKAGES += \
     Snap \
     camera.msm8953 \
     libmm-qcamera \
-    camera.device@3.2-impl \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service
 
