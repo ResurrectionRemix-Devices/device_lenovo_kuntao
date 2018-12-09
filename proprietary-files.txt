@@ -1,10 +1,10 @@
 # Audio
 vendor/etc/audio_output_policy.conf
-etc/aanc_tuning_mixer.txt:vendor/etc/aanc_tuning_mixer.txt
+etc/aanc_tuning_mixer.txt:vendor/etc/audio_tuning_mixer.txt
 etc/audio_policy.conf:vendor/etc/audio_policy.conf
 etc/audio_policy_configuration.xml:vendor/etc/audio_policy_configuration.xml
 etc/audio_platform_info_extcodec.xml:vendor/etc/audio_platform_info_extcodec.xml
-etc/firmware/tas2555_uCDSP.bin:vendor/etc/firmware/tas2555_uCDSP.bin
+etc/firmware/tas2555_uCDSP.bin:vendor/firmware/tas2555_uCDSP.bin
 
 # Audio ACDB
 etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
@@ -16,6 +16,7 @@ etc/acdbdata/MTP/MTP_Headset_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Headset_cal.ac
 etc/acdbdata/MTP/MTP_Speaker_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
 # Camera
+-framework/com.qualcomm.qti.camera.jar
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 vendor/lib/libfastcvopt.so
 vendor/lib/libmmipl.so
@@ -240,9 +241,6 @@ vendor/lib/libchromatix_imx258_kuntaoof_video_4k.so
 # Camera firmware
 etc/firmware/cpp_firmware_v1_5_0.fw:vendor/firmware/cpp_firmware_v1_5_0.fw
 
-# EMMC
-etc/firmware/emmc_ffu_15_RX14MB.fw:vendor/etc/firmware/emmc_ffu_15_RX14MB.fw
-
 # Fastcharger
 bin/smart_charger:vendor/bin/smart_charger
 
@@ -266,18 +264,6 @@ lib64/libvfmClient.so:vendor/lib64/libvfmClient.so
 lib64/libvfmtztransport.so:vendor/lib64/libvfmtztransport.so
 lib64/libvalAuth.so:vendor/lib64/libvalAuth.so
 lib64/libvfmAuth.so:vendor/lib64/libvfmAuth.so
-etc/firmware/synaptics-s3508-16060806-kuntao.tdat:vendor/etc/firmware/synaptics-s3508-16060806-kuntao.tdat
-etc/firmware/synaptics-s3508-16062306-kuntao.tdat:vendor/etc/firmware/synaptics-s3508-16062306-kuntao.tdat
-etc/firmware/synaptics-s3508-16071507-kuntao.tdat:vendor/etc/firmware/synaptics-s3508-16071507-kuntao.tdat
-etc/firmware/synaptics-s3508-16080201-kuntao.tdat:vendor/etc/firmware/synaptics-s3508-16080201-kuntao.tdat
-etc/firmware/synaptics-s3508-16081202-kuntao.tdat:vendor/etc/firmware/synaptics-s3508-16081202-kuntao.tdat
-etc/firmware/synaptics-s3508-16082202-kuntao.tdat:vendor/etc/firmware/synaptics-s3508-16082202-kuntao.tdat
-etc/firmware/synaptics-s3508sga-16060806-kuntao.tdat:vendor/etc/firmware/synaptics-s3508sga-16060806-kuntao.tdat
-etc/firmware/synaptics-s3508sga-16062306-kuntao.tdat:vendor/etc/firmware/synaptics-s3508sga-16062306-kuntao.tdat
-etc/firmware/synaptics-s3508sga-16071507-kuntao.tdat:vendor/etc/firmware/synaptics-s3508sga-16071507-kuntao.tdat
-etc/firmware/synaptics-s3508sga-16080201-kuntao.tdat:vendor/etc/firmware/synaptics-s3508sga-16080201-kuntao.tdat
-etc/firmware/synaptics-s3508sga-16081202-kuntao.tdat:vendor/etc/firmware/synaptics-s3508sga-16081202-kuntao.tdat
-etc/firmware/synaptics-s3508sga-16082202-kuntao.tdat:vendor/etc/firmware/synaptics-s3508sga-16082202-kuntao.tdat
 
 # Graphics firmware
 etc/firmware/a506_zap.b00:vendor/firmware/a506_zap.b00
@@ -307,6 +293,3 @@ vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 vendor/lib64/sensors.alsps.so
 vendor/lib64/sensors.st.so
-
-# USB
-etc/firmware/ice40.bin:vendor/etc/firmware/ice40.bin
