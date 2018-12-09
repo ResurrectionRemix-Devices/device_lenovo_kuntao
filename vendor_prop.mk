@@ -25,9 +25,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.parser.ip.buffer.size=262144 \
     vendor.audio.playback.mch.downsample=true \
     vendor.audio.safx.pbe.enabled=true \
-    vendor.voice.path.for.pcm.voip=true \
-    ro.config.media_vol_steps=25 \
-    ro.config.vc_call_vol_steps=7
+    vendor.voice.path.for.pcm.voip=true
 
 # Bluetooh
 PRODUCT_PROPERTY_OVERRIDES += \
