@@ -1413,6 +1413,12 @@ service loc_launcher /vendor/bin/loc_launcher
     class late_start
     group gps inet diag wifi
 
+service power_off_alarm /vendor/bin/power_off_alarm
+    class core
+    group system
+    disabled
+    oneshot
+
 service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
@@ -1510,3 +1516,10 @@ service vfmService /vendor/bin/vfmService
     user system
     group system
     class main
+
+on charger
+    wait /dev/block/bootdevice/by-name/system
+    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
+    load_system_props
+    setprop sys.usb.configfs 0
+    start power_off_alarm
