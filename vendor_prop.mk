@@ -174,7 +174,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Time Services
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.delta_time.enable=true
+    persist.vendor.delta_time.enable=true
 
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \
