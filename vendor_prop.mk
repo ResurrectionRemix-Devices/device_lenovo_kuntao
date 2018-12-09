@@ -31,7 +31,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooh
 PRODUCT_PROPERTY_OVERRIDES += \
-    qcom.bluetooth.soc=smd \
+    vendor.qcom.bluetooth.soc=smd \
     ro.qualcomm.bt.hci_transport=smd
 
 # Camera
