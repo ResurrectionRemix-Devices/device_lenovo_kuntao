@@ -74,6 +74,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
 
+# Miracast
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.wfd.nohdcp=1 \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0
+
 # Factory reset protection
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/platform/soc/7824900.sdhci/by-name/config
