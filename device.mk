@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.drm@1.0-service.widevine)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/vendor/etc/init/android.hardware.drm@1.0-service.widevine.rc)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/vendor/lib64/libwvhidl.so)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/vendor/etc/libnfc-brcm-20797b00.conf)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/vendor/etc/libnfc-brcm.conf)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
@@ -99,6 +104,9 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service
 
+PRODUCT_COPY_FILES +=  \
+    $(LOCAL_PATH)/configs/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
@@ -139,7 +147,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-lite \
     android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.1-service.clearkey
 
 # Ebtables
 PRODUCT_PACKAGES += \
