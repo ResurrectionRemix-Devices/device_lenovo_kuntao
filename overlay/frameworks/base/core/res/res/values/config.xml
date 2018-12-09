@@ -97,19 +97,36 @@
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
         <item>0</item>
-        <item>7</item>
+        <item>1</item>
         <item>10</item>
+        <item>21</item>
+        <item>5</item>
+        <item>2</item>
     </integer-array>
 
     <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
         <item>0</item>
         <item>5</item>
+        <item>3</item>
         <item>10</item>
+        <item>6</item>
+        <item>15</item>
     </integer-array>
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>10</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for feedback about hitting a scroll barrier -->
+    <integer-array name="config_scrollBarrierVibePattern">
+        <item>0</item>
+        <item>15</item>
+        <item>10</item>
         <item>10</item>
     </integer-array>
 
@@ -134,6 +151,16 @@
     <string-array translatable="false" name="config_tether_bluetooth_regexs">
          <item>"bt-pan"</item>
     </string-array>
+
+    <!-- The default intensity level for haptic feedback. See
+         Settings.System.HAPTIC_FEEDBACK_INTENSITY more details on the constant values and
+         meanings. -->
+    <integer name="config_defaultHapticFeedbackIntensity">3</integer>
+
+     <!-- The default intensity level for notification vibrations. See
+         Settings.System.NOTIFICATION_VIBRATION_INTENSITY more details on the constant values and
+         meanings. -->
+    <integer name="config_defaultNotificationVibrationIntensity">3</integer>
 
     <!-- When true, the tethering upstream network follows the current default
          Internet network (except when the current default network is mobile,
