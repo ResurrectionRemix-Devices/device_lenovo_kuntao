@@ -14,11 +14,6 @@
 # limitations under the License.
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
-$(call add-clean-step, rm -f $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.drm@1.0-service.widevine)
-$(call add-clean-step, rm -f $(PRODUCT_OUT)/vendor/etc/init/android.hardware.drm@1.0-service.widevine.rc)
-$(call add-clean-step, rm -f $(PRODUCT_OUT)/vendor/lib64/libwvhidl.so)
-$(call add-clean-step, rm -f $(PRODUCT_OUT)/vendor/etc/libnfc-brcm-20797b00.conf)
-$(call add-clean-step, rm -f $(PRODUCT_OUT)/vendor/etc/libnfc-brcm.conf)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
@@ -56,7 +51,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute-0.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level-0.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_0_3.xml
 
 # Audio
 PRODUCT_PACKAGES += \
