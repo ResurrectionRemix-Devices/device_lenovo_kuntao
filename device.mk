@@ -202,6 +202,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.kuntao
 
+DEVICE_FRAMEWORK_MANIFEST_FILE += \
+    system/libhidl/vintfdata/manifest_healthd_exclude.xml
+
 # IMS
 PRODUCT_PACKAGES += \
     ims-ext-common
