@@ -1,5 +1,5 @@
 #
-# system.prop for kuntao
+# vendor.prop for kuntao
 #
 
 # Audio
@@ -68,7 +68,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
     ro.vendor.display.cabl=0 \
     vendor.display.disable_rotator_downscale=1 \
-    ro.sf.lcd_density=480
+    ro.sf.lcd_density=440
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
