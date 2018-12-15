@@ -537,10 +537,10 @@ vendor/lib64/libthermalioctl.so
 -vendor/lib64/libtime_genoff.so
 vendor/bin/time_daemon
 
-# Widevine - from Mi A1 tissot_sprout 9 PKQ1.180904.001 V10.0.1.0.PDLMIFJ release-keys
+# Widevine - from Mi A2 Lite daisy_sprout 9 PKQ1.180904.001 V10.0.1.0.PDLMIFJ release-keys
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
-vendor/lib/libwvhidl.so
+vendor/lib64/libwvhidl.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
