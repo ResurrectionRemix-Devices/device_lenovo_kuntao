@@ -34,7 +34,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    camera.hal1.packagelist=com.skype.raider,com.android.facelock,com.whatsapp,com.google.android.talk \
+    camera.hal1.packagelist=com.skype.raider,com.android.facelock,com.google.android.talk \
     persist.vendor.camera.display.umax=1920x1080 \
     persist.vendor.camera.display.lmax=1280x720 \
     vidc.enc.dcvs.extra-buff-count=2 \
@@ -86,7 +86,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.fp.navigation=1 \
     log.tag.synaFpHal=W \
     log.tag.SynapticsLIB=W \
     log.tag.synaTransport=W
@@ -127,12 +126,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.vidc.enc.disable_pframes=1 \
     vendor.vidc.enc.narrow.searchrange=1
 
-# MiraCast
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.wfd.nohdcp=1 \
-    persist.debug.wfd.enable=1 \
-    persist.sys.wfd.virtual=0 \
-
 # NITZ
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_plmn="" \
@@ -148,11 +141,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so
-
-# Qualcomm
-PRODUCT_PROPERTY_OVERRIDES += \
-    com.qc.hardware=true \
-    debug.qc.hardware=true
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
