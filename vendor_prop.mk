@@ -183,7 +183,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
-
-# Device hostname
-PRODUCT_PROPERTY_OVERRIDES += \
-    net.hostname=Lenovo P2a42
