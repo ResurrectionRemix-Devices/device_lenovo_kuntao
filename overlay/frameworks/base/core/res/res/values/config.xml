@@ -403,6 +403,9 @@
     <!-- Operating volatage for bluetooth controller. 0 by default -->
     <integer translatable="false" name="config_bluetooth_operating_voltage_mv">3300</integer>
 
+    <!-- Enable video pause workaround when enabling/disabling the camera. -->
+    <bool name="config_useVideoPauseWorkaround">true</bool>
+
     <!-- Whether the device supports Smart Pixels-->
     <bool name="config_enableSmartPixels">true</bool>
     <bool name="config_supportSmartPixels">true</bool>
