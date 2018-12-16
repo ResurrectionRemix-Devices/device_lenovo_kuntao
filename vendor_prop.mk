@@ -64,11 +64,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dev.pm.dyn_samplingrate=1 \
     persist.demo.hdmirotationlock=false \
     debug.enable.sglscale=1 \
-    debug.gralloc.enable_fb_ubwc=1 \
+    vendor.gralloc.enable_fb_ubwc=1 \
     ro.opengles.version=196610 \
     ro.vendor.display.cabl=0 \
     vendor.display.disable_rotator_downscale=1 \
-    ro.sf.lcd_density=440
+    ro.sf.lcd_density=450
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
