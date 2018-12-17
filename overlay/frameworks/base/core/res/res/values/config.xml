@@ -325,6 +325,9 @@
     <!-- enabling WifiDisplay(Miracast Source)-->
     <bool name="config_enableWifiDisplay">true</bool>
 
+    <!-- Specify if the fingerprint hardware support gestures-->
+    <bool name="config_fingerprintSupportsGestures">true</bool>
+
     <!-- Is the device capable of hot swapping an UICC Card -->
     <bool name="config_hotswapCapable">true</bool>
 
