@@ -458,6 +458,9 @@
     <!-- Disable button backliğht brightness support. -->
     <integer name="config_buttonBrightnessSettingDefault">0</integer>
 
+    <!-- Whether auto face unlock is enabled by default -->
+    <bool name="config_face_unlock_enabled_by_default">true</bool>
+
     <!-- Whether or not swipe up gesture's opt-in setting is available on this device -->
     <bool name="config_swipe_up_gesture_setting_available">true</bool>
 
