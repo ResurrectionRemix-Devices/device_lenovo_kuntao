@@ -124,7 +124,12 @@ PRODUCT_PACKAGES += \
     libqdMetaData.system \
     libtinyxml \
     libdisplayconfig \
-    libhwc2on1adapter
+    libhwc2on1adapter \
+    libaacwrapper \
+    libnl
+
+PRODUCT_BOOT_JARS += \
+    WfdCommon
 
 # Display Calibration
 PRODUCT_COPY_FILES += \

@@ -58,7 +58,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.hwc.enable_vds=1 \
     debug.sf.hw=0 \
     debug.egl.hw=0 \
     persist.hwc.mdpcomp.enable=true \
@@ -66,21 +65,24 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dev.pm.dyn_samplingrate=1 \
     persist.demo.hdmirotationlock=false \
     debug.enable.sglscale=1 \
-    vendor.gralloc.enable_fb_ubwc=1 \
     ro.opengles.version=196610 \
     ro.vendor.display.cabl=0 \
     vendor.display.disable_rotator_downscale=1 \
     ro.sf.lcd_density=450
 
+# Miracast
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.enable_hwc_vds=1 \
+    persist.hwc.enable_vds=1 \
+    persist.sys.wfd.nohdcp=1 \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0 \
+    vendor.gralloc.disable_wb_ubwc=1 \
+    vendor.gralloc.enable_fb_ubwc=1
+
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
-
-# Miracast
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.wfd.nohdcp=1 \
-    persist.debug.wfd.enable=1 \
-    persist.sys.wfd.virtual=0
 
 # Factory reset protection
 PRODUCT_PROPERTY_OVERRIDES += \
