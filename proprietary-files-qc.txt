@@ -159,10 +159,6 @@ vendor/lib64/libdrmtime.so|9106e588ada083c061c44a62bc2cdf7d9123a745
 vendor/lib64/librpmb.so|13e932556c05dcf37b1c6f2038a670e239c56315
 vendor/lib64/libssd.so|baabf76b79866df9dabfd7761d7338e54757bc3f
 
-# Dolby
-vendor/lib/libhwdaphal.so
-vendor/lib64/libhwdaphal.so
-
 # Gatekeeper - from bardock - OPM1.171019.019
 vendor/lib64/hw/gatekeeper.msm8953.so|c7b1fb00d0189513327e93c541c6e9b003bc76e9
 

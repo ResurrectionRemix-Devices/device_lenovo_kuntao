@@ -55,18 +55,15 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    audio_amplifier.msm8953 \
     audio.a2dp.default \
     audio.primary.msm8953 \
-    audio_amplifier.msm8953 \
-    audio.usb.default \
     audio.r_submix.default \
-    libaudio-resampler \
-    tinymix
+    audio.usb.default \
 
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libqcomvoiceprocessingdescriptors \
     libqcompostprocbundle
 
 PRODUCT_PACKAGES += \
