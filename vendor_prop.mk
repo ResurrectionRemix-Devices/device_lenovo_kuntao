@@ -147,7 +147,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
-    rild.libargs=-d /dev/smd0 \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.multisim.config=dsds \
     ro.telephony.default_network=9,1 \
