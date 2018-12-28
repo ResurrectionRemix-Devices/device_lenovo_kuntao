@@ -1,13 +1,13 @@
-# ADSP
-vendor/bin/adsprpcd|35b15f3197e193f742cef0c9f51bbfba9f7e27ad
-vendor/lib/libadsprpc.so|903160c2bf36fd3155720048c3ae2ab5e7fea7b4
-vendor/lib/libadsp_default_listener.so|3b56c2d00bef6585b8de11ba5afbec3772456d2d
-vendor/lib/libfastcvadsp_stub.so|6197157dec6a29931f3af47b1ade006a295d05f5
-vendor/lib/libfastcvopt.so|1eae508500eb3e8bb3e97617a196d054d9d4f11c
-vendor/lib64/libadsprpc.so|88a4f07391e70f9b83a0aae90d087afbe64ecfa5
-vendor/lib64/libadsp_default_listener.so|7ae782755ddc945edb22ae11e964e0118a3b01a9
-vendor/lib64/libfastcvadsp_stub.so|3d175f68145aa59aecd8457d608df15a5156897e
-vendor/lib64/libfastcvopt.so|5c0c7331eb2836ed1791cdefaef20cb66df02cb5
+# ADSP - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.2.0.PDHMIFK 
+vendor/bin/adsprpcd
+vendor/lib/libadsprpc.so
+vendor/lib/libadsp_default_listener.so
+vendor/lib/libfastcvadsp_stub.so
+vendor/lib/libfastcvopt.so
+vendor/lib64/libadsprpc.so
+vendor/lib64/libadsp_default_listener.so
+vendor/lib64/libfastcvadsp_stub.so
+vendor/lib64/libfastcvopt.so
 
 # Audio - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.2.0.PDHMIFK release-keys
 vendor/lib/soundfx/libqcbassboost.so
