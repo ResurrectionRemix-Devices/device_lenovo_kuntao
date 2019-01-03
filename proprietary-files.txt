@@ -1,7 +1,4 @@
-# Audio
-vendor/etc/audio_output_policy.conf
-etc/aanc_tuning_mixer.txt:vendor/etc/audio_tuning_mixer.txt
-etc/audio_policy_configuration.xml:vendor/etc/audio_policy_configuration.xml
+# Audio firmware
 etc/firmware/tas2555_uCDSP.bin:vendor/firmware/tas2555_uCDSP.bin
 
 # Audio ACDB
@@ -243,25 +240,13 @@ etc/firmware/cpp_firmware_v1_5_0.fw:vendor/firmware/cpp_firmware_v1_5_0.fw
 bin/smart_charger:vendor/bin/smart_charger
 
 # Fingerprint
-bin/vfmAPITest:vendor/bin/vfmAPITest
 bin/vfmService:vendor/bin/vfmService
-bin/vfmExTest:vendor/bin/vfmExTest
-bin/synaFpTestHalTest:vendor/bin/synaFpTestHalTest
-lib/libvcsfp.so:vendor/lib/libvcsfp.so
-lib/libsynaFpTestHal.so:vendor/lib/libsynaFpTestHal.so
-lib/libvfmClient.so:vendor/lib/libvfmClient.so
-lib/libvfmtztransport.so:vendor/lib/libvfmtztransport.so
-lib/libvalAuth.so:vendor/lib/libvalAuth.so
-lib64/libvcsfp.so:vendor/lib64/libvcsfp.so
-lib64/libsynaFpTestHal.so:vendor/lib64/libsynaFpTestHal.so
 lib64/hw/fingerprint.default.so:vendor/lib64/hw/fingerprint.vendor.msm8953.so
 lib64/libvalAuth.so:vendor/lib64/libvalAuth.so
 lib64/libvcsfp.so:vendor/lib64/libvcsfp.so
 lib64/libvfmAuth.so:vendor/lib64/libvfmAuth.so
 lib64/libvfmClient.so:vendor/lib64/libvfmClient.so
 lib64/libvfmtztransport.so:vendor/lib64/libvfmtztransport.so
-lib64/libvalAuth.so:vendor/lib64/libvalAuth.so
-lib64/libvfmAuth.so:vendor/lib64/libvfmAuth.so
 
 # Graphics firmware
 etc/firmware/a506_zap.b00:vendor/firmware/a506_zap.b00

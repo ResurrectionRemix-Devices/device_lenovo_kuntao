@@ -88,6 +88,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.fp.navigation=1 \
     log.tag.synaFpHal=W \
     log.tag.SynapticsLIB=W \
     log.tag.synaTransport=W
@@ -100,13 +101,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
     persist.dbg.vt_avail_ovr=1 \
-    persist.radio.VT_CAM_INTERFACE=2 \
-    persist.radio.VT_ENABLE=1 \
-    persist.radio.VT_HYBRID_ENABLE=1 \
-    persist.vendor.qti.telephony.vt_cam_interface=2
+    persist.vendor.qti.telephony.vt_cam_interface=1
 
-# Gps
+# GPS
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.gps.qc_nlp_in_use=1 \
+    persist.loc.nlp_name=com.qualcomm.location \
     ro.gps.agps_provider=1
 
 # Media
@@ -143,23 +143,24 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so \
-    vendor.enable_prefetch=1 \
-    vendor.iop.enable_uxe=1 \
-    vendor.iop.enable_prefetch_ofr=1 \
-    vendor.perf.iop_v3.enable=1
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.radio.apm_sim_not_pwdn=1 \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
-    persist.radio.apm_sim_not_pwdn=1 \
+    vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     persist.radio.multisim.config=dsds \
     ro.telephony.default_network=9,1 \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
+    persist.radio.aosp_usr_pref_sel=true
+
+# Netmgrd
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.use_data_netmgrd=true \
     persist.data.netmgrd.qos.enable=true \
-    persist.radio.aosp_usr_pref_sel=true \
-    persist.data.mode=concurrent
+    persist.vendor.data.mode=concurrent
 
 # Fling velocities
 PRODUCT_PROPERTY_OVERRIDES += \

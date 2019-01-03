@@ -34,14 +34,7 @@ on early-init
     chown root system /dev/kmsg
     chmod 0620 /dev/kmsg
 
-    mkdir /firmware 0771 system system
-    mkdir /system 0777 root root
-    mkdir /dsp 0771 media media
-
 on init
-    # Set permissions for persist partition
-    mkdir /persist 0771 root system
-
     # Setup zram options
     write /sys/block/zram0/comp_algorithm lz4
     write /proc/sys/vm/page-cluster 0
@@ -55,9 +48,11 @@ on fs
 
     mkdir /persist/data 0700 system system
     mkdir /persist/bms 0700 root system
+    mkdir /mnt/vendor/persist/data 0700 system system
+    mkdir /mnt/vendor/persist/bms 0700 root system
 
     # use /persist as phony PDS partition
-    symlink /persist /pds
+    symlink /mnt/vendor/persist /pds
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -110,6 +105,13 @@ on boot
     mkdir /persist/time 0770 system system
     mkdir /persist/display 0770 system graphics
 
+    mkdir /mnt/vendor/persist/drm 0770 system system
+    mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
+    mkdir /mnt/vendor/persist/misc 0770 system system
+    mkdir /mnt/vendor/persist/alarm 0770 system system
+    mkdir /mnt/vendor/persist/time 0770 system system
+    mkdir /mnt/vendor/persist/display 0770 system graphics
+
     #Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
 
@@ -146,6 +148,7 @@ on boot
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
     start rmt_storage
+    start vfmservice
 
     # bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
@@ -187,23 +190,12 @@ on boot
 # Change ownership for for seed feature
     chown system system /sys/class/graphics/fb0/color_profile
 
-#lenovo-sw wengjun1 add 20160504 begin
-    chown system system /sys/board_properties/tpd_glove_status
-    chown system system /sys/board_properties/tpd_suspend_status
-    chown system system /dev/rmi0
-    chmod 0664 /sys/board_properties/tpd_suspend_status
-    chmod 0664 /sys/board_properties/tpd_glove_status
-    chmod 0660 /dev/rmi0
 #lenovo-sw wengjun1 add 20160504 end
-    chmod 0755 /vendor/bin/vfmService
     chmod 0660 /dev/vfsspi
     chown system system /dev/vfsspi
     mkdir /dev/validity 0775 system system
     chmod 0660 /sys/bus/platform/devices/soc:fingerprint@0/shutdown
     chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
-
-on property:sys.listeners.registered=true
-    start vfmService
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
@@ -450,6 +442,8 @@ on post-fs
     #lenovo-sw caoyi1 add for gsensor autocalibration begin
     chown system system /persist/GSSET.txt
     chmod 0660 /persist/GSSET.txt
+    chown system system /mnt/vendor/persist/GSSET.txt
+    chmod 0660 /mnt/vendor/persist/GSSET.txt
     #lenovo-sw caoyi1 add for gsensor autocalibration end
 
     #/sys/devices/iio:device* scan_elements/in_accel_x_en 0660 system system
@@ -830,6 +824,36 @@ on post-fs
     chmod 0664 /persist/bt/bt_bdaddr
     chmod 0600 /persist/whisper/whisper_only/vector0.bin
 
+#lenovo.common.rc import begin
+    mkdir /mnt/vendor/persist/camera 0755 mot_tcmd mot_tcmd
+    mkdir /mnt/vendor/persist/camera/focus 0775 camera mot_tcmd
+    mkdir /mnt/vendor/persist/camera/ledcal 0775 camera mot_tcmd
+    mkdir /mnt/vendor/persist/factory 0755 mot_tcmd mot_tcmd
+    mkdir /mnt/vendor/persist/factory/audio 0755 mot_tcmd system
+    mkdir /mnt/vendor/persist/public 0755 mot_tcmd mot_tcmd
+    mkdir /mnt/vendor/persist/public/atvc 0770 mot_atvc shell
+    mkdir /mnt/vendor/persist/public/battd 0755 mot_accy mot_tcmd
+    mkdir /mnt/vendor/persist/public/hiddenmenu 0755 radio radio
+    mkdir /mnt/vendor/persist/public/hiddenmenu/data 0775 system mot_tcmd
+    mkdir /mnt/vendor/persist/public/locale 0700 system system
+    mkdir /mnt/vendor/persist/public/omadm 0700 radio radio
+    mkdir /mnt/vendor/persist/public/svcs 0770 system system
+    mkdir /mnt/vendor/persist/wifi 0755 mot_tcmd mot_tcmd
+    mkdir /mnt/vendor/persist/bt 0755 mot_tcmd bluetooth
+    mkdir /mnt/vendor/persist/wmdrm 0775 mot_drm mot_drm
+    mkdir /mnt/vendor/persist/security 02770 mot_tpapi mot_tpapi
+    mkdir /mnt/vendor/persist/batt_health 0755 mot_pwric mot_pwric
+    mkdir /mnt/vendor/persist/mdm 0770 radio radio
+
+    chown mot_tcmd mot_tcmd /mnt/vendor/persist/factory/fti
+    chmod 0660 /mnt/vendor/persist/factory/fti
+    chown mot_tcmd mot_tcmd /mnt/vendor/persist/factory/byte
+    chmod 0660 /mnt/vendor/persist/factory/byte
+    chmod 0660 /mnt/vendor/persist/wifi/wlan_mac.bin
+    chown mot_tcmd mot_tcmd /mnt/vendor/persist/bt/bt_bdaddr
+    chmod 0664 /mnt/vendor/persist/bt/bt_bdaddr
+    chmod 0600 /mnt/vendor/persist/whisper/whisper_only/vector0.bin
+
     chown mot_tcmd root /sys/class/power_supply/ext-charger/charge_enabled
     chmod 0664 /sys/class/power_supply/ext-charger/charge_enabled
     chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/charge_enabled
@@ -869,6 +893,13 @@ on post-fs-data
     mkdir /data/misc/stargate/database 0770 system system
     mkdir /data/validity 0775 system system
 
+    #Create directories for Fingerprint
+    mkdir /data/vendor/stargate 0770 system system
+    mkdir /data/vendor/stargate/bg_estimation 0770 system system
+    mkdir /data/vendor/stargate/calib_test 0770 system system
+    mkdir /data/vendor/stargate/database 0770 system system
+    mkdir /data/validity 0775 system system
+
     # Create directories for tombstones
     mkdir /data/tombstones/modem 0771 system system
     mkdir /data/tombstones/lpass 0771 system system
@@ -880,12 +911,6 @@ on post-fs-data
 
     # Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
-    mkdir /data/vendor/tombstones/rfs 0771 system system
-    mkdir /data/vendor/tombstones/rfs/modem 0771 system system
-    mkdir /data/vendor/tombstones/rfs/lpass 0771 system system
-    mkdir /data/vendor/tombstones/rfs/wcnss 0771 system system
-    mkdir /data/vendor/tombstones/rfs/slpi 0771 system system
-    mkdir /data/vendor/tombstones/rfs/tn 0771 system system
 
     # Create folder for mm-qcamera-daemon
     mkdir /data/misc/camera 0770 camera camera
@@ -923,6 +948,13 @@ on post-fs-data
     mkdir /data/vendor/connectivity 0771 radio radio
     chown radio radio /data/vendor/connectivity
 
+    #Create QTI dir for logs
+    mkdir /data/vendor/dataqti 0770 radio radio
+    chmod 0770 /data/vendor/dataqti
+
+    # Create directory for modem_config
+    mkdir /data/vendor/modem_config 0570 radio root
+
     # Create the directories used by DPM subsystem
     mkdir /data/dpm 0771 system system
     chown system system /data/dpm
@@ -956,6 +988,16 @@ on post-fs-data
     chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
 
+    # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
+    # We chown/chmod /persist again so because mount is run as root + defaults
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    chown system system /mnt/vendor/persist/WCNSS_qcom_wlan_nv.bin
+    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
+
     # Chown polling nodes as needed from UI running on system server
     chown system system /sys/devices/platform/msm_sdcc.1/polling
     chown system system /sys/devices/platform/msm_sdcc.2/polling
@@ -966,10 +1008,24 @@ on post-fs-data
     mkdir /data/system 0775 system system
     #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
-    # Create directories for Location services
+    #Create directories for Location services
     mkdir /data/vendor/location 0770 gps gps
     mkdir /data/vendor/location/mq 0770 gps gps
     mkdir /data/vendor/location/xtwifi 0770 gps gps
+    mkdir /dev/socket/location 0770 gps gps
+    mkdir /dev/socket/location/mq 0770 gps gps
+    mkdir /dev/socket/location/xtra 0770 gps gps
+    mkdir /data/vendor/location-partner 0770 gps gps
+    mkdir /data/vendor/location-partner/dre 0770 gps gps
+    mkdir /data/vendor/location-partner/ppe 0770 gps gps
+    mkdir /dev/socket/location 0770 gps gps
+    mkdir /dev/socket/location/ehub 0770 gps gps
+
+    # create QDMA dropbox
+    mkdir /data/vendor/qdmastats 0700 system system
+    mkdir /data/vendor/qdma 0770 system system
+    mkdir /dev/socket/qdma 0770 system system
+    chmod 2770 /dev/socket/qdma
 
     #Create directory from IMS services
     mkdir /data/shared 0755
@@ -1029,6 +1085,9 @@ on post-fs-data
     mkdir /data/vendor/qti-logkit/socket-public/ 2750 system diag
     mkdir /data/vendor/qti-logkit/logdata/ 2750 system shell
 
+    #Create dir for TUI
+    mkdir /data/vendor/tui 0700 system system
+
     #WAPI
     mkdir /data/misc/wapi_certificate 0770 system wifi
 
@@ -1051,12 +1110,11 @@ service qcom-c_main-sh /vendor/bin/init.class_main.sh
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
     start wcnss-service
-    start vfmService
 
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
-service cnd /vendor/bin/cnd
+service vendor.cnd vendor/bin/cnd
     class main
     user system
     group system wifi inet radio wakelock net_admin
@@ -1064,59 +1122,28 @@ service cnd /vendor/bin/cnd
 service dpmQmiMgr /vendor/bin/dpmQmiMgr
     class main
     user system
-    group radio system
+    group system
 
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
 
-service imsqmidaemon /vendor/bin/imsqmidaemon
-    class main
-    user system
-    socket ims_qmid stream 0660 system radio
-    group radio log diag
-
-service imsdatadaemon /vendor/bin/imsdatadaemon
-    class main
-    user system
-    socket ims_datad stream 0660 system radio
-    group system wifi radio inet log diag
-    disabled
-
-on property:vendor.ims.QMI_DAEMON_STATUS=1
-    start imsdatadaemon
-
-service ims_rtp_daemon /vendor/bin/ims_rtp_daemon
-   class main
-   user system
-   socket ims_rtpd stream 0660 system radio
-   group radio diag inet log
-   disabled
-
-service vendor.imsrcsservice /vendor/bin/imsrcsd
-   class main
-   user system
-   group radio diag inet log
-   disabled
-
-on property:vendor.ims.DATA_DAEMON_STATUS=1
-   start ims_rtp_daemon
-   start vendor.imsrcsservice
-
-on property:vendor.ims.DATA_DAEMON_STATUS=1
-   start ims_rtp_daemon
-   start vendor.imsrcsservice
-
-service rmt_storage /vendor/bin/rmt_storage
+service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     shutdown critical
     ioprio rt 0
 
-service tftp_server /vendor/bin/tftp_server
+service vendor.tftp_server /vendor/bin/tftp_server
    class core
    user root
+
+service vendor.start_hci_filter /vendor/bin/wcnss_filter
+    class late_start
+    user bluetooth
+    group bluetooth diag system wakelock
+    disabled
 
 on property:vendor.wc_transport.start_hci=true
     start vendor.start_hci_filter
@@ -1124,11 +1151,92 @@ on property:vendor.wc_transport.start_hci=true
 on property:vendor.wc_transport.start_hci=false
     stop vendor.start_hci_filter
 
-service vendor.start_hci_filter /vendor/bin/wcnss_filter
-    class late_start
-    user bluetooth
-    group bluetooth diag system wakelock
+service vendor.netmgrd /vendor/bin/netmgrd
+    class main
+
+service vendor.ipacm-diag /vendor/bin/ipacm-diag
+    class main
+    user radio
+    socket ipacm_log_file dgram 660 radio radio
+    group radio diag oem_2901
+
+service vendor.ipacm /vendor/bin/ipacm
+    class main
+    user radio
+    group radio inet
+
+service vendor.dataqti /vendor/bin/qti
+    class main
+    user radio
+    group radio oem_2901 diag usb net_admin
     disabled
+
+on property:ro.vendor.use_data_netmgrd=false
+    # netmgr not supported on specific target
+    stop vendor.netmgrd
+
+service loc_launcher /vendor/bin/loc_launcher
+    class late_start
+    user gps
+    group gps
+
+#Start up peripheral manager
+service per_mgr /vendor/bin/pm-service
+    class core
+    user system
+    group system
+    ioprio rt 4
+
+service per_proxy /vendor/bin/pm-proxy
+    class core
+    user system
+    group system
+    disabled
+
+on property:init.svc.per_mgr=running
+    start per_proxy
+
+on property:sys.shutdown.requested=*
+    stop per_proxy
+
+service vendor.qseecomd /vendor/bin/qseecomd
+   class core
+   user root
+   group root
+
+service adsprpcd /vendor/bin/adsprpcd
+   class main
+   user media
+   group media
+
+service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
+    class main
+    user system
+    socket ims_qmid stream 0660 system radio
+    group radio log diag
+
+service vendor.imsdatadaemon /vendor/bin/imsdatadaemon
+    class main
+    user system
+    socket ims_datad stream 0660 system radio
+    group system wifi radio inet log diag
+    disabled
+
+on property:vendor.ims.QMI_DAEMON_STATUS=1
+    start vendor.imsdatadaemon
+
+service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
+   class main
+   user system
+   group radio diag inet log
+
+service vendor.imsrcsservice /vendor/bin/imsrcsd
+   class main
+   user system
+   group radio diag inet log wakelock
+
+on property:vendor.ims.DATA_DAEMON_STATUS=1
+   restart vendor.ims_rtp_daemon
 
 # FM
 on property:hw.fm.init=0
@@ -1143,11 +1251,6 @@ service qcamerasvr /vendor/bin/mm-qcamera-daemon
     user camera
     group camera system inet input graphics
 
-service qseecomd /vendor/bin/qseecomd
-   class core
-   user root
-   group root
-
 service thermal-engine /vendor/bin/thermal-engine
    class main
    user root
@@ -1156,6 +1259,21 @@ service thermal-engine /vendor/bin/thermal-engine
    socket thermal-recv-passive-client stream 0666 system system
    socket thermal-send-rule stream 0660 system system
    group root
+
+service vfmservice /vendor/bin/vfmService
+    user system
+    group system
+    class main
+    disabled
+
+on property:sys.listeners.registered=true
+    start vfmservice
+
+on property:vendor.sys.keymaster.loaded=true
+    start vfmservice
+
+on property:vold.decrypt=trigger_restart_framework
+    start vfmservice
 
 service time_daemon /vendor/bin/time_daemon
    class late_start
@@ -1199,65 +1317,11 @@ on property:init.svc.zygote=running
 on property:init.svc.zygote=restarting
     stop ppd
 
-service adsprpcd /vendor/bin/adsprpcd
-    class main
-    user media
-    group media
-
-service per_mgr /vendor/bin/pm-service
-    class core
-    user system
-    group system net_raw
-
-service per_proxy /vendor/bin/pm-proxy
-    class core
-    user system
-    group system
-    disabled
-
-on property:init.svc.per_mgr=running
-    start per_proxy
-
-on property:sys.shutdown.requested=*
-    stop per_proxy
-
 service energy-awareness /vendor/bin/energy-awareness
     class main
     user root
     group system
     oneshot
-
-service netmgrd /vendor/bin/netmgrd
-    class main
-    disabled
-
-service ipacm-diag /vendor/bin/ipacm-diag
-    class main
-    user system
-    socket ipacm_log_file dgram 660 system net_admin
-    group net_admin diag
-    disabled
-
-service ipacm /vendor/bin/ipacm
-    class main
-    user radio
-    group inet
-
-service imsqmidaemon /vendor/bin/imsqmidaemon
-    class main
-    user net_Admin
-    group net_admin inet
-    disabled
-
-service qti /vendor/bin/qti
-    class main
-    user radio
-    group radio net_raw diag usb net_admin
-    disabled
-
-on property:ro.use_data_netmgrd=false
-    # netmgr not supported on specific target
-    stop netmgrd
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.
@@ -1280,11 +1344,6 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
-
-service loc_launcher /vendor/bin/loc_launcher
-    #loc_launcher will start as root and set its uid to gps
-    class late_start
-    group gps inet diag wifi
 
 service power_off_alarm /vendor/bin/power_off_alarm
     class core
@@ -1314,11 +1373,19 @@ on property:init.svc.surfaceflinger=restarting
     stop vendor.hwcomposer-2-1
     start vendor.hwcomposer-2-1
 
-service ril-daemon2 /vendor/bin/hw/rild -c 2
+service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
-    group radio cache inet misc audio log readproc wakelock
+    disabled
+    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+
+# Set vendor-ril lib path based on Meta version
+on property:vendor.rild.libpath=*
+    setprop rild.libpath ${vendor.rild.libpath}
+
+on property:ro.vendor.radio.noril=*
+    setprop ro.radio.noril ${ro.vendor.radio.noril}
 
 service charger /charger
     class charger
@@ -1384,11 +1451,6 @@ on property:vold.decrypt=trigger_restart_min_framework
 
 on property:vold.decrypt=trigger_restart_framework
     restart time_daemon
-
-service vfmService /vendor/bin/vfmService
-    user system
-    group system
-    class main
 
 on charger
     wait /dev/block/bootdevice/by-name/system

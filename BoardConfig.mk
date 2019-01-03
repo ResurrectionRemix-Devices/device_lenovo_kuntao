@@ -1,17 +1,18 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017-2018 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
 # Architecture
 TARGET_BOARD_SUFFIX := _64
@@ -79,13 +80,24 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
-BOARD_CHARGER_SHOW_PERCENTAGE := true
+
+# CNE and DPM
+BOARD_USES_QCNE := true
+
+# Crypto
+TARGET_HW_DISK_ENCRYPTION := true
 
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
-# CNE | DPM
-BOARD_USES_QCNE := true
+# Extended Filesystem Support
+TARGET_EXFAT_DRIVER := sdfat
+
+# Filesystem
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /vendor/dsp:/dsp \
+    /vendor/firmware_mnt:/firmware \
+    /mnt/vendor/persist:/persist
 
 # Dexpreopt
 ifeq ($(HOST_OS),linux)
@@ -103,12 +115,6 @@ TARGET_FS_CONFIG_GEN := device/lenovo/kuntao/config.fs
 # FM
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 BOARD_HAVE_QCOM_FM := true
-TARGET_QCOM_NO_FM_FIRMWARE := true
-
-# GPS
-USE_DEVICE_SPECIFIC_GPS := true
-USE_DEVICE_SPECIFIC_LOC_API := true
-TARGET_NO_RPC := true
 
 # GPU
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
@@ -124,19 +130,12 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
-# Hidl manifests
-DEVICE_MANIFEST_FILE := device/lenovo/kuntao/manifest.xml
-DEVICE_MATRIX_FILE := device/lenovo/kuntao/compatibility_matrix.xml
-
-# Extended Filesystem Support
-TARGET_EXFAT_DRIVER := sdfat
-
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := sched_enable_hmp=1 sched_enable_power_aware=1 console=null androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci androidboot.emmc=true androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := sched_enable_hmp=1 sched_enable_power_aware=1 console=null androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci androidboot.emmc=true androidboot.selinux=permissive firmware_class.path=/vendor/firmware_mnt/image
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --tags_offset 0x00000100
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -146,9 +145,6 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_CONFIG := kuntao_defconfig
-
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
 
 # Lineage Hardware
 JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|device/lenovo/kuntao/lineagehw|**/*.java
@@ -162,7 +158,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_HW_DISK_ENCRYPTION := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_CACHEIMAGE_PARTITION_SIZE := 318767104
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
@@ -210,8 +205,21 @@ TARGET_RIL_VARIANT := caf
 #include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_VERS := 28.0
 
-# Vendor Security Patch Level
-VENDOR_SECURITY_PATCH := 2017-11-01
+# GPS
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
+USE_DEVICE_SPECIFIC_GPS := true
+TARGET_QCOM_NO_FM_FIRMWARE := true
+
+# Hidl manifests
+DEVICE_MANIFEST_FILE := device/lenovo/kuntao/manifest.xml
+DEVICE_MATRIX_FILE := device/lenovo/kuntao/compatibility_matrix.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := device/lenovo/kuntao/framework_manifest.xml
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Security patch level
+VENDOR_SECURITY_PATCH := 2018-12-05
 
 # WiFi
 BOARD_HAS_QCOM_WLAN := true
