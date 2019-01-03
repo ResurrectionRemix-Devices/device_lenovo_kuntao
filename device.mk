@@ -1,4 +1,4 @@
-#
+:#
 # Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -180,7 +180,7 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl-qti \
-    android.hardware.gnss@1.0-service-qti
+    android.hardware.gnss@1.0-service-qti \
     libcurl \
     libgnss \
     libgnsspps
@@ -197,7 +197,7 @@ PRODUCT_COPY_FILES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0
 
 # Healthd
 PRODUCT_PACKAGES += \
@@ -331,7 +331,7 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.class_main.sh \
-    init.mmi.usb.sh
+    init.mmi.usb.sh \
     fstab.qcom \
     init.qcom.rc \
     init.mmi.usb.rc \
@@ -378,7 +378,7 @@ PRODUCT_COPY_FILES += \
 
 # WiFi HAL
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service
+    android.hardware.wifi@1.0-service \
     libwifi-hal-qcom \
     libcld80211 \
     libwpa_client \
