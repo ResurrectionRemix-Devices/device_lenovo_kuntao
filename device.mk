@@ -142,7 +142,7 @@ PRODUCT_COPY_FILES += \
 
 # Doze mode
 #PRODUCT_PACKAGES += \
-   # LenovoDoze
+#    LenovoDoze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -192,7 +192,7 @@ PRODUCT_COPY_FILES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0
 
 # Healthd
 PRODUCT_PACKAGES += \
