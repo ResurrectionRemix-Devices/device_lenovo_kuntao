@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2017, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -166,14 +166,12 @@ typedef enum
 	IPA_WAN_XLAT_CONNECT_EVENT,               /* ipacm_event_data_fid */
 	IPA_TETHERING_STATS_UPDATE_EVENT,         /* ipacm_event_data_fid */
 	IPA_NETWORK_STATS_UPDATE_EVENT,           /* ipacm_event_data_fid */
-	IPA_DOWNSTREAM_ADD,                       /* ipacm_event_ipahal_stream */
-	IPA_DOWNSTREAM_DEL,                       /* ipacm_event_ipahal_stream */
 
 	IPA_EXTERNAL_EVENT_MAX,
 
 	IPA_HANDLE_WAN_UP,                        /* ipacm_event_iface_up  */
 	IPA_HANDLE_WAN_DOWN,                      /* ipacm_event_iface_up  */
-	IPA_HANDLE_WAN_UP_V6,                     /* ipacm_event_iface_up */
+	IPA_HANDLE_WAN_UP_V6,                     /* NULL */
 	IPA_HANDLE_WAN_DOWN_V6,                   /* NULL */
 	IPA_HANDLE_WAN_UP_TETHER,                 /* ipacm_event_iface_up_tehter */
 	IPA_HANDLE_WAN_DOWN_TETHER,               /* ipacm_event_iface_up_tehter */
@@ -186,17 +184,15 @@ typedef enum
 	IPA_ETH_BRIDGE_CLIENT_ADD,                /* ipacm_event_eth_bridge */
 	IPA_ETH_BRIDGE_CLIENT_DEL,                /* ipacm_event_eth_bridge*/
 	IPA_ETH_BRIDGE_WLAN_SCC_MCC_SWITCH,       /* ipacm_event_eth_bridge*/
-	IPA_SSR_NOTICE,						      /* NULL*/
-#ifdef FEATURE_L2TP
+	IPA_LAN_DELETE_SELF,                      /* ipacm_event_data_fid */
+	IPA_DOWNSTREAM_ADD,                       /* ipacm_event_ipahal_stream */
+	IPA_DOWNSTREAM_DEL,                       /* ipacm_event_ipahal_stream */
 	IPA_ADD_VLAN_IFACE,                       /* ipa_ioc_vlan_iface_info */
 	IPA_DEL_VLAN_IFACE,                       /* ipa_ioc_vlan_iface_info */
 	IPA_ADD_L2TP_VLAN_MAPPING,                /* ipa_ioc_l2tp_vlan_mapping_info */
 	IPA_DEL_L2TP_VLAN_MAPPING,                /* ipa_ioc_l2tp_vlan_mapping_info */
 	IPA_HANDLE_VLAN_CLIENT_INFO,              /* ipacm_event_data_all */
 	IPA_HANDLE_VLAN_IFACE_INFO,               /* ipacm_event_data_all */
-#endif
-	IPA_WLAN_FWR_SSR_BEFORE_SHUTDOWN_NOTICE,
-	IPA_LAN_DELETE_SELF,                      /* ipacm_event_data_fid */
 	IPACM_EVENT_MAX
 } ipa_cm_event_id;
 
@@ -343,7 +339,6 @@ typedef struct _ipacm_event_iface_up
 	uint32_t ipv6_prefix[2];
 	bool is_sta;
 	uint8_t xlat_mux_id;
-	uint8_t mux_id;
 }ipacm_event_iface_up;
 
 typedef struct _ipacm_event_iface_up_tether

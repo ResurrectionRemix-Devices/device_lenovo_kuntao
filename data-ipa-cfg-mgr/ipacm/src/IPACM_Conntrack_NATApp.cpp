@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2016, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -31,12 +31,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifdef FEATURE_IPACM_HAL
 #include "IPACM_OffloadManager.h"
 #endif
-#include "IPACM_Iface.h"
 
 #define INVALID_IP_ADDR 0x0
-
-#define HDR_METADATA_MUX_ID_BMASK 0x00FF0000
-#define HDR_METADATA_MUX_ID_SHFT 0x10
 
 /* NatApp class Implementation */
 NatApp *NatApp::pInstance = NULL;
@@ -94,7 +90,11 @@ int NatApp::Init(void)
 		}
 		memset(pALGPorts, 0, sizeof(ipacm_alg) * nALGPort);
 
-		pConfig->GetAlgPorts(nALGPort, pALGPorts);
+		if(pConfig->GetAlgPorts(nALGPort, pALGPorts) != 0)
+		{
+			IPACMERR("Unable to retrieve ALG prots\n");
+			goto fail;
+		}
 
 		IPACMDBG("Printing %d alg ports information\n", nALGPort);
 		for(int cnt=0; cnt<nALGPort; cnt++)
@@ -102,23 +102,12 @@ int NatApp::Init(void)
 			IPACMDBG("%d: Proto[%d], port[%d]\n", cnt, pALGPorts[cnt].protocol, pALGPorts[cnt].port);
 		}
 	}
-	else
-	{
-		IPACMERR("Unable to retrieve ALG prot count\n");
-		goto fail;
-	}
 
 	return 0;
 
 fail:
-	if(cache != NULL)
-	{
-		free(cache);
-	}
-	if(pALGPorts != NULL)
-	{
-		free(pALGPorts);
-	}
+	free(cache);
+	free(pALGPorts);
 	return -1;
 }
 
@@ -138,14 +127,9 @@ NatApp* NatApp::GetInstance()
 	return pInstance;
 }
 
-uint32_t NatApp::GenerateMetdata(uint8_t mux_id)
-{
-	return (mux_id << HDR_METADATA_MUX_ID_SHFT) & HDR_METADATA_MUX_ID_BMASK;
-}
-
 /* NAT APP related object function definitions */
 
-int NatApp::AddTable(uint32_t pub_ip, uint8_t mux_id)
+int NatApp::AddTable(uint32_t pub_ip)
 {
 	int ret;
 	int cnt = 0;
@@ -166,19 +150,6 @@ int NatApp::AddTable(uint32_t pub_ip, uint8_t mux_id)
 	{
 		IPACMERR("unable to create nat table Error:%d\n", ret);
 		return ret;
-	}
-	if(IPACM_Iface::ipacmcfg->GetIPAVer() >= IPA_HW_v4_0) {
-		/* modify PDN 0 so it will hold the mux ID in the src metadata field */
-		ipa_nat_pdn_entry entry;
-
-		entry.dst_metadata = 0;
-		entry.src_metadata = GenerateMetdata(mux_id);
-		entry.public_ip = pub_ip;
-		ret = ipa_nat_modify_pdn(nat_table_hdl, 0, &entry);
-		if(ret)
-		{
-			IPACMERR("unable to modify PDN 0 entry Error:%d INIT_HDR_METADATA register values will be used!\n", ret);
-		}
 	}
 
 	/* Add back the cached NAT-entry */
@@ -432,16 +403,17 @@ int NatApp::AddEntry(const nat_table_entry *rule)
 
 void NatApp::UpdateCTUdpTs(nat_table_entry *rule, uint32_t new_ts)
 {
+	int ret;
 #ifdef FEATURE_IPACM_HAL
 	IOffloadManager::ConntrackTimeoutUpdater::natTimeoutUpdate_t entry;
 	IPACM_OffloadManager* OffloadMng;
 #endif
+
 	iptodot("Private IP:", rule->private_ip);
 	iptodot("Target IP:",  rule->target_ip);
 	IPACMDBG("Private Port: %d, Target Port: %d\n", rule->private_port, rule->target_port);
 
 #ifndef FEATURE_IPACM_HAL
-	int ret;
 	if(!ct_hdl)
 	{
 		ct_hdl = nfct_open(CONNTRACK, 0);
@@ -1006,13 +978,8 @@ void NatApp::CacheEntry(const nat_table_entry *rule)
 }
 
 void NatApp::Read_TcpUdp_Timeout(void) {
-#ifdef FEATURE_IPACM_HAL
-	tcp_timeout = 432000;
-	udp_timeout = 180;
-	IPACMDBG_H("udp timeout value: %d\n", udp_timeout);
-	IPACMDBG_H("tcp timeout value: %d\n", tcp_timeout);
-#else
 	FILE *udp_fd = NULL, *tcp_fd = NULL;
+
 	/* Read UDP timeout value */
 	udp_fd = fopen(IPACM_UDP_FULL_FILE_NAME, "r");
 	if (udp_fd == NULL) {
@@ -1046,6 +1013,6 @@ fail:
 	if (tcp_fd) {
 		fclose(tcp_fd);
 	}
-#endif
+
 	return;
 }

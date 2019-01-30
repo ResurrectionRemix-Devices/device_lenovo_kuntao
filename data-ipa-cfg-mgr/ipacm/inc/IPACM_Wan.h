@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -53,15 +53,12 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define IPA_V2_NUM_DEFAULT_WAN_FILTER_RULE_IPV4 2
 
 #ifdef FEATURE_IPA_ANDROID
-#define IPA_V2_NUM_DEFAULT_WAN_FILTER_RULE_IPV6 7
-#define IPA_V2_NUM_TCP_WAN_FILTER_RULE_IPV6 3
-#define IPA_V2_NUM_MULTICAST_WAN_FILTER_RULE_IPV6 3
-#define IPA_V2_NUM_FRAG_WAN_FILTER_RULE_IPV6 1
+#define IPA_V2_NUM_DEFAULT_WAN_FILTER_RULE_IPV6 6
 #else
 #define IPA_V2_NUM_DEFAULT_WAN_FILTER_RULE_IPV6 3
 #endif
 
-#define NETWORK_STATS "%s %llu %llu %llu %llu"
+#define NETWORK_STATS "%s %lu %lu %lu %lu"
 #define IPA_NETWORK_STATS_FILE_NAME "/data/misc/ipa/network_stats"
 
 typedef struct _wan_client_rt_hdl
@@ -94,8 +91,7 @@ class IPACM_Wan : public IPACM_Iface
 {
 
 public:
-	/* IPACM pm_depency q6 check*/
-	static int ipa_pm_q6_check;
+
 	static bool wan_up;
 	static bool wan_up_v6;
 	static uint8_t xlat_mux_id;
@@ -109,11 +105,9 @@ public:
 	{
 #ifdef FEATURE_IPA_ANDROID
 #ifdef FEATURE_IPACM_HAL
-		/*To avoid -Wall -Werror error */
-		IPACMDBG_H("ipa_if_num_tether: %d\n",ipa_if_num_tether);
 		return wan_up;
 #else
-		uint32_t i;
+		int i;
 		for (i=0; i < ipa_if_num_tether_v4_total;i++)
 		{
 			if (ipa_if_num_tether_v4[i] == ipa_if_num_tether)
@@ -134,12 +128,7 @@ public:
 	static bool isWanUP_V6(int ipa_if_num_tether)
 	{
 #ifdef FEATURE_IPA_ANDROID
-#ifdef FEATURE_IPACM_HAL
-		/*To avoid -Wall -Werror error */
-		IPACMDBG_H("ipa_if_num_tether: %d\n",ipa_if_num_tether);
-		return wan_up_v6;
-#else
-		uint32_t i;
+		int i;
 		for (i=0; i < ipa_if_num_tether_v6_total;i++)
 		{
 			if (ipa_if_num_tether_v6[i] == ipa_if_num_tether)
@@ -151,7 +140,6 @@ public:
 			}
 		}
 		return false;
-#endif
 #else
 		return wan_up_v6;
 #endif
@@ -160,7 +148,7 @@ public:
 #ifdef FEATURE_IPA_ANDROID
 	static int delete_tether_iface(ipa_ip_type iptype, int ipa_if_num_tether)
 	{
-		uint32_t i, j;
+		int i, j;
 
 		if (iptype == IPA_IP_v4)
 		{
@@ -249,9 +237,9 @@ public:
 	}
 #ifdef FEATURE_IPA_ANDROID
 	/* IPACM interface id */
-	static uint32_t ipa_if_num_tether_v4_total;
+	static int ipa_if_num_tether_v4_total;
 	static int ipa_if_num_tether_v4[IPA_MAX_IFACE_ENTRIES];
-	static uint32_t ipa_if_num_tether_v6_total;
+	static int ipa_if_num_tether_v6_total;
 	static int ipa_if_num_tether_v6[IPA_MAX_IFACE_ENTRIES];
 #endif
 
@@ -305,7 +293,7 @@ private:
 	int wan_client_len;
 	ipa_wan_client *wan_client;
 	int header_name_count;
-	uint32_t num_wan_client;
+	int num_wan_client;
 	uint8_t invalid_mac[IPA_MAC_ADDR_SIZE];
 	bool is_xlat;
 
@@ -550,8 +538,6 @@ private:
 	int del_wan_firewall_rule(ipa_ip_type iptype);
 
 	int add_dft_filtering_rule(struct ipa_flt_rule_add* rules, int rule_offset, ipa_ip_type iptype);
-
-	int add_tcpv6_filtering_rule(struct ipa_flt_rule_add* rules, int rule_offset);
 
 	int install_wan_filtering_rule(bool is_sw_routing);
 

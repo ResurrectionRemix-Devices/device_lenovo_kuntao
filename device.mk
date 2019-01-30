@@ -1,4 +1,4 @@
-#
+:#
 # Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,9 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+PRODUCT_ENFORCE_RRO_TARGETS := \
+    framework-res
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -65,11 +68,18 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libqcompostprocbundle
 
+# Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@4.0-impl \
+    android.hardware.audio@2.0-impl \
     android.hardware.audio@2.0-service \
-    android.hardware.audio.effect@4.0-impl \
+    android.hardware.audio@4.0 \
+    android.hardware.audio@4.0-impl \
+    android.hardware.audio.common@4.0 \
+    android.hardware.audio.common@4.0-util \
+    android.hardware.audio.effect@2.0-impl \
     android.hardware.audio.effect@2.0-service \
+    android.hardware.audio.effect@4.0 \
+    android.hardware.audio.effect@4.0-impl \
     android.hardware.soundtrigger@2.1-impl
 
 PRODUCT_COPY_FILES += \
@@ -87,6 +97,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
     $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
 
+# Additional native libraries
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
+
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService \
@@ -102,7 +116,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap \
+    Camera2 \
     camera.msm8953 \
     libmm-qcamera \
     android.hardware.camera.provider@2.4-impl \
@@ -113,6 +127,12 @@ PRODUCT_COPY_FILES +=  \
 
 PRODUCT_BOOT_JARS += \
     com.qualcomm.qti.camera
+
+# FM
+PRODUCT_PACKAGES += \
+    android.hardware.broadcastradio@1.0-impl \
+    FMRadio \
+    libfmjni
 
 # Display
 PRODUCT_PACKAGES += \
@@ -142,7 +162,11 @@ PRODUCT_COPY_FILES += \
 
 # Doze mode
 #PRODUCT_PACKAGES += \
-#    LenovoDoze
+#    XiaomiDoze
+
+# Lenovo Parts
+PRODUCT_PACKAGES += \
+    LenovoParts 
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -192,7 +216,8 @@ PRODUCT_COPY_FILES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0
+    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0-java
 
 # Healthd
 PRODUCT_PACKAGES += \
@@ -217,7 +242,6 @@ PRODUCT_COPY_FILES += \
 # NFC
 PRODUCT_PACKAGES += \
     libnfc \
-    libnfc_jni \
     libnfcdummy \
     com.android.nfc_extras \
     NfcNci \
@@ -254,9 +278,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.msm8953 \
-    android.hardware.light@2.0-service \
-    android.hardware.light@2.0-impl
+    android.hardware.light@2.0-service.kuntao
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -269,6 +291,11 @@ PRODUCT_COPY_FILES += \
 
 # Properties
 include $(LOCAL_PATH)/vendor_prop.mk
+
+# Prebuild
+PRODUCT_PACKAGES += \
+    ViaBrowser \
+    RetroMusicPlayer 
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
@@ -287,10 +314,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
-
-# LiveDisplay native
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@1.0-service-sdm
 
 # Netutils
 PRODUCT_PACKAGES += \
@@ -325,8 +348,17 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    Spectrum \
+    init.spectrum.rc \
+    init.spectrum.sh
+
+# Ramdisk
+PRODUCT_PACKAGES += \
+    init.qcom.early_boot.sh \
     init.class_main.sh \
     init.mmi.usb.sh \
+    move_widevine_data.sh \
+    init.lenovo.parts.rc \
     fstab.qcom \
     init.qcom.rc \
     init.mmi.usb.rc \
@@ -343,7 +375,10 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.0 \
     librmnetctl \
     libcnefeatureconfig \
-    libxml2 \
+    libxml2
+
+# Telephony-ext
+PRODUCT_PACKAGES += \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
@@ -362,20 +397,24 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
 
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service
+
 # VNDK
 PRODUCT_PACKAGES += \
     vndk-sp
 
 # Whitelisted apps
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
-    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
+    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/privapp-permissions-qti.xml \
+    $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/qti_whitelist.xml
 
 # WiFi HAL
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     libwifi-hal-qcom \
-    libcld80211 \
     libwpa_client \
     hostapd \
     wpa_supplicant \

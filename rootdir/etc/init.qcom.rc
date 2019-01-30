@@ -25,8 +25,10 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.mmi.usb.rc
+import /vendor/etc/init/hw/init.msm.usb.configfs.rc
+import /vendor/etc/init/hw/init.spectrum.rc
+import /vendor/etc/init/hw/init.lenovo.parts.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -46,6 +48,10 @@ on fs
     mount_all /vendor/etc/fstab.qcom
     swapon_all /vendor/etc/fstab.qcom
 
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist
+
     mkdir /persist/data 0700 system system
     mkdir /persist/bms 0700 root system
     mkdir /mnt/vendor/persist/data 0700 system system
@@ -59,6 +65,8 @@ on early-boot
     setrlimit 8 67108864 67108864
     # Allow subsystem (modem etc) debugging
     write /sys/kernel/boot_adsp/boot 1
+
+    exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -87,14 +95,6 @@ on boot
 
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/device/extldo
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
-
-    # Dt2w gestures
-    chown system system /sys/board_properties/tpd_suspend_status
-    chmod 0664 /sys/board_properties/tpd_suspend_status
-
-    # Glove gestures
-    chown system system /sys/board_properties/tpd_glove_status
-    chmod 0664 /sys/board_properties/tpd_glove_status
 
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
@@ -157,7 +157,6 @@ on boot
 
     start rmt_storage
     start vfmservice
-    start vendor.move_wifi_data
 
     # bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
@@ -199,12 +198,21 @@ on boot
 # Change ownership for for seed feature
     chown system system /sys/class/graphics/fb0/color_profile
 
-#lenovo-sw wengjun1 add 20160504 end
+    # Double tap and glove mode
+    chown system system /sys/board_properties/tpd_glove_status
+    chown system system /sys/board_properties/tpd_suspend_status
+    chmod 0664 /sys/board_properties/tpd_suspend_status
+    chmod 0664 /sys/board_properties/tpd_glove_status
+
+    # Fingerprint
     chmod 0660 /dev/vfsspi
     chown system system /dev/vfsspi
     mkdir /dev/validity 0775 system system
     chmod 0660 /sys/bus/platform/devices/soc:fingerprint@0/shutdown
     chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
+
+on property:vendor.sys.listeners.registered=true
+    start vfmservice
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
@@ -896,13 +904,6 @@ on post-fs-data
     mkdir /data/vendor/display 0770 system graphics
 
     #Create directories for Fingerprint
-    mkdir /data/misc/stargate 0770 system system
-    mkdir /data/misc/stargate/bg_estimation 0770 system system
-    mkdir /data/misc/stargate/calib_test 0770 system system
-    mkdir /data/misc/stargate/database 0770 system system
-    mkdir /data/validity 0775 system system
-
-    #Create directories for Fingerprint
     mkdir /data/vendor/stargate 0770 system system
     mkdir /data/vendor/stargate/bg_estimation 0770 system system
     mkdir /data/vendor/stargate/calib_test 0770 system system
@@ -920,9 +921,13 @@ on post-fs-data
 
     # Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
+    mkdir /data/vendor/tombstones/rfs 0771 system system
+    mkdir /data/vendor/tombstones/rfs/modem 0771 system system
+    mkdir /data/vendor/tombstones/rfs/lpass 0771 system system
+    mkdir /data/vendor/tombstones/rfs/slpi 0771 system system
 
     # Create folder for mm-qcamera-daemon
-    mkdir /data/misc/camera 0770 camera camera
+    mkdir /data/vendor/qcam 0770 camera camera
 
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
@@ -944,6 +949,7 @@ on post-fs-data
     mkdir /data/vendor/wifi 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+    symlink /data/vendor/wifi/WCNSS_qcom_cfg.ini /data/misc/wifi/WCNSS_qcom_cfg.ini
 
     # Create netmgr log dir
     mkdir /data/vendor/netmgr 0770 radio radio
@@ -1017,8 +1023,6 @@ on post-fs-data
     mkdir /data/system 0775 system system
     #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
-    symlink /data/vendor/wifi/WCNSS_qcom_cfg.ini /data/misc/wifi/WCNSS_qcom_cfg.ini
-  
     #Create directories for Location services
     mkdir /data/vendor/location 0770 gps gps
     mkdir /data/vendor/location/mq 0770 gps gps
@@ -1100,10 +1104,9 @@ on post-fs-data
     mkdir /data/vendor/tui 0700 system system
 
     #WAPI
-    mkdir /data/misc/wapi_certificate 0770 system wifi
+    mkdir /data/vendor/wapi_certificate 0770 system wifi
 
 on property:sys.boot_completed=1
-    restart cameraserver
     write /dev/kmsg "Boot completed "
     #Reset read ahead for dm-0 and dm-1 to 512kb
     write /sys/block/dm-0/queue/read_ahead_kb 512
@@ -1121,6 +1124,7 @@ service qcom-c_main-sh /vendor/bin/init.class_main.sh
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
     start wcnss-service
+    start vfmservice
 
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
@@ -1192,23 +1196,23 @@ service loc_launcher /vendor/bin/loc_launcher
     group gps
 
 #Start up peripheral manager
-service per_mgr /vendor/bin/pm-service
+service vendor.per_mgr /vendor/bin/pm-service
     class core
     user system
     group system
     ioprio rt 4
 
-service per_proxy /vendor/bin/pm-proxy
+service vendor.per_proxy /vendor/bin/pm-proxy
     class core
     user system
     group system
     disabled
 
-on property:init.svc.per_mgr=running
-    start per_proxy
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
 
 on property:sys.shutdown.requested=*
-    stop per_proxy
+    stop vendor.per_proxy
 
 service vendor.qseecomd /vendor/bin/qseecomd
    class core
@@ -1239,22 +1243,19 @@ on property:vendor.ims.QMI_DAEMON_STATUS=1
 service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
    class main
    user system
+   socket ims_rtpd stream 0660 system radio
    group radio diag inet log
+   disabled
 
 service vendor.imsrcsservice /vendor/bin/imsrcsd
    class main
    user system
-   group radio diag inet log wakelock
+   group radio diag inet log
+   disabled
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
-   restart vendor.ims_rtp_daemon
-
-# FM
-on property:hw.fm.init=0
-    write /sys/module/radio_iris_transport/parameters/fmsmd_set 0
-
-on property:hw.fm.init=1
-    write /sys/module/radio_iris_transport/parameters/fmsmd_set 1
+   start vendor.ims_rtp_daemon
+   start vendor.imsrcsservice
 
 #start camera server as daemon
 service qcamerasvr /vendor/bin/mm-qcamera-daemon
@@ -1277,12 +1278,6 @@ service vfmservice /vendor/bin/vfmService
     class main
     disabled
 
-on property:sys.listeners.registered=true
-    start vfmservice
-
-on property:vold.decrypt=trigger_restart_framework
-    start vfmservice
-
 service time_daemon /vendor/bin/time_daemon
    class late_start
    user root
@@ -1293,6 +1288,13 @@ service wcnss-service /vendor/bin/wcnss_service
     user system
     group system wifi radio
     oneshot
+
+# FM
+on property:hw.fm.init=0
+    write /sys/module/radio_iris_transport/parameters/fmsmd_set 0
+
+on property:hw.fm.init=1
+    write /sys/module/radio_iris_transport/parameters/fmsmd_set 1
 
 #lenovo-sw weiweij added for smart_charger fast charger switch dameon
 service smart_charger /vendor/bin/smart_charger
@@ -1350,14 +1352,6 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     interface android.hardware.wifi.supplicant@1.1::ISupplicant default
     class main
     socket vendor_wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-# Data Migration
-service vendor.move_wifi_data /vendor/bin/move_wifi_data.sh
-    class main
-    user  wifi
-    group wifi
     disabled
     oneshot
 
@@ -1442,6 +1436,13 @@ on property:sys.boot_completed=1
 
 # governor settings
     write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu4/online 1
+    write /sys/devices/system/cpu/cpu5/online 1
+    write /sys/devices/system/cpu/cpu6/online 1
+    write /sys/devices/system/cpu/cpu7/online 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "19000 1401600:39000"
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 85
@@ -1450,7 +1451,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 0
     write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1401600:80"
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 39000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 652800
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq "652800"
 
 on property:sys.dbg.coresight.enable=1
     write /persist/coresight/enable 1
