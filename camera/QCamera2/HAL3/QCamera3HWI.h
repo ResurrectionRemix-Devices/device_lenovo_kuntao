@@ -53,7 +53,6 @@ extern "C" {
 using ::android::hardware::camera::common::V1_0::helper::CameraMetadata;
 using namespace android;
 
-
 namespace qcamera {
 
 #ifndef TRUE
@@ -65,7 +64,6 @@ namespace qcamera {
 #endif
 
 /* Time related macros */
-typedef int64_t nsecs_t;
 #define NSEC_PER_SEC 1000000000LLU
 #define NSEC_PER_USEC 1000LLU
 #define NSEC_PER_33MSEC 33000000LLU
@@ -311,9 +309,7 @@ private:
 
     void addToPPFeatureMask(int stream_format, uint32_t stream_idx);
     void updateFpsInPreviewBuffer(metadata_buffer_t *metadata, uint32_t frame_number);
-#ifndef USE_HAL_3_3
-    void updateTimeStampInPendingBuffers(uint32_t frameNumber, nsecs_t timestamp);
-#endif
+
     void enablePowerHint();
     void disablePowerHint();
     int32_t dynamicUpdateMetaStreamInfo();
@@ -515,6 +511,9 @@ private:
     uint32_t mSurfaceStridePadding;
 
     State mState;
+    //The offset between BOOTTIME and MONOTONIC timestamps
+    nsecs_t mBootToMonoTimestampOffset;
+    bool mUseAVTimer;
 };
 
 }; // namespace qcamera

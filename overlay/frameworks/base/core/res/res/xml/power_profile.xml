@@ -17,7 +17,7 @@
     <array name="radio.on">
         <value>7.11</value>
     </array>
-    <array name="cpu.speeds">
+    <array name="cpu.core_speeds">
         <value>652800</value>
         <value>1036800</value>
         <value>1401600</value>
@@ -26,7 +26,7 @@
         <value>1958400</value>
         <value>2016000</value>
     </array>
-    <array name="cpu.active">
+    <array name="cpu.core_power">
         <value>96</value>
         <value>109</value>
         <value>123</value>
@@ -34,6 +34,13 @@
         <value>160</value>
         <value>171</value>
         <value>181</value>
+    </array>
+    <array name="wifi.batchedscan">
+        <value>.0002</value>
+        <value>.002</value>
+        <value>.02</value>
+        <value>.2</value>
+        <value>2</value>
     </array>
     <item name="cpu.awake">93</item>
     <item name="cpu.idle">4.23</item>

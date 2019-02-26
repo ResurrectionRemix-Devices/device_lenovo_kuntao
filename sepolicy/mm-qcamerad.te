@@ -1,5 +1,7 @@
-allow mm-qcamerad persist_file:dir search;
-allow mm-qcamerad persist_file:file r_file_perms;
-allow mm-qcamerad system_data_file:dir w_dir_perms;
-allow mm-qcamerad system_data_file:file open;
-set_prop(mm-qcamerad, debug_prop)
+binder_use(mm-qcamerad);
+
+allow mm-qcamerad sensorservice_service:service_manager find;
+
+allow mm-qcamerad system_server:unix_stream_socket rw_socket_perms;
+
+set_prop(mm-qcamerad, vendor_camera_prop)

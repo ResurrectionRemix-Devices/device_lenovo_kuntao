@@ -26,9 +26,9 @@ INITIAL_COPYRIGHT_YEAR=2017
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-AOSIP_ROOT="$MY_DIR"/../../..
+RR_ROOT="$MY_DIR"/../../..
 
-HELPER="$AOSIP_ROOT"/vendor/aosip/build/tools/extract_utils.sh
+HELPER="$RR_ROOT"/vendor/rr/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -57,11 +57,33 @@ if [ -z "$SRC" ]; then
 fi
 
 # Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$AOSIP_ROOT" false "$CLEAN_VENDOR"
+setup_vendor "$DEVICE" "$VENDOR" "$RR_ROOT" false "$CLEAN_VENDOR"
+
+#
+# Hax libaudcal.so to store acdbdata in new path
+#
+sed -i "s|\/data\/vendor\/misc\/audio\/acdbdata\/delta\/|\/data\/vendor\/audio\/acdbdata\/delta\/\x00\x00\x00\x00\x00|g" \
+    "$BLOB_ROOT"/vendor/lib/libaudcal.so
+sed -i "s|\/data\/vendor\/misc\/audio\/acdbdata\/delta\/|\/data\/vendor\/audio\/acdbdata\/delta\/\x00\x00\x00\x00\x00|g" \
+    "$BLOB_ROOT"/vendor/lib64/libaudcal.so
+
+for HIDL_BASE_LIB in $(grep -lr "android\.hidl\.base@1\.0\.so" $BLOB_ROOT); do
+    patchelf --remove-needed android.hidl.base@1.0.so "$HIDL_BASE_LIB" || true
+done
+
+for HIDL_MANAGER_LIB in $(grep -lr "android\.hidl\.@1\.0\.so" $BLOB_ROOT); do
+    patchelf --remove-needed android.hidl.manager@1.0.so "$HIDL_MANAGER_LIB" || true
+done
+
+#
+# Add liblog dependency to smart_charger
+#
+SMART_CHARGER="$BLOB_ROOT"/vendor/bin/smart_charger
+patchelf --add-needed liblog.so "$SMART_CHARGER"
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" "$SECTION"
 
-COMMON_BLOB_ROOT="$AOSIP_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
+COMMON_BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
 
 "$MY_DIR"/setup-makefiles.sh

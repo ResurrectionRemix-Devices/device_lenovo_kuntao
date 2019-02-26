@@ -1,4 +1,4 @@
-# Device configuration for Lenovo P2
+# Device configuration for Lenovo P2a42
 
 ## Spec Sheet
 

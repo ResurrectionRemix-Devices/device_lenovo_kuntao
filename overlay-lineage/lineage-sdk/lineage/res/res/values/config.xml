@@ -25,6 +25,9 @@
         <item>Comfort:astronomy</item>
     </string-array>
 
+    <!-- Default values for LiveDisplay -->
+    <integer name="config_defaultLiveDisplayMode">2</integer>
+
     <!-- Should we filter any display modes which are unampped? -->
     <bool name="config_filterDisplayModes">true</bool>
 
@@ -50,6 +53,10 @@
          that support pulsating and RGB control would set this config
          to 75. -->
     <integer name="config_deviceLightCapabilities">75</integer>
+
+    <!-- Whether device needs to wait for Qualcomm MPCTL service to start
+         before setting power profiles on boot. -->
+    <bool name="config_waitForMpctlOnBoot">true</bool>
 
     <!-- Hardware keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each

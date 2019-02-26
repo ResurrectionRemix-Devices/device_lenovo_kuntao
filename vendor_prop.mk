@@ -29,8 +29,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooh
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.qcom.bluetooth.soc=smd \
-    ro.qualcomm.bt.hci_transport=smd
+    vendor.qcom.bluetooth.soc=smd
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -45,6 +44,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.cne.feature=1
 
+# Charger
+PRODUCT_PROPERTY_OVERRIDES += \
+    log.tag.smart_charger=W
+
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=8m \
@@ -56,18 +59,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.hw=0 \
-    debug.egl.hw=0 \
-    persist.hwc.mdpcomp.enable=true \
-    debug.mdpcomp.logs=0 \
-    dev.pm.dyn_samplingrate=1 \
-    persist.demo.hdmirotationlock=false \
-    debug.enable.sglscale=1 \
     ro.opengles.version=196610 \
     ro.vendor.display.cabl=0 \
+    ro.sf.lcd_density=450 \
+    vendor.display.disable_rotator_downscale=1
     vendor.display.disable_skip_validate=1 \
-    vendor.display.disable_rotator_downscale=1 \
-    ro.sf.lcd_density=450
+    vendor.display.enable_default_color_mode=1 \
+  
 
 # Miracast
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -87,16 +85,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/platform/soc/7824900.sdhci/by-name/config
 
+# Fp Gestures
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.fp.navigation=1
+
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.fp.navigation=1 \
     log.tag.synaFpHal=W \
     log.tag.SynapticsLIB=W \
     log.tag.synaTransport=W
 
-# Charger
+# Fm
 PRODUCT_PROPERTY_OVERRIDES += \
-    log.tag.smart_charger=W
+    ro.fm.transmitter=false \
+    vendor.hw.fm.init=0
 
 # IMS
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -104,45 +106,42 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.vt_avail_ovr=1 \
     persist.vendor.qti.telephony.vt_cam_interface=1
 
-# GPS
+# Gps
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.gps.qc_nlp_in_use=1
+    ro.gps.agps_provider=1
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.enable-player=true \
-    media.stagefright.enable-http=true \
-    media.stagefright.enable-aac=true \
-    media.stagefright.enable-qcp=true \
-    media.stagefright.enable-fma2dp=true \
-    media.stagefright.enable-scan=true \
-    media.msm8956hw=0 \
-    mm.enable.sec.smoothstreaming=true \
-    mmp.enable.3g2=true \
-    media.aac_51_output_enabled=true \
     media.stagefright.audio.sink=280 \
     vendor.vidc.dec.downscalar_width=1920 \
     vendor.vidc.dec.downscalar_height=1088 \
+    vendor.vidc.disable.split.mode=1 \
     vendor.vidc.enc.disable_bframes=1 \
     vendor.vidc.enc.disable_pframes=1 \
     vendor.vidc.enc.narrow.searchrange=1
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.perf.iop_v3.enable=1 \
+    ro.vendor.extension_library=libqti-perfd-client.so \
     vendor.iop.enable_uxe=1 \
-    ro.vendor.extension_library=libqti-perfd-client.so
+    vendor.perf.iop_v3.enable=1
+
+# Qualcomm
+PRODUCT_PROPERTY_OVERRIDES += \
+    com.qc.hardware=true \
+    debug.qc.hardware=true
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.radio.apm_sim_not_pwdn=1 \
-    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
+    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
+    persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.radio.multisim.config=dsds \
     ro.telephony.default_network=9,1 \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
+    persist.vendor.radio.add_power_save=1 \
     persist.radio.aosp_usr_pref_sel=true
 
 # Netmgrd

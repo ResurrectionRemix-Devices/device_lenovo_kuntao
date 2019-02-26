@@ -63,6 +63,8 @@ namespace qcamera {
 
 #define DATA_PTR(MEM_OBJ,INDEX) MEM_OBJ->getPtr( INDEX )
 
+#define TIME_SOURCE ANDROID_SENSOR_INFO_TIMESTAMP_SOURCE_UNKNOWN
+
 #define EMPTY_PIPELINE_DELAY 2
 #define PARTIAL_RESULT_COUNT 2
 #define FRAME_SKIP_DELAY     0
@@ -364,7 +366,9 @@ QCamera3HardwareInterface::QCamera3HardwareInterface(uint32_t cameraId,
       mLdafCalibExist(false),
       mPowerHintEnabled(false),
       mLastCustIntentFrmNum(-1),
-      mState(CLOSED)
+      mState(CLOSED),
+      mBootToMonoTimestampOffset(0),
+      mUseAVTimer(false)
 {
     getLogLevel();
     m_perfLock.lock_init();
@@ -736,6 +740,23 @@ int QCamera3HardwareInterface::openCamera()
         }
         pthread_mutex_unlock(&gCamLock);
     }
+
+    // Setprop to decide the time source (whether boottime or monotonic).
+    // By default, use monotonic time.
+    property_get("persist.camera.time.monotonic", value, "1");
+    mBootToMonoTimestampOffset = 0;
+    if (atoi(value) == 1) {
+        // if monotonic is set, then need to use time in monotonic.
+        // So, Measure the clock offset between BOOTTIME and MONOTONIC
+        // The clock domain source for ISP is BOOTTIME and
+        // for display is MONOTONIC
+        // The below offset is used to convert from clock domain of other subsystem
+        // (hardware composer) to that of camera. Assumption is that this
+        // offset won't change during the life cycle of the camera device. In other
+        // words, camera device shouldn't be open during CPU suspend.
+        mBootToMonoTimestampOffset = QCameraCommon::getBootToMonoTimeOffset();
+    }
+    LOGH("mBootToMonoTimestampOffset = %lld", mBootToMonoTimestampOffset);
 
     return NO_ERROR;
 }
@@ -1210,39 +1231,6 @@ void QCamera3HardwareInterface::updateFpsInPreviewBuffer(metadata_buffer_t *meta
     }
 }
 
-#ifndef USE_HAL_3_3
-/*==============================================================================
- * FUNCTION   : updateTimeStampInPendingBuffers
- *
- * DESCRIPTION: update timestamp in display metadata for all pending buffers
- *              of a frame number
- *
- * PARAMETERS :
- *   @frame_number: frame_number. Timestamp will be set on pending buffers of this frame number
- *   @timestamp   : timestamp to be set
- *
- * RETURN     : None
- *
- *==========================================================================*/
-void QCamera3HardwareInterface::updateTimeStampInPendingBuffers(
-        uint32_t frameNumber, nsecs_t timestamp)
-{
-    for (auto req = mPendingBuffersMap.mPendingBuffersInRequest.begin();
-            req != mPendingBuffersMap.mPendingBuffersInRequest.end(); req++) {
-        if (req->frame_number != frameNumber)
-            continue;
-
-        for (auto k = req->mPendingBufferList.begin();
-                k != req->mPendingBufferList.end(); k++ ) {
-            struct private_handle_t *priv_handle =
-                    (struct private_handle_t *) (*(k->buffer));
-            setMetaData(priv_handle, SET_VT_TIMESTAMP, &timestamp);
-        }
-    }
-    return;
-}
-#endif
-
 /*===========================================================================
  * FUNCTION   : configureStreams
  *
@@ -1621,7 +1609,6 @@ int QCamera3HardwareInterface::configureStreamsPerfLocked(
                 "stream size : %d x %d, stream rotation = %d",
                  newStream->stream_type, newStream->format,
                 newStream->width, newStream->height, newStream->rotation);
-
         //if the stream is in the mStreamList validate it
         bool stream_exists = false;
         for (List<stream_info_t*>::iterator it=mStreamInfo.begin();
@@ -1974,7 +1961,7 @@ int QCamera3HardwareInterface::configureStreamsPerfLocked(
                         if (!m_bIsVideo && (streamList->operation_mode ==
                                 CAMERA3_STREAM_CONFIGURATION_CONSTRAINED_HIGH_SPEED_MODE)) {
                             mDummyBatchStream = *newStream;
-                            mDummyBatchStream.usage |= GRALLOC_USAGE_HW_VIDEO_ENCODER;
+	                           mDummyBatchStream.usage |= GRALLOC_USAGE_HW_VIDEO_ENCODER;
                         }
                         channel = new QCamera3RegularChannel(mCameraHandle->camera_handle,
                                 mChannelHandle, mCameraHandle->ops, captureResultCb,
@@ -2059,8 +2046,7 @@ int QCamera3HardwareInterface::configureStreamsPerfLocked(
 
                 default:
                     LOGE("not a supported format 0x%x", newStream->format);
-                    pthread_mutex_unlock(&mMutex);
-                    return -EINVAL;
+                    break;
                 }
             } else if (newStream->stream_type == CAMERA3_STREAM_INPUT) {
                 newStream->max_buffers = MAX_INFLIGHT_REPROCESS_REQUESTS;
@@ -2753,6 +2739,12 @@ void QCamera3HardwareInterface::handleMetadataWithLock(
     int64_t capture_time;
     nsecs_t currentSysTime;
 
+    // Convert Boottime from camera to Monotime except for VT usecase where AVTimer is used.
+    uint8_t timestampSource = TIME_SOURCE;
+    nsecs_t timeOffset = mBootToMonoTimestampOffset;
+    if (mUseAVTimer || (ANDROID_SENSOR_INFO_TIMESTAMP_SOURCE_UNKNOWN != timestampSource))
+        timeOffset = 0;
+
     int32_t *p_frame_number_valid =
             POINTER_OF_META(CAM_INTF_META_FRAME_NUMBER_VALID, metadata);
     uint32_t *p_frame_number = POINTER_OF_META(CAM_INTF_META_FRAME_NUMBER, metadata);
@@ -2778,7 +2770,7 @@ void QCamera3HardwareInterface::handleMetadataWithLock(
     }
     frame_number_valid =        *p_frame_number_valid;
     frame_number =              *p_frame_number;
-    capture_time =              *p_capture_time;
+    capture_time =              *p_capture_time - timeOffset;
     urgent_frame_number_valid = *p_urgent_frame_number_valid;
     urgent_frame_number =       *p_urgent_frame_number;
     currentSysTime =            systemTime(CLOCK_MONOTONIC);
@@ -2931,13 +2923,6 @@ void QCamera3HardwareInterface::handleMetadataWithLock(
             mCallbackOps->notify(mCallbackOps, &notify_msg);
 
             i->timestamp = capture_time;
-
-#ifndef USE_HAL_3_3
-            /* Set the timestamp in display metadata so that clients aware of
-               private_handle such as VT can use this un-modified timestamps.
-               Camera framework is unaware of this timestamp and cannot change this */
-            updateTimeStampInPendingBuffers(i->frame_number, i->timestamp);
-#endif
 
             // Find channel requiring metadata, meaning internal offline postprocess
             // is needed.
@@ -3473,6 +3458,17 @@ int QCamera3HardwareInterface::processCaptureRequest(
         }
         setMobicat();
 
+        if (meta.exists(QCAMERA3_USE_AV_TIMER)) {
+            uint8_t* use_av_timer =
+                    meta.find(QCAMERA3_USE_AV_TIMER).data.u8;
+            if (ADD_SET_PARAM_ENTRY_TO_BATCH(mParameters,
+                    CAM_INTF_META_USE_AV_TIMER, *use_av_timer)) {
+                rc = BAD_VALUE;
+            } else {
+                mUseAVTimer = *use_av_timer;
+            }
+        }
+
         /* Set fps and hfr mode while sending meta stream info so that sensor
          * can configure appropriate streaming mode */
         mHFRVideoFps = DEFAULT_VIDEO_FPS;
@@ -3739,6 +3735,11 @@ no_error:
         const camera3_stream_buffer_t& output = request->output_buffers[i];
         QCamera3Channel *channel = (QCamera3Channel *)output.stream->priv;
 
+        if (channel == NULL) {
+            ALOGE("%s: invalid channel pointer for stream", __func__);
+            continue;
+        }
+
         if (output.stream->format == HAL_PIXEL_FORMAT_BLOB) {
             //Call function to store local copy of jpeg data for encode params.
             blob_request = 1;
@@ -3804,7 +3805,8 @@ no_error:
             }
             if(ADD_SET_PARAM_ENTRY_TO_BATCH(mParameters,
                 CAM_INTF_META_FRAME_NUMBER, request->frame_number)) {
-                LOGE("Failed to set the frame number in the parameters");
+                ALOGE("%s: Failed to set the frame number in the parameters", __func__);
+                pthread_mutex_unlock(&mMutex);
                 return BAD_VALUE;
             }
         }
@@ -5185,12 +5187,6 @@ QCamera3HardwareInterface::translateFromHalMetadata(
                 hAeRegions->rect.height);
     }
 
-    IF_META_AVAILABLE(uint32_t, afState, CAM_INTF_META_AF_STATE, metadata) {
-        uint8_t fwk_afState = (uint8_t) *afState;
-        camMetadata.update(ANDROID_CONTROL_AF_STATE, &fwk_afState, 1);
-        LOGD("urgent Metadata : ANDROID_CONTROL_AF_STATE %u", *afState);
-    }
-
     IF_META_AVAILABLE(float, focusDistance, CAM_INTF_META_LENS_FOCUS_DISTANCE, metadata) {
         camMetadata.update(ANDROID_LENS_FOCUS_DISTANCE , focusDistance, 1);
     }
@@ -5246,10 +5242,6 @@ QCamera3HardwareInterface::translateFromHalMetadata(
          uint8_t fwk_mode = (uint8_t) *mode;
          camMetadata.update(ANDROID_CONTROL_MODE, &fwk_mode, 1);
     }
-
-    /* Constant metadata values to be update*/
-    uint8_t hotPixelModeFast = ANDROID_HOT_PIXEL_MODE_FAST;
-    camMetadata.update(ANDROID_HOT_PIXEL_MODE, &hotPixelModeFast, 1);
 
     uint8_t hotPixelMapMode = ANDROID_STATISTICS_HOT_PIXEL_MAP_MODE_OFF;
     camMetadata.update(ANDROID_STATISTICS_HOT_PIXEL_MAP_MODE, &hotPixelMapMode, 1);
@@ -5515,6 +5507,12 @@ QCamera3HardwareInterface::translateCbUrgentMetadataToResultMetadata
         uint8_t fwk_ae_state = (uint8_t) *ae_state;
         camMetadata.update(ANDROID_CONTROL_AE_STATE, &fwk_ae_state, 1);
         LOGD("urgent Metadata : ANDROID_CONTROL_AE_STATE %u", *ae_state);
+    }
+
+    IF_META_AVAILABLE(uint32_t, afState, CAM_INTF_META_AF_STATE, metadata) {
+        uint8_t fwk_afState = (uint8_t) *afState;
+        camMetadata.update(ANDROID_CONTROL_AF_STATE, &fwk_afState, 1);
+        LOGD("urgent Metadata : ANDROID_CONTROL_AF_STATE %u", *afState);
     }
 
     IF_META_AVAILABLE(uint32_t, focusMode, CAM_INTF_PARM_FOCUS_MODE, metadata) {
@@ -6392,7 +6390,7 @@ int QCamera3HardwareInterface::initStaticMetadata(uint32_t cameraId)
     staticInfo.update(ANDROID_TONEMAP_MAX_CURVE_POINTS,
             &gCamCapability[cameraId]->max_tone_map_curve_points, 1);
 
-    uint8_t timestampSource = ANDROID_SENSOR_INFO_TIMESTAMP_SOURCE_UNKNOWN;
+    uint8_t timestampSource = TIME_SOURCE;
     staticInfo.update(ANDROID_SENSOR_INFO_TIMESTAMP_SOURCE,
             &timestampSource, 1);
 
@@ -6581,6 +6579,22 @@ int QCamera3HardwareInterface::initStaticMetadata(uint32_t cameraId)
 
     static const uint8_t hotPixelMapMode = ANDROID_STATISTICS_HOT_PIXEL_MAP_MODE_OFF;
     staticInfo.update(ANDROID_STATISTICS_HOT_PIXEL_MAP_MODE, &hotPixelMapMode, 1);
+
+#if 1
+    const int64_t kRequiredMinDur = 33333333;
+    for (size_t i = 0; i < MIN(MAX_SIZES_CNT,
+            gCamCapability[cameraId]->picture_sizes_tbl_cnt); i++) {
+        if (gCamCapability[cameraId]->picture_min_duration[i] > kRequiredMinDur) {
+            LOGW("Detected unsupported picture min dur %" PRId64 " for size %" PRId32 " x %" PRId32 "!!"
+                    "Sending hardcoded %" PRId64 " to avoid runtime crashes",
+                    gCamCapability[cameraId]->picture_min_duration[i],
+                    gCamCapability[cameraId]->picture_sizes_tbl[i].width,
+                    gCamCapability[cameraId]->picture_sizes_tbl[i].height,
+                    kRequiredMinDur);
+            gCamCapability[cameraId]->picture_min_duration[i] = kRequiredMinDur;
+        }
+    }
+#endif
 
     /* android.scaler.availableMinFrameDurations */
     Vector<int64_t> available_min_durations;
@@ -6925,8 +6939,10 @@ int QCamera3HardwareInterface::initStaticMetadata(uint32_t cameraId)
     if (supportBurst) {
         available_capabilities.add(ANDROID_REQUEST_AVAILABLE_CAPABILITIES_BURST_CAPTURE);
     }
+#if 0
     available_capabilities.add(ANDROID_REQUEST_AVAILABLE_CAPABILITIES_PRIVATE_REPROCESSING);
     available_capabilities.add(ANDROID_REQUEST_AVAILABLE_CAPABILITIES_YUV_REPROCESSING);
+#endif
     if (hfrEnable && available_hfr_configs.array()) {
         available_capabilities.add(
                 ANDROID_REQUEST_AVAILABLE_CAPABILITIES_CONSTRAINED_HIGH_SPEED_VIDEO);
@@ -7629,6 +7645,9 @@ camera_metadata_t* QCamera3HardwareInterface::translateCapabilityToMetadata(int 
     uint8_t edge_mode;
     uint8_t noise_red_mode;
     uint8_t tonemap_mode;
+	    uint8_t hotpixelMode = ANDROID_HOT_PIXEL_MODE_FAST;
+    uint8_t shadingmode = ANDROID_SHADING_MODE_FAST;
+    uint8_t shadingmap_mode = ANDROID_STATISTICS_LENS_SHADING_MAP_MODE_OFF;
     bool highQualityModeEntryAvailable = FALSE;
     bool fastModeEntryAvailable = FALSE;
     vsMode = ANDROID_CONTROL_VIDEO_STABILIZATION_MODE_OFF;
@@ -7650,6 +7669,11 @@ camera_metadata_t* QCamera3HardwareInterface::translateCapabilityToMetadata(int 
         edge_mode = ANDROID_EDGE_MODE_HIGH_QUALITY;
         noise_red_mode = ANDROID_NOISE_REDUCTION_MODE_HIGH_QUALITY;
         tonemap_mode = ANDROID_TONEMAP_MODE_HIGH_QUALITY;
+        hotpixelMode = ANDROID_HOT_PIXEL_MODE_HIGH_QUALITY;
+        shadingmode = ANDROID_SHADING_MODE_HIGH_QUALITY;
+        if (CAM_SENSOR_RAW == gCamCapability[mCameraId]->sensor_type.sens_type) {
+            shadingmap_mode = ANDROID_STATISTICS_LENS_SHADING_MAP_MODE_ON;
+        }
         cacMode = ANDROID_COLOR_CORRECTION_ABERRATION_MODE_OFF;
         // Order of priority for default CAC is HIGH Quality -> FAST -> OFF
         for (size_t i = 0; i < gCamCapability[mCameraId]->aberration_modes_count; i++) {
@@ -7790,8 +7814,8 @@ camera_metadata_t* QCamera3HardwareInterface::translateCapabilityToMetadata(int 
     static const uint8_t demosaicMode = ANDROID_DEMOSAIC_MODE_FAST;
     settings.update(ANDROID_DEMOSAIC_MODE, &demosaicMode, 1);
 
-    static const uint8_t hotpixelMode = ANDROID_HOT_PIXEL_MODE_FAST;
     settings.update(ANDROID_HOT_PIXEL_MODE, &hotpixelMode, 1);
+    settings.update(ANDROID_SHADING_MODE, &shadingmode, 1);
 
     static const int32_t testpatternMode = ANDROID_SENSOR_TEST_PATTERN_MODE_OFF;
     settings.update(ANDROID_SENSOR_TEST_PATTERN_MODE, &testpatternMode, 1);
@@ -7862,25 +7886,12 @@ camera_metadata_t* QCamera3HardwareInterface::translateCapabilityToMetadata(int 
             i++) {
         float range = gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps -
             gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
-        if (type == CAMERA3_TEMPLATE_PREVIEW ||
-                type == CAMERA3_TEMPLATE_STILL_CAPTURE ||
-                type == CAMERA3_TEMPLATE_ZERO_SHUTTER_LAG) {
-            if (range > max_range) {
-                fps_range[0] =
-                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
-                fps_range[1] =
-                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
-                max_range = range;
-            }
-        } else {
-            if (range < 0.01 && max_fixed_fps <
-                    gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps) {
-                fps_range[0] =
-                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
-                fps_range[1] =
-                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
-                max_fixed_fps = gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
-            }
+	        if (range > max_range) {
+            fps_range[0] =
+                (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
+            fps_range[1] =
+                (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
+            max_range = range;
         }
     }
     settings.update(ANDROID_CONTROL_AE_TARGET_FPS_RANGE, fps_range, 2);
@@ -7911,11 +7922,6 @@ camera_metadata_t* QCamera3HardwareInterface::translateCapabilityToMetadata(int 
     uint8_t blacklevel_lock = ANDROID_BLACK_LEVEL_LOCK_OFF;
     settings.update(ANDROID_BLACK_LEVEL_LOCK, &blacklevel_lock, 1);
 
-    /* lens shading map mode */
-    uint8_t shadingmap_mode = ANDROID_STATISTICS_LENS_SHADING_MAP_MODE_OFF;
-    if (CAM_SENSOR_RAW == gCamCapability[mCameraId]->sensor_type.sens_type) {
-        shadingmap_mode = ANDROID_STATISTICS_LENS_SHADING_MAP_MODE_ON;
-    }
     settings.update(ANDROID_STATISTICS_LENS_SHADING_MAP_MODE, &shadingmap_mode, 1);
 
     //special defaults for manual template
@@ -9105,14 +9111,6 @@ int QCamera3HardwareInterface::translateToHalMetadata
         }
     }
 
-    if (frame_settings.exists(QCAMERA3_USE_AV_TIMER)) {
-        uint8_t* use_av_timer =
-                frame_settings.find(QCAMERA3_USE_AV_TIMER).data.u8;
-        if (ADD_SET_PARAM_ENTRY_TO_BATCH(hal_metadata, CAM_INTF_META_USE_AV_TIMER, *use_av_timer)) {
-            rc = BAD_VALUE;
-        }
-    }
-
     // EV step
     if (ADD_SET_PARAM_ENTRY_TO_BATCH(hal_metadata, CAM_INTF_PARM_EV_STEP,
             gCamCapability[mCameraId]->exp_compensation_step)) {
@@ -9738,14 +9736,6 @@ int QCamera3HardwareInterface::validateStreamRotations(
         bool isZsl = (newStream->stream_type == CAMERA3_STREAM_BIDIRECTIONAL &&
                 isImplDef);
 
-        if(newStream->rotation == -1) {
-            LOGE("ERROR: Invalid stream rotation requested for stream"
-                    "type %d and stream format: %d", newStream->stream_type,
-                    newStream->format);
-            rc = -EINVAL;
-            break;
-        }
-
         if (isRotated && (!isImplDef || isZsl)) {
             LOGE("Error: Unsupported rotation of %d requested for stream"
                     "type:%d and stream format:%d",
@@ -10272,8 +10262,8 @@ void QCamera3HardwareInterface::setPAAFSupport(
     case CAM_FILTER_ARRANGEMENT_GRBG:
     case CAM_FILTER_ARRANGEMENT_GBRG:
     case CAM_FILTER_ARRANGEMENT_BGGR:
-        if ((stream_type == CAM_STREAM_TYPE_CALLBACK) ||
-                (stream_type == CAM_STREAM_TYPE_PREVIEW) ||
+        if ((stream_type == CAM_STREAM_TYPE_PREVIEW) ||
+                (stream_type == CAM_STREAM_TYPE_ANALYSIS) ||
                 (stream_type == CAM_STREAM_TYPE_VIDEO)) {
             feature_mask |= CAM_QCOM_FEATURE_PAAF;
         }

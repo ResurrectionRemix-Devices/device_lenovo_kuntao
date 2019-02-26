@@ -18,7 +18,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_C_INCLUDES += hardware/qcom/audio-caf/msm8996/hal
+LOCAL_C_INCLUDES += $(call project-path-for,qcom-audio)/hal
 
 LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 
