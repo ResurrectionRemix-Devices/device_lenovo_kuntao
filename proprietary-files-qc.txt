@@ -33,7 +33,7 @@ vendor/lib64/soundfx/libqcvirt.so
 
 # AudioDirac
 vendor/etc/diracmobile.config
-vendor/lib/libDiracAPI_SHARED
+vendor/lib/libDiracAPI_SHARED.so
 vendor/lib/soundfx/libdirac.so
 
 # Audiosphere

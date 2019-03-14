@@ -184,7 +184,7 @@ public class TorchBrightnessDialogFragment extends DialogFragment implements See
         setValue(String.valueOf(value));
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
         editor.putString(mPreferenceKey, String.valueOf(value));
-        editor.apply();
+        editor.commit();
     }
 
     // click action : plus one

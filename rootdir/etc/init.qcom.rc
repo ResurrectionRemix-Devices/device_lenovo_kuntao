@@ -1324,6 +1324,7 @@ service cs-post-boot /system/bin/sh /persist/coresight/qdss.agent.sh
 
 on property:sys.boot_completed=1
     start cs-post-boot
+    setprop persist.sys.fp.navigation 1
 
 on property:sys.dbg.coresight.enable=1
     write /persist/coresight/enable 1

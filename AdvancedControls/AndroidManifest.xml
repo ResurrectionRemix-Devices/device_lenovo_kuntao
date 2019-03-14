@@ -12,11 +12,10 @@
         android:targetSdkVersion="27" />
     <application
         android:label="@string/advanced_settings"
-        android:icon="@drawable/ic_launcher_advc"
+        android:icon="@drawable/launcher"
         android:theme="@style/AppTheme"
         android:supportsRtl="true"
-        android:configChanges="orientation|keyboardHidden|screenSize"
-        android:persistent="true">
+        android:configChanges="orientation|keyboardHidden|screenSize">
         <activity
             android:name="com.thht.settings.device.DeviceSettings"
             android:exported="true"
