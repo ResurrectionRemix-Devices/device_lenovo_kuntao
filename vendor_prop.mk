@@ -26,6 +26,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.voice.path.for.pcm.voip=true \
     ro.af.client_heap_size_kbyte=7168 \
     persist.vendor.audio.hw.binder.size_kbyte=1024
+    persist.audio.dirac.speaker=true \
 
 # Bluetooh
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -33,7 +34,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    camera.hal1.packagelist=com.skype.raider,com.android.facelock,com.google.android.talk \
+    vendor.camera.hal1.packagelist=com.skype.raider,com.android.facelock,com.google.android.talk \
     persist.vendor.camera.display.umax=1920x1080 \
     persist.vendor.camera.display.lmax=1280x720 \
     vidc.enc.dcvs.extra-buff-count=2 \
@@ -85,10 +86,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/platform/soc/7824900.sdhci/by-name/config
 
-# Fp Gestures
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.fp.navigation=1
-
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
     log.tag.synaFpHal=W \
@@ -112,6 +109,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.mm.en.sec.smoothstreaming=true \
     media.stagefright.audio.sink=280 \
     vendor.vidc.dec.downscalar_width=1920 \
     vendor.vidc.dec.downscalar_height=1088 \
@@ -124,7 +122,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so \
     vendor.iop.enable_uxe=1 \
-    vendor.perf.iop_v3.enable=1
+    vendor.perf.iop_v3.enable=1 \
+    ro.vendor.at_library=libqti-at.so \
+    persist.vendor.qti.games.gt.prof=1 \
+    vendor.perf.gestureflingboost.enable=1 \
+    ro.vendor.scroll.preobtain.enable=1 \
+    vendor.perf.dolphin.enable=1 \
+    vendor.iop.enable_prefetch_ofr=1
 
 # Qualcomm
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -142,6 +146,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
     persist.vendor.radio.add_power_save=1 \
+    persist.vendor.radio.atfwd.start=true \
+    persist.vendor.radio.aosp_usr_pref_sel=true \
     persist.radio.aosp_usr_pref_sel=true
 
 # Netmgrd

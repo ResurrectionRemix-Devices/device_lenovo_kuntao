@@ -7,12 +7,12 @@
         <item>Version 2</item>
         <item>Version 3</item>
         <item>Triluminous</item>
-        <item>Deep black and white</item>
-        <item>Deep natural</item>
-        <item>Cool amoled</item>
-        <item>Extreme amoled</item>
-        <item>Warm amoled</item>
-        <item>Hybrid mamba</item>
+        <item>Deep Black and White</item>
+        <item>Deep Natural</item>
+        <item>Cool Amoled</item>
+        <item>Extreme Amoled</item>
+        <item>Warm Amoled</item>
+        <item>Hybrid Mamba</item>
     </string-array>
     <string-array name="presets_values">
         <item>0</item>

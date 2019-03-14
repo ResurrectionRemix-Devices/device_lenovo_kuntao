@@ -3591,6 +3591,7 @@ int32_t QCameraParameters::setSceneMode(const QCameraParameters& params)
                 // If HDR is set from client  and the feature is not enabled in the backend, ignore it.
                 if (m_bHDRModeSensor && isSupportedSensorHdrSize(params)) {
                     m_bSensorHDREnabled = true;
+                    m_bHDREnabled = false;
                     LOGH("Sensor HDR mode Enabled");
                 } else {
                     m_bHDREnabled = true;
@@ -5362,7 +5363,7 @@ int32_t QCameraParameters::initDefaultParameters()
        m_pCapability->raw_dim[0].width, m_pCapability->raw_dim[0].height);
 
     //set default jpeg quality and thumbnail quality
-    set(KEY_JPEG_QUALITY, 85);
+    set(KEY_JPEG_QUALITY, 95);
     set(KEY_JPEG_THUMBNAIL_QUALITY, 85);
 
     // Set FPS ranges
@@ -5456,7 +5457,7 @@ int32_t QCameraParameters::initDefaultParameters()
     m_pCapability->min_focus_pos[CAM_MANUAL_FOCUS_MODE_DIOPTER] = 0;
     if (m_pCapability->min_focus_distance > 0) {
         m_pCapability->max_focus_pos[CAM_MANUAL_FOCUS_MODE_DIOPTER] =
-                100.0f / m_pCapability->min_focus_distance;
+                m_pCapability->min_focus_distance;
     } else {
         m_pCapability->max_focus_pos[CAM_MANUAL_FOCUS_MODE_DIOPTER] = 0;
     }
@@ -6149,6 +6150,9 @@ int32_t QCameraParameters::init(cam_capability_t *capabilities,
         mm_camera_vtbl_t *mmOps, QCameraAdjustFPS *adjustFPS)
 {
     int32_t rc = NO_ERROR;
+
+    // Set default sharpness to 1
+    capabilities->sharpness_ctrl.def_value = 6;
 
     m_pCapability = capabilities;
     m_pCamOpsTbl = mmOps;
@@ -10665,7 +10669,7 @@ uint32_t QCameraParameters::getJpegQuality()
 {
     int quality = getInt(KEY_JPEG_QUALITY);
     if (quality < 0) {
-        quality = 85; // set to default quality value
+        quality = 95; // set to default quality value
     }
     return (uint32_t)quality;
 }
@@ -11345,6 +11349,10 @@ int32_t QCameraParameters::setFaceDetection(bool enabled, bool initCommit)
     uint32_t faceProcMask = m_nFaceProcMask;
     // set face detection mask
     if (enabled) {
+        if (m_pCapability->max_num_roi == 0) {
+            LOGE("Face detection is not support becuase max number of face is 0");
+            return BAD_VALUE;
+        }
         faceProcMask |= CAM_FACE_PROCESS_MASK_DETECTION;
         if (getRecordingHintValue() > 0) {
             faceProcMask = 0;

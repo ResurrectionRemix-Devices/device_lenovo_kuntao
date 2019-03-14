@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- sweep2sleep -->
+    <string-array name="s2sArray">
+        <item>Инвалид</item>
+        <item>Развертка вправо</item>
+        <item>Развертка влево</item>
+        <item>Развертка вправо или влево</item>
+    </string-array>
+    <string-array name="s2sValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!-- spectrum profiles -->
+    <string-array name="spectrum_profiles">
+        <item>Остаток средств</item>
+        <item>Аккумулятор</item>
+        <item>Ультра-aккумулятор</item>
+        <item>Спектакль</item>
+        <item>Игры</item>
+    </string-array>
+    <string-array name="spectrum_values">
+        <item>0</item>
+        <item>2</item>
+        <item>4</item>
+        <item>1</item>
+        <item>3</item>
+    </string-array>
+
+</resources>

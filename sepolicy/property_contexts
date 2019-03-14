@@ -1,3 +1,7 @@
 nosecure.akm.resetdoe               u:object_r:sensors_prop:s0
 persist.sys.fp.navigation           u:object_r:fpnav_prop:s0
 persist.vendor.camera.dbglog        u:object_r:vendor_camera_prop:s0
+persist.audio.dirac                 u:object_r:dirac_prop:s0
+
+# Spectrum
+persist.spectrum.profile                u:object_r:spectrum_prop:s0

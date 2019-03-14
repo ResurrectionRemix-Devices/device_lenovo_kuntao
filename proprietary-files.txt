@@ -10,7 +10,8 @@ etc/acdbdata/MTP/MTP_Hdmi_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
 etc/acdbdata/MTP/MTP_Headset_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Headset_cal.acdb
 etc/acdbdata/MTP/MTP_Speaker_cal.acdb:vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
-vendor/bin/mm-qcamera-daemon
+# Camera
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 vendor/lib/libfastcvopt.so
 vendor/lib/libmmipl.so
 vendor/lib/libcamera_bm_algo.so
@@ -132,7 +133,7 @@ vendor/lib64/libmmsw_detail_enhancement.so
 vendor/lib64/libmmsw_math.so
 vendor/lib64/libmmsw_opencl.so
 vendor/lib64/libmmsw_platform.so
-vendor/etc/camera/lenovo_kuntao_camera.xml
+etc/camera/lenovo_kuntao_camera.xml:vendor/etc/camera/lenovo_kuntao_camera.xml
 
 # Camera actuators
 vendor/lib/libactuator_dw9767_kuntaoof.so

@@ -147,7 +147,15 @@ PRODUCT_COPY_FILES += \
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    XiaomiDoze
+    LenovoDoze
+
+#Dirac
+PRODUCT_PACKAGES += \
+    LenovoDirac
+
+# Lenovo Parts
+PRODUCT_PACKAGES += \
+    LenovoParts
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -198,6 +206,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
     android.hardware.health@2.0-service
+
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0
 
 # IMS
 PRODUCT_PACKAGES += \
@@ -308,13 +321,20 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libjson
 
+# Spectrum
+PRODUCT_PACKAGES += \
+    Spectrum \
+    init.spectrum.rc \
+    init.spectrum.sh
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.qcom.early_boot.sh \
     init.class_main.sh \
-    init.qcom.sh \
     init.mmi.usb.sh \
     init.qti.fm.sh \
+    init.qcom.sh \
+    init.lenovo.parts.rc \
     init.qcom.power.rc \
     fstab.qcom \
     init.qcom.rc \
@@ -327,6 +347,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service-sdm \
     vendor.lineage.livedisplay@2.0-service-sysfs
+
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
@@ -350,10 +374,6 @@ PRODUCT_BOOT_JARS += \
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
 
 # USB HAL
 PRODUCT_PACKAGES += \
@@ -383,7 +403,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
-    $(TOPDIR)kernel/lenovo/msm8953/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_cfg.dat \
+    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf

@@ -38,3 +38,7 @@ PRODUCT_NAME := rr_kuntao
 PRODUCT_BRAND := Lenovo
 PRODUCT_MANUFACTURER := Lenovo
 PRODUCT_RELEASE_NAME := kuntao
+
+RR_BUILDTYPE=Official
+
+

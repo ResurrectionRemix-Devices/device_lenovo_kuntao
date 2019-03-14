@@ -29,6 +29,8 @@ import /vendor/etc/init/hw/init.mmi.usb.rc
 import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.advandec.parts.rc
 import /vendor/etc/init/hw/init.qcom.power.rc
+import /vendor/etc/init/hw/init.lenovo.parts.rc
+import /vendor/etc/init/hw/init.spectrum.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -113,8 +115,13 @@ on boot
     write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
     write /sys/bus/msm_subsys/devices/subsys4/restart_level "related"
 
-    #   Define TCP buffer sizes for various networks
-    #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
+    write /proc/sys/net/core/rmem_max 2097152
+    write /proc/sys/net/core/wmem_max 2097152
+
+    # Define TCP buffer sizes for various networks
+    # ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default "4096,87380,524288,4096,16384,110208"
     setprop net.tcp.buffersize.lte "2097152,4194304,8388608,262144,524288,1048576"
     setprop net.tcp.buffersize.umts "4094,87380,110208,4096,16384,110208"
@@ -126,9 +133,6 @@ on boot
     setprop net.tcp.buffersize.gprs "4092,8760,11680,4096,8760,11680"
     setprop net.tcp.buffersize.evdo "4094,87380,524288,4096,16384,262144"
     setprop net.tcp.2g_init_rwnd 10
-
-    # Prevents permission denied error for telephony
-    chmod 0644 /proc/cmdline
 
     setprop wifi.interface wlan0
 
@@ -182,6 +186,8 @@ on boot
 
 # Change ownership for Dynamic-CABC feature
     chown system system /sys/class/graphics/fb0/cabc_mode
+# Change ownership for for HBM feature
+    chown system system /sys/class/graphics/fb0/hbm
 # Change ownership for for ACL feature
     chown system system /sys/class/graphics/fb0/acl_mode
 # Change ownership for for seed feature
@@ -1022,19 +1028,15 @@ on property:persist.debug.trace=1
     write /proc/sys/kernel/core_pattern "/data/core/%E.%p.%e"
 
 on property:vold.decrypt=trigger_restart_framework
-    stop vendor.camera-provider-2-4
-    start vendor.camera-provider-2-4
+    restart vendor.camera-provider-2-4
     start qcom-c_main-sh
     start vfmService
 
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
-on property:persist.vendor.radio.atfwd.start=false
-    stop vendor.atfwd
-
-on property:vendor.radio.atfwd.start=false
-    stop vendor.atfwd
+on property:persist.vendor.radio.atfwd.start=true
+    start vendor.atfwd
 
 service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
@@ -1102,6 +1104,7 @@ on property:init.svc.vendor.per_mgr=running
 
 on property:sys.shutdown.requested=*
     stop vendor.per_proxy
+    stop vendor.ims_rtp_daemon
 
 service vendor.qseecomd /vendor/bin/qseecomd
    class core
@@ -1113,38 +1116,36 @@ service adsprpcd /vendor/bin/adsprpcd
    user media
    group media
 
+## imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
-    class main
-    user system
-    socket ims_qmid stream 0660 system radio
-    group radio log diag
+   class main
+   user system
+   socket ims_qmid stream 0660 system radio
+   group radio log diag
 
+# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service vendor.imsdatadaemon /vendor/bin/imsdatadaemon
-    class main
-    user system
-    socket ims_datad stream 0660 system radio
-    group system wifi radio inet log diag
-    disabled
+   class main
+   user system
+   socket ims_datad stream 0660 system radio
+   group system wifi radio inet log diag
+   disabled
 
 on property:vendor.ims.QMI_DAEMON_STATUS=1
-    start vendor.imsdatadaemon
+   start vendor.imsdatadaemon
 
 service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
    class main
    user system
-   socket ims_rtpd stream 0660 system radio
    group radio diag inet log
-   disabled
 
 service vendor.imsrcsservice /vendor/bin/imsrcsd
    class main
    user system
-   group radio diag inet log
-   disabled
+   group radio diag inet log wakelock
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
-   start vendor.ims_rtp_daemon
-   start vendor.imsrcsservice
+   restart vendor.ims_rtp_daemon
 
 #start camera server as daemon
 service qcamerasvr /vendor/bin/mm-qcamera-daemon
@@ -1267,8 +1268,7 @@ on property:persist.data.ds_fmc_app.mode=1
     start ds_fmc_appd
 
 on property:init.svc.surfaceflinger=restarting
-    stop vendor.hwcomposer-2-1
-    start vendor.hwcomposer-2-1
+    restart vendor.hwcomposer-2-1
 
 service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
