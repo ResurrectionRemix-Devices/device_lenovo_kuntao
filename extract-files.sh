@@ -20,7 +20,6 @@ set -e
 
 DEVICE=kuntao
 VENDOR=lenovo
-INITIAL_COPYRIGHT_YEAR=2017
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -59,23 +58,14 @@ fi
 # Initialize the helper
 setup_vendor "$DEVICE" "$VENDOR" "$RR_ROOT" false "$CLEAN_VENDOR"
 
-#
-# Hax libaudcal.so to store acdbdata in new path
-#
-sed -i "s|\/data\/vendor\/misc\/audio\/acdbdata\/delta\/|\/data\/vendor\/audio\/acdbdata\/delta\/\x00\x00\x00\x00\x00|g" \
-    "$BLOB_ROOT"/vendor/lib/libaudcal.so
-sed -i "s|\/data\/vendor\/misc\/audio\/acdbdata\/delta\/|\/data\/vendor\/audio\/acdbdata\/delta\/\x00\x00\x00\x00\x00|g" \
-    "$BLOB_ROOT"/vendor/lib64/libaudcal.so
-
-#
-# Add liblog dependency to smart_charger
-#
-SMART_CHARGER="$BLOB_ROOT"/vendor/bin/smart_charger
-patchelf --add-needed liblog.so "$SMART_CHARGER"
-
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
-extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" "$SECTION"
+extract "$MY_DIR"/proprietary-files-twrp.txt "$SRC" "$SECTION"
 
-COMMON_BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
+BLOB_ROOT="$RR_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
+
+TWRP_QSEECOMD="$BLOB_ROOT"/recovery/root/sbin/qseecomd
+
+sed -i "s|/system/bin/linker64|/sbin/linker64\x0\x0\x0\x0\x0\x0|g" "$TWRP_QSEECOMD"
+
 
 "$MY_DIR"/setup-makefiles.sh

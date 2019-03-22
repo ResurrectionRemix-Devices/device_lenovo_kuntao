@@ -28,7 +28,7 @@
     <string name="rgb_blue">синий</string>
     <string name="rgb_green">зеленый</string>
     <string name="category_kcal_extras">Тонкая настройка</string>
-    <string name="rgb_min">Минимальное значение RGB</string>
+    <string name="rgb_min">Минимальное значение rgb</string>
     <string name="sat_intensity">Насыщенность интенсивность</string>
     <string name="scr_hue">Оттенок экрана</string>
     <string name="scr_val">Значение экрана</string>
@@ -40,8 +40,8 @@
     <string name="category_kcal_presets">Пресеты ккал</string>
     <string name="kcal_presets_title">Используйте предустановленные значения ккал</string>
     <string name="presets_list_title">Выберите пресет ккал</string>
-    <string name="slow_wakeup_fix_title">Включить взлом чтобы улучшить скорость пробуждения</string>
-    <string name="slow_wakeup_fix_summary">Экспериментальная функция, используйте на свой страх и риск</string>
+    <string name="slow_wakeup_fix_title">Высокая сенсорная чувствительность</string>
+    <string name="slow_wakeup_fix_summary">Увеличьте чувствительность сенсорного экрана чтобы использовать его в перчатках</string>
     <string name="category_sound">звук</string>
     <string name="category_misc">Разное</string>
     <string name="dirac_title">Настройки Дирака</string>

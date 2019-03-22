@@ -38,7 +38,7 @@ public class StaticMembers {
 
     /* Name of kernel nodes */
     // wakeup hack
-    public static final String FILE_LEVEL_WAKEUP = "/sys/devices/soc/qpnp-fg-18/power_supply/bms/hi_power";
+    public static final String FILE_LEVEL_WAKEUP = "/sys/board_properties/tpd_glove_status";
     // kcal controls
     public static final String FILE_LEVEL_KCAL_RGB = "/sys/devices/platform/kcal_ctrl.0/kcal";
     public static final String FILE_LEVEL_KCAL_MIN = "/sys/devices/platform/kcal_ctrl.0/kcal_min";
@@ -50,7 +50,7 @@ public class StaticMembers {
     public static final String FILE_LEVEL_TORCH_WHITE = "/sys/devices/soc/qpnp-flash-led-22/leds/led:torch_0/max_brightness";
     public static final String FILE_LEVEL_TORCH_YELLOW = "/sys/devices/soc/qpnp-flash-led-22/leds/led:torch_1/max_brightness";
     // vibrator
-    public static final String FILE_LEVEL_VIB_STRENGTH = "/sys/devices/virtual/timed_output/vibrator/vmax_mv";
+    public static final String FILE_LEVEL_VIB_STRENGTH = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
 
     /* Default Values */
     // kcal

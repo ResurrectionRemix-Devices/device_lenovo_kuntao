@@ -21,7 +21,6 @@
 # AdvancedControls&&Lenovo parts
 /sys/devices/soc/qpnp-flash-led-22/leds/led:torch_0/max_brightness         u:object_r:sysfs_torch:s0
 /sys/devices/soc/qpnp-flash-led-22/leds/led:torch_1/max_brightness         u:object_r:sysfs_torch:s0
-/sys/devices/soc/qpnp-fg-18/power_supply/bms/hi_power                      u:object_r:sysfs_battery_supply:s0
 /sys/devices/platform/kcal_ctrl.0(/.*)?                                    u:object_r:sysfs_kcal:s0
 /sys/devices/virtual/timed_output/vibrator/vtg_level                       u:object_r:sysfs_vibrator:s0
 /sys/sweep2sleep/sweep2sleep                                               u:object_r:sysfs_s2s:s0
@@ -39,10 +38,7 @@
 
 # Keylayout
 /vendor/usr/keylayout/gpio-keys\.kl                                        u:object_r:vendor_keylayout_file:s0
-/vendor/usr/keylayout/ft5x06_ts\.kl                                        u:object_r:vendor_keylayout_file:s0
-/vendor/usr/keylayout/synaptics_rmi4_i2c\.kl                               u:object_r:vendor_keylayout_file:s0
-/vendor/usr/keylayout/synaptics_dsxv26\.kl                                 u:object_r:vendor_keylayout_file:s0
-/vendor/usr/keylayout/synaptics_dsx\.kl                                    u:object_r:vendor_keylayout_file:s0
+/vendor/usr/keylayout/qpnp_pon\.kl                                         u:object_r:vendor_keylayout_file:s0
 /vendor/usr/keylayout/synaptics_dsx_i2c\.kl                                u:object_r:vendor_keylayout_file:s0
 /vendor/usr/keylayout/Validity_Navigation_Sensor\.kl                       u:object_r:vendor_keylayout_file:s0
 

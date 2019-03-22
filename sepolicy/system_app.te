@@ -1,4 +1,4 @@
-# AdvancedControls&&Lenovo parts
+# Lenovo parts
 allow system_app sysfs_kcal:dir search;
 allow system_app sysfs_kcal:file rw_file_perms;
 allow system_app sysfs_vibrator:dir search;
@@ -7,11 +7,8 @@ allow system_app sysfs_s2s:dir search;
 allow system_app sysfs_s2s:file rw_file_perms;
 allow system_app sysfs_torch:dir search;
 allow system_app sysfs_torch:file rw_file_perms;
-allow system_app sysfs_battery_supply:file open;
-allow system_app sysfs_battery_supply:file getattr;
-allow system_app sysfs_battery_supply:file write; 
-allow system_app sysfs_battery_supply:dir search;
-allow system_app sysfs_battery_supply:lnk_file read;
+allow system_app sysfs_touchpanel:dir search;
+allow system_app sysfs_touchpanel:file rw_file_perms;
 
 # Spectrum
 allow system_app spectrum_prop:property_service set;

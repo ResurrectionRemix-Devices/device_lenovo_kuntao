@@ -28,7 +28,7 @@
     <string name="rgb_blue">Blue</string>
     <string name="rgb_green">Green</string>
     <string name="category_kcal_extras">Fine tuning</string>
-    <string name="rgb_min">Minimum RGB value</string>
+    <string name="rgb_min">Minimum rgb value</string>
     <string name="sat_intensity">Saturation intensity</string>
     <string name="scr_hue">Screen hue</string>
     <string name="scr_val">Screen value</string>
@@ -40,8 +40,8 @@
     <string name="category_kcal_presets">Kcal presets</string>
     <string name="kcal_presets_title">Use kcal preset values</string>
     <string name="presets_list_title">Choose kcal preset</string>
-    <string name="slow_wakeup_fix_title">Enable hack to improve wakeup speed</string>
-    <string name="slow_wakeup_fix_summary">Experimental feature, use at your own risk</string>
+    <string name="slow_wakeup_fix_title">High touch sensitivity</string>
+    <string name="slow_wakeup_fix_summary">Increase touchscreen sensitivity so it can be used while wearing gloves</string>
     <string name="category_sound">Sound</string>
     <string name="category_misc">Misc</string>
     <string name="dirac_title">Dirac settings</string>
