@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,34 +14,12 @@
  * limitations under the License.
  */
 
-package com.synaptics.fingerprint;
+package org.lineageos.settings.device;
 
-// Set of dummy classes from SystemNavigation.apk (stock) to suppress errors
+public class Constants {
+    public static final String FINGERPRINT_GESTURES_INTENT =
+            "org.lineageos.settings.device.FINGERPRINT_GESTURES";
+    public static final String FINGERPRINT_GESTURES_INTENT_ENABLED = "fingerprint_gestures";
 
-class CapturedImageData {
-}
-
-class DeviceInfo {
-}
-
-class EnrollProgress {
-}
-
-class EnrollResult {
-}
-
-class FingerprintEvent {
-}
-
-class IdentifyResult {
-}
-
-class NavigationReport {
-}
-
-class NavigationEvent {
-}
-
-class VcsInt {
-    public int num;
+    public static final String FINGERPRINT_GESTURES_KEY = "fingerprint_gestures";
 }

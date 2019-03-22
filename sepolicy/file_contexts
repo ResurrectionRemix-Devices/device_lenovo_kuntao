@@ -2,9 +2,6 @@
 /dev/i2c_smartpa                                                           u:object_r:audio_device:s0
 /(mnt/vendor)/persist/tas2555_cal\.bin                                     u:object_r:audio_persist_file:s0
 
-# Block devices
-/dev/block/platform/soc/7824900\.sdhci/by-name/persist                     u:object_r:persist_block_device:s0
-
 # Camera
 /data/vendor/qcam(/.*)?                                                    u:object_r:vendor_camera_data_file:s0
 
@@ -33,8 +30,6 @@
 /dev/vfsspi                                                                u:object_r:vfsspi_device:s0
 /dev/validity(/.*)?                                                        u:object_r:vfsspi_device:s0
 /data/validity(/.*)?                                                       u:object_r:vfsspi_data_file:s0
-/vendor/lib64/libvcsfp\.so                                                 u:object_r:vfsspi_vendor_file:s0
-/vendor/lib64/libvfmClient\.so                                             u:object_r:vfsspi_vendor_file:s0
 
 # Keylayout
 /vendor/usr/keylayout/gpio-keys\.kl                                        u:object_r:vendor_keylayout_file:s0
@@ -61,3 +56,4 @@
 # Touchscreen
 /sys/board_properties/tpd_glove_status                                     u:object_r:sysfs_touchpanel:s0
 /sys/board_properties/tpd_suspend_status                                   u:object_r:sysfs_touchpanel:s0
+/vendor/bin/hw/vendor\.lineage\.touch@1\.0-service\.kuntao                 u:object_r:hal_lineage_touch_default_exec:s0
