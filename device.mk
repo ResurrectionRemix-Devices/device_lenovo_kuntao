@@ -181,6 +181,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
+    libcurl \
     libgnss \
     libgnsspps \
     libsensorndkbridge
