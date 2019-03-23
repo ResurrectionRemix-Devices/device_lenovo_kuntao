@@ -58,6 +58,9 @@ vendor/lib64/libbt-hidlclient.so|0b0b69ef9787e3cd5409f0050cad03698dd6ce26
 
 # Bluetooth (shared dependencies) - from tissot - PKQ1.180917.001.V10.0.4.0.PDHMIXM
 vendor/lib64/com.qualcomm.qti.ant@1.0.so|3a19c81d66ef1190d0b2f361420d5cbf707cc600
+
+# FM Radio - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.2.0.PDHMIFK release-keys
+vendor/bin/fm_qsoc_patches|77f31379d6bf68f2f0b3aa8936150b778c4e89ee
 vendor/lib64/vendor.qti.hardware.fm@1.0.so|dc576dfcb0bf390a106b5ed8861e7f547110cbf1
 
 # Camera
