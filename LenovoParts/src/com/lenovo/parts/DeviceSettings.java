@@ -54,7 +54,6 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
     public static final String S2S_KEY = "sweep2sleep";
     public static final String KEY_VIBSTRENGTH = "vib_strength";
-    public static final String KEY_S2S_VIBSTRENGTH = "s2s_vib_strength";
     public static final String FILE_S2S_TYPE = "/sys/sweep2sleep/sweep2sleep";
 
     final String KEY_DEVICE_DOZE = "device_doze";
@@ -63,7 +62,6 @@ public class DeviceSettings extends PreferenceFragment implements
     private TwoStatePreference mTapToWakeSwitch;
     private VibratorStrengthPreference mVibratorStrength;
 
-    private S2SVibratorStrengthPreference mVibratorStrengthS2S;
     private ListPreference mS2S;
     private Preference mKcalPref;
     private ListPreference mSPECTRUM;
@@ -95,12 +93,6 @@ public class DeviceSettings extends PreferenceFragment implements
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
         if (mVibratorStrength != null) {
             mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
-        }
-
-        mVibratorStrengthS2S = (S2SVibratorStrengthPreference) findPreference(KEY_S2S_VIBSTRENGTH);
-        if (mVibratorStrengthS2S != null) {
-            mVibratorStrengthS2S.setEnabled(S2SVibratorStrengthPreference.isSupported());
-
         }
 
         if (!isAppInstalled(KEY_DEVICE_DOZE_PACKAGE_NAME)) {

@@ -16,21 +16,19 @@
 <resources>
     <string name="app_name">Lenovo parts</string>
     <string name="advanced_settings">Lenovo parts</string>
-    <string name="advanced_settings_summary">Advanced</string> 
+    <string name="advanced_settings_summary">Advanced options</string> 
     <string name="category_system">Vibration</string>
     <string name="vib_strength_title_head">Vibration strength</string>
 
-    <string name="display_title">Display</string>
-    <string name="device_doze_title">Ambient display</string>
-
     <!-- s2s -->
+    <string name="category_s2s">Sweep</string>
     <string name="s2s_title">Sweep to sleep</string>
-    <string name="s2s_vib_strength_title_head">Sweep2sleep vibration</string>
+    <string name="s2s_summary">Choose sweep positions</string>
 
     <!-- Kcal -->
     <string name="kcal_title">Display color</string>
-    <string name="kcal_summary">Display color calibration using KCAL</string>
-    <string name="kcal_enabled_title">Enable KCAL</string>
+    <string name="kcal_summary">Display color calibration using kcal</string>
+    <string name="kcal_enabled_title">Enable kcal</string>
     <string name="kcal_enabled_summary">Turn on display calibration using KCAL</string>
     <string name="kcal_red">Red</string>
     <string name="kcal_green">Green</string>
@@ -38,7 +36,7 @@
     <string name="kcal_saturation">Saturation</string>
     <string name="kcal_contrast">Contrast</string>
     <string name="menu_reset">Reset</string>
-    <string name="kcal_color_temp">Color temperature (K)</string>
+    <string name="kcal_color_temp">Color temperature (k)</string>
 
     <!-- Spectrum Profiles -->
     <string name="spectrum_profile_title">Kernel</string>
@@ -47,43 +45,9 @@
     <string name="spectrum_dialogTitle">Choose your kernel profile</string>
 
    <!-- Ambient Display -->
+   <string name="display_title">Display</string>
     <string name="ambient_display_title">Ambient display</string>
     <string name="ambient_display_title_summary">Configure your ambient display</string>
-    <string name="ambient_display_enable_title">Ambient display</string>
-    <string name="ambient_display_enable_summary">Wake screen when you receive notifications</string>
-    <string name="ambient_display_gestures_title">Ambient display gestures</string>
-    <string name="ambient_display_gestures_summary">Additional gestures to wake the screen</string>
-    <string name="ambient_display_summary">Wake screen when you receive notifications</string>
-    <string name="ambient_display_summary_on">Screen will wake when you receive notifications</string>
-    <string name="ambient_display_summary_off">Screen will not wake when you receive notifications</string>
-
-    <!-- Tilt sensor -->
-    <string name="tilt_sensor_title">Tilt sensor</string>
-
-    <!-- Pickup sensor -->
-    <string name="pickup_sensor_title">Pickup sensor</string>
-
-    <!-- Proximity sensor -->
-    <string name="proximity_sensor_title">Proximity sensor</string>
-
-    <!-- Hand wave gesture -->
-    <string name="hand_wave_gesture_title">Hand wave</string>
-    <string name="hand_wave_gesture_summary">Pulse notifications on hand wave</string>
-    <string name="hand_wave_gesture_flat_title">Detect orientation</string>
-    <string name="hand_wave_gesture_flat_summary">Pulse only if the phone is lying face up on a flat surface</string>
-
-    <!-- Pick-up gesture -->
-    <string name="pick_up_gesture_title">Pick-up</string>
-    <string name="pick_up_gesture_summary">Pulse notifications on pick-up</string>
-
-    <!-- Pocket gesture -->
-    <string name="pocket_gesture_title">Pocket</string>
-    <string name="pocket_gesture_summary">Pulse notifications on removal from pocket</string>
-
-    <!-- Proximity wake -->
-    <string name="proximity_wake_title">Proximity wake</string>
-    <string name="proximity_wake_enable_title">Proximity wake</string>
-    <string name="proximity_wake_enable_summary">Wake device on hand wave</string>
 
 </resources>
 

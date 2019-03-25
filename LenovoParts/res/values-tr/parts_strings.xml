@@ -27,7 +27,8 @@
 
     <!-- s2s -->
     <string name="s2s_title">Kaydırarak uyutma</string>
-    <string name="s2s_vib_strength_title_head">Kaydırarak uyutma titreşim yoğunluğu</string>
+    <string name="category_s2s">Kaydırma</string>
+    <string name="s2s_summary">Kaydırma konumlarını seçin</string>
 
     <!-- Kcal -->
     <string name="kcal_title">Ekran rengi</string>

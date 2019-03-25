@@ -21,8 +21,9 @@
     <string name="vib_strength_title_head">Сила вибрации</string>
 
     <!-- s2s -->
-    <string name="s2s_title">Подмести спать</string>
-    <string name="s2s_vib_strength_title_head">Подмести спать вибрации</string>
+    <string name="s2s_title">Подметать спать</string>
+    <string name="category_s2s">Подметать</string>
+    <string name="s2s_summary">Выберите позиции развертки</string>
 
     <!-- Kcal -->
     <string name="kcal_title">Цвет дисплея</string>

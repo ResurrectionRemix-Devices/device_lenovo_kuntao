@@ -59,18 +59,15 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/s2s_title">
+        android:title="@string/category_s2s">
         <ListPreference
             android:title="@string/s2s_title"
+            android:summary="@string/s2s_summary"
             android:key="sweep2sleep"
             android:defaultValue="0"
             android:entries="@array/s2sArray"
             android:entryValues="@array/s2sValues" 
             android:icon="@drawable/ic_sts" />
-         <com.lenovo.parts.S2SVibratorStrengthPreference
-            android:key="s2s_vib_strength"
-            android:title="@string/s2s_vib_strength_title_head" 
-            android:icon="@drawable/ic_vibrate" />
     </PreferenceCategory>
 
 </PreferenceScreen>
