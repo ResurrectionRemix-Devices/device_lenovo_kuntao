@@ -20,6 +20,7 @@ set -e
 
 DEVICE=kuntao
 VENDOR=lenovo
+INITIAL_COPYRIGHT_YEAR=2017
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -73,13 +74,13 @@ SMART_CHARGER="$BLOB_ROOT"/vendor/bin/smart_charger
 patchelf --add-needed liblog.so "$SMART_CHARGER"
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
+extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" "$SECTION"
 extract "$MY_DIR"/proprietary-files-twrp.txt "$SRC" "$SECTION"
 
-BLOB_ROOT="$RR_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
+COMMON_BLOB_ROOT="$RR_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
 
-TWRP_QSEECOMD="$BLOB_ROOT"/recovery/root/sbin/qseecomd
+TWRP_QSEECOMD="$COMMON_BLOB_ROOT"/recovery/root/sbin/qseecomd
 
 sed -i "s|/system/bin/linker64|/sbin/linker64\x0\x0\x0\x0\x0\x0|g" "$TWRP_QSEECOMD"
-
 
 "$MY_DIR"/setup-makefiles.sh
