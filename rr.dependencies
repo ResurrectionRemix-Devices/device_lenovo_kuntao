@@ -1,12 +1,12 @@
 [
   {
     "repository": "kernel_lenovo_msm8953",
-    "target_path": "kernel/lenovo/msm8953"
+    "target_path": "kernel/lenovo/msm8953",
     "branch": "pie"
   },
   {
     "repository": "vendor_lenovo_kuntao",
-    "target_path": "vendor/lenovo/kuntao"
+    "target_path": "vendor/lenovo/kuntao",
     "branch": "pie"
   },
   {
