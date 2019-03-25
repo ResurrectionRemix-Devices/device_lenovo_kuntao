@@ -70,10 +70,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.cne.feature=1
 
-# Make data selection stick in dual SIM devices
-PRODUCT_PROPERTY_OVERRIDES += \
-persist.radio.aosp_usr_pref_sel=true
-
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=8m \
@@ -89,7 +85,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
     ro.sf.lcd_density=480 \
     ro.vendor.display.cabl=0 \
-    vendor.display.disable_rotator_downscale=1
+    vendor.display.disable_rotator_downscale=1 \
     vendor.display.disable_skip_validate=1 \
     vendor.display.enable_default_color_mode=1 \
     vendor.gralloc.enable_fb_ubwc=1
@@ -122,14 +118,22 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Fm
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.fm.transmitter=false \
-    vendor.hw.fm.init=0	
-	
+    vendor.hw.fm.init=0
+
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.gps.agps_provider=1
 
+
+# IMS
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.vendor.qti.telephony.vt_cam_interface=1
+
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.mm.en.sec.smoothstreaming=true \
     media.stagefright.audio.sink=280 \
     vendor.vidc.dec.downscalar_width=1920 \
     vendor.vidc.dec.downscalar_height=1088 \
@@ -139,15 +143,29 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.vidc.enc.narrow.searchrange=1
 
 # Memory optimizations
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.qti.sys.fw.bservice_enable=true
+#PRODUCT_PROPERTY_OVERRIDES += \
+   # ro.vendor.qti.sys.fw.bservice_enable=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so
+    ro.vendor.extension_library=libqti-perfd-client.so \
+    vendor.iop.enable_uxe=1 \
+    vendor.perf.iop_v3.enable=1 \
+    ro.vendor.at_library=libqti-at.so \
+    persist.vendor.qti.games.gt.prof=1 \
+    vendor.perf.gestureflingboost.enable=1 \
+    ro.vendor.scroll.preobtain.enable=1 \
+    vendor.perf.dolphin.enable=1 \
+    vendor.iop.enable_prefetch_ofr=1
+
+# Qualcomm
+PRODUCT_PROPERTY_OVERRIDES += \
+    com.qc.hardware=true \
+    debug.qc.hardware=true
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.radio.multisim.config=dsds \
@@ -155,9 +173,27 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
+    persist.vendor.radio.add_power_save=1 \
+    persist.vendor.radio.atfwd.start=true \
+    persist.vendor.radio.aosp_usr_pref_sel=true \
+    persist.radio.aosp_usr_pref_sel=true
+
+# Netmgrd
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.use_data_netmgrd=true \
+    persist.data.netmgrd.qos.enable=true \
     persist.vendor.data.mode=concurrent
 
-# Time services
+# Fling velocities
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.min.fling_velocity=160 \
+    ro.max.fling_velocity=20000
+
+# RescueParty
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.disable_rescue=true
+
+# Time Services
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.delta_time.enable=true
 

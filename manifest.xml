@@ -25,7 +25,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-<manifest version="1.0" type="device" target-level="1">
+<manifest version="1.0" type="device" target-level="2">
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
@@ -222,7 +222,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.2</version>
         <interface>
             <name>IRadio</name>
             <instance>slot1</instance>
@@ -394,6 +394,24 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <hal format="hidl">
+        <name>com.quicinc.cne.api</name>
+        <transport>hwbinder</transport>
+        <version>1.1</version>
+        <interface>
+            <name>IApiService</name>
+            <instance>cnd</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>com.quicinc.cne.server</name>
+        <transport>hwbinder</transport>
+        <version>2.2</version>
+        <interface>
+            <name>IServer</name>
+            <instance>cnd</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.display.color</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -514,6 +532,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <hal format="hidl">
+        <name>vendor.qti.hardware.iop</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IIop</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.qti.hardware.qdutils_disp</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -535,7 +562,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.ims</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.4</version>
         <interface>
             <name>IImsRadio</name>
             <instance>imsradio0</instance>
@@ -566,6 +593,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <name>vendor.qti.hardware.radio.qtiradio</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
+        <interface>
+            <name>IQtiRadio</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.qtiradio</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
         <interface>
             <name>IQtiRadio</name>
             <instance>slot1</instance>

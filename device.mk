@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017-2018 The LineageOS Project
+# Copyright (C) 2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -60,6 +60,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@2.0-impl \
     android.hardware.audio.effect@4.0 \
     android.hardware.audio.effect@4.0-impl \
+    android.hardware.audio.effect@2.0-service \
     android.hardware.soundtrigger@2.1-impl
 
 PRODUCT_COPY_FILES += \
@@ -96,6 +97,10 @@ PRODUCT_PACKAGES += \
 # Lenovo Parts
 PRODUCT_PACKAGES += \
     LenovoParts
+
+# Charger
+PRODUCT_PACKAGES += \
+   charger_res_images
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -163,6 +168,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.0-service.kuntao
 
+# Ebtables
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes \
+    libebtc
+
 # FM
 PRODUCT_PACKAGES += \
     FM2 \
@@ -191,6 +202,7 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-service-qti
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gps/etc/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
     $(LOCAL_PATH)/gps/etc/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
     $(LOCAL_PATH)/gps/etc/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
     $(LOCAL_PATH)/gps/etc/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
@@ -231,7 +243,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/keylayout/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl \
+    $(LOCAL_PATH)/keylayout/ft5x06_ts.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/ft5x06_ts.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_dsx.kl \
     $(LOCAL_PATH)/keylayout/synaptics_dsx_i2c.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_dsx_i2c.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_dsxv26.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_dsxv26.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_rmi4_i2c.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_rmi4_i2c.kl \
     $(LOCAL_PATH)/keylayout/Validity_Navigation_Sensor.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Validity_Navigation_Sensor.kl
 
 # Keymaster
@@ -304,11 +320,14 @@ PRODUCT_PACKAGES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.dsi.ant.antradio_library.xml \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
+    frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
@@ -346,6 +365,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/privapp-permissions-qti.xml \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml
 
+# QMI
+PRODUCT_PACKAGES += \
+    libjson
+
 # RCS
 PRODUCT_PACKAGES += \
     rcs_service_aidl \
@@ -359,7 +382,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.0 \
-    android.hardware.secure_element@1.0
+    android.hardware.secure_element@1.0 \
+    libcnefeatureconfig \
+    libxml2
 
 # Spectrum
 PRODUCT_PACKAGES += \

@@ -90,6 +90,7 @@ MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
 TARGET_USES_ION := true
+TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_NEW_ION_API :=true
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_HWC2 := true
@@ -105,6 +106,9 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 USE_OPENGL_RENDERER := true
 
+# CNE and DPM
+BOARD_USES_QCNE := true
+
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
@@ -118,21 +122,6 @@ TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 BOARD_HAVE_QCOM_FM := true
 
-# GPU
-VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
-SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
-MAX_EGL_CACHE_KEY_SIZE := 12*1024
-MAX_EGL_CACHE_SIZE := 2048*1024
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
-TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-TARGET_USES_GRALLOC1 := true
-TARGET_USES_HWC2 := true
-TARGET_USES_ION := true
-TARGET_USES_NEW_ION_API :=true
-TARGET_USES_OVERLAY := true
-
 # HIDL
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/vendor_framework_compatibility_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
@@ -141,7 +130,7 @@ DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci
+BOARD_KERNEL_CMDLINE := sched_enable_hmp=1 sched_enable_power_aware=1 console=null androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci androidboot.emmc=true
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware_mnt/image
 BOARD_KERNEL_CMDLINE += loop.max_part=7
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -164,6 +153,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/dsp:/dsp \
+    /vendor/fsg:/fsg \
     /vendor/firmware_mnt:/firmware \
     /mnt/vendor/persist:/persist
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4294967296
@@ -176,10 +166,16 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
 
+# Peripheral manager
+TARGET_PER_MGR_ENABLED := true
+
 # Power
 TARGET_HAS_NO_WLAN_STATS := true
 TARGET_TAP_TO_WAKE_NODE := "/sys/board_properties/tpd_suspend_status"
 TARGET_USES_INTERACTION_BOOST := true
+
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
@@ -198,6 +194,9 @@ VENDOR_SECURITY_PATCH := 2019-01-05
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+
+# UI
+TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000U
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
