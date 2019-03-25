@@ -1,15 +1,18 @@
 [
   {
+    "remote": "github",
     "repository": "kernel_lenovo_msm8953",
     "target_path": "kernel/lenovo/msm8953",
     "branch": "pie"
   },
   {
+    "remote": "github",
     "repository": "vendor_lenovo_kuntao",
     "target_path": "vendor/lenovo/kuntao",
     "branch": "pie"
   },
   {
+    "remote": "github",
     "repository": "LineageOS/android_packages_resources_devicesettings",
     "target_path": "packages/resources/devicesettings",
     "branch": "lineage-16.0"
