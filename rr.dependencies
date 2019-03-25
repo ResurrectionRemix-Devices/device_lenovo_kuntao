@@ -1,13 +1,13 @@
 [
   {
     "remote": "github",
-    "repository": "kernel_lenovo_msm8953",
+    "repository": "ResurrectionRemix-Devices/kernel_lenovo_msm8953",
     "target_path": "kernel/lenovo/msm8953",
     "branch": "pie"
   },
   {
     "remote": "github",
-    "repository": "vendor_lenovo_kuntao",
+    "repository": "ResurrectionRemix-Devices/vendor_lenovo_kuntao",
     "target_path": "vendor/lenovo/kuntao",
     "branch": "pie"
   },
