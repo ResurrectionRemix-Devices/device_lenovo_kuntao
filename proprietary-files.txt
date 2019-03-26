@@ -232,10 +232,6 @@ etc/firmware/a530_pm4.fw:vendor/firmware/a530_pm4.fw
 # NFC
 lib64/hw/nfc_nci.bcm2079x.default.so:vendor/lib64/hw/nfc_nci.bcm2079x.msm8953.so|c6262f6d125b357f7ff21d5f6b1fba9077f3ed02
 vendor/firmware/BCM20797B0_002.001.043.0005.0010_Generic_NCD_Unsigned_configdata.ncd
-vendor/lib/hw/android.hardware.nfc@1.0-impl-bcm.so
-vendor/lib64/hw/android.hardware.nfc@1.0-impl-bcm.so
-vendor/bin/etc/init/android.hardware.nfc@1.0-service.rc
-vendor/bin/hw/android.hardware.nfc@1.0-service
 
 # Sensors
 vendor/lib/hw/activity_recognition.msm8953.so
