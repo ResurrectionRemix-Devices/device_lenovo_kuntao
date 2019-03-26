@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/rr_kuntao.mk
+    $(LOCAL_DIR)/aosip.mk
