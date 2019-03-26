@@ -34,6 +34,10 @@
 # Keylayout
 /vendor/usr/keylayout/gpio-keys\.kl                                        u:object_r:vendor_keylayout_file:s0
 /vendor/usr/keylayout/qpnp_pon\.kl                                         u:object_r:vendor_keylayout_file:s0
+/vendor/usr/keylayout/ft5x06_ts\.kl                                        u:object_r:vendor_keylayout_file:s0
+/vendor/usr/keylayout/synaptics_rmi4_i2c\.kl                               u:object_r:vendor_keylayout_file:s0
+/vendor/usr/keylayout/synaptics_dsxv26\.kl                                 u:object_r:vendor_keylayout_file:s0
+/vendor/usr/keylayout/synaptics_dsx\.kl                                    u:object_r:vendor_keylayout_file:s0
 /vendor/usr/keylayout/synaptics_dsx_i2c\.kl                                u:object_r:vendor_keylayout_file:s0
 /vendor/usr/keylayout/Validity_Navigation_Sensor\.kl                       u:object_r:vendor_keylayout_file:s0
 
