@@ -5,11 +5,13 @@ etc/firmware/tas2555_uCDSP.bin:vendor/firmware/tas2555_uCDSP.bin
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon|35b36c9a3edf35d2226b15505a08a2daa2442576
 vendor/lib/libchromaflash.so
 vendor/lib/libflash_pmic.so
+vendor/lib/libcamera_bm_algo.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libllvd_smore.so
 vendor/lib/libllvd_sw_tnr.so
+vendor/lib/libChamomilePA.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so|a108f7b3a201b480a2975c2532c05c537e7b3766
 vendor/lib/libmmcamera2_dcrf.so|31b83845eda9128e7442ef26fc88f87cc1251c79
@@ -97,6 +99,9 @@ vendor/lib/libtrueportrait.so
 -vendor/lib/libts_detected_face_hal.so
 -vendor/lib/libts_face_beautify_hal.so
 vendor/lib/libubifocus.so
+vendor/lib64/libcamera_bm_algo.so
+vendor/lib64/libChamomilePA.so
+vendor/lib64/libmmcamera_dbg.so
 
 # Camera actuators
 vendor/lib/libactuator_dw9767_kuntaoof.so
@@ -227,6 +232,10 @@ etc/firmware/a530_pm4.fw:vendor/firmware/a530_pm4.fw
 # NFC
 lib64/hw/nfc_nci.bcm2079x.default.so:vendor/lib64/hw/nfc_nci.bcm2079x.msm8953.so|c6262f6d125b357f7ff21d5f6b1fba9077f3ed02
 vendor/firmware/BCM20797B0_002.001.043.0005.0010_Generic_NCD_Unsigned_configdata.ncd
+vendor/lib/hw/android.hardware.nfc@1.0-impl-bcm.so
+vendor/lib64/hw/android.hardware.nfc@1.0-impl-bcm.so
+vendor/bin/etc/init/android.hardware.nfc@1.0-service.rc
+vendor/bin/hw/android.hardware.nfc@1.0-service
 
 # Sensors
 vendor/lib/hw/activity_recognition.msm8953.so
