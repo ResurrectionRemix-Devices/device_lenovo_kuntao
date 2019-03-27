@@ -583,6 +583,10 @@ vendor/lib64/libthermalioctl.so
 vendor/bin/time_daemon|bc58af8ed0cc94708aa75372565f4251991ab123
 -vendor/lib64/libtime_genoff.so|8f4c1f9ace6af463b241b130d6872b5d39cc7b2a
 
+# WiFi
+etc/firmware/wlan/prima/WCNSS_cfg.dat:vendor/firmware/wlan/prima/WCNSS_cfg.dat
+etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_lenovo.bin:vendor/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+
 # Wi-Fi Display - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.2.0.PDHMIFK release-keys
 bin/wfdservice|edeb291221024401cbae69c2fa4e58733b7efc4c
 etc/init/wfdservice.rc|311bfdd1675e56499662f39455536b75b78477bb
