@@ -1,2 +1,0 @@
-allow ueventd wifi_vendor_data_file:dir search;
-allow ueventd wifi_vendor_data_file:file { getattr open read };
