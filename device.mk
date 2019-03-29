@@ -379,7 +379,6 @@ PRODUCT_PACKAGES += \
 
 # Spectrum
 PRODUCT_PACKAGES += \
-    Spectrum \
     init.spectrum.rc \
     init.spectrum.sh
 
