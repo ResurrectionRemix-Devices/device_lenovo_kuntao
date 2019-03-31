@@ -48,7 +48,7 @@ on boot
 
     # Set RPS Mask for tethering to CPU4
     setprop sys.usb.rps_mask 10
-    setprop sys.mtp.device_type 2
+    setprop sys.usb.mtp.device_type 2
 	
 on charger
     setprop sys.usb.config mass_storage
