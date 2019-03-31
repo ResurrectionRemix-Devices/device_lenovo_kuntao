@@ -8,3 +8,7 @@ type vfsspi_data_file, file_type, data_file_type, core_data_file_type;
 type sysfs_torch, fs_type, sysfs_type;
 type sysfs_kcal, fs_type, sysfs_type;
 type sysfs_s2s, fs_type, sysfs_type;
+# FSG
+type fsg_file, fs_type, contextmount_type;
+
+type sysfs_smart_charger, fs_type, sysfs_type;

@@ -1,0 +1,2 @@
+
+allow logd logd:dir { getattr };

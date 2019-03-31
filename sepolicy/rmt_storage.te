@@ -3,3 +3,9 @@ userdebug_or_eng(`
   allow rmt_storage debugfs_rmt:dir search;
   allow rmt_storage debugfs_rmt:file rw_file_perms;
 ')
+allow rmt_storage firmware_file:dir r_dir_perms;
+allow rmt_storage firmware_file:file r_file_perms;
+allow rmt_storage fsg_file:dir search;
+allow rmt_storage fsg_file:file { read open };
+allow rmt_storage modem_efs_partition_device:blk_file rw_file_perms;
+allow rmt_storage fsg_file:lnk_file { read };

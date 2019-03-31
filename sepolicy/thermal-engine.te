@@ -1,1 +1,1 @@
-allow thermal-engine sysfs_usb_supply:dir search;
+allow thermal-engine self:capability sys_nice;
