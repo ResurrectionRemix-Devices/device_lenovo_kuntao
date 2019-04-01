@@ -1,1 +1,6 @@
 allow vold persist_file:dir { getattr read };
+allow vold {
+ fsck
+ fsck_untrusted
+ sdcardd
+ vold_prepare_subdirs}:process { noatsecure };
