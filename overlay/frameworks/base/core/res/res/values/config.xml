@@ -418,6 +418,10 @@
     <!-- Wifi driver supports batched scan -->
     <bool translatable="false" name="config_wifi_batched_scan_supported">true</bool>
 
+	<!-- Stop listening to the fingerprint reader when NON-WAKEUP proximity sensor is covered & screen is off.
+         config_proximityCheckOnWake must be true. -->
+    <bool name="config_proximityCheckOnFingerprintWake">true</bool>
+	
     <!-- Operating volatage for bluetooth controller. 0 by default -->
     <integer translatable="false" name="config_bluetooth_operating_voltage_mv">3300</integer>
 
