@@ -440,6 +440,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
+# ThermalController app
+PRODUCT_PACKAGES += \
+	ThermalController	
+	
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
