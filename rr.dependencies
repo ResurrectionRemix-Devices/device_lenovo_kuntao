@@ -13,12 +13,6 @@
   },
   {
     "remote": "github",
-    "repository": "omnirom/android_hardware_qcom_audio-caf-msm8996",
-    "target_path": "hardware/qcom/audio-caf/msm8996",
-    "branch": "android-9.0"
-  },
-  {
-    "remote": "github",
     "repository": "LineageOS/android_packages_resources_devicesettings",
     "target_path": "packages/resources/devicesettings",
     "branch": "lineage-16.0"
