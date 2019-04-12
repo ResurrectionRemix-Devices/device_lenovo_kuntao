@@ -19,15 +19,15 @@
     <string name="vib_strength_title_head">Titreşim yoğunluğu</string>
     <string name="vib_strength_summary_head">Titreşim yoğunluğunu ayarla</string>
     <string name="category_torch">Fener</string>
-    <string name="yellow_torch_brightness_title_head">Sarı ledin maksimum parlaklıkğı</string>
+    <string name="yellow_torch_brightness_title_head">Sarı led parlaklığı</string>
     <string name="yellow_torch_brightness_summary_head">Sarı ledin maksimum parlaklığını ayarla</string>
-    <string name="white_torch_brightness_title_head">Beyaz ledin maksimum parlaklığı</string>
+    <string name="white_torch_brightness_title_head">Beyaz led parlaklığı</string>
     <string name="white_torch_brightness_summary_head">Beyaz ledin maksimum parlaklığını ayarla</string>
-    <string name="category_screen_color">Ekran rengi</string>
+    <string name="category_screen_color">Ekran</string>
     <string name="rgb_red">Kırmızı</string>
     <string name="rgb_blue">Mavi</string>
     <string name="rgb_green">Yeşil</string>
-    <string name="category_kcal_extras">Ekran değeri</string>
+    <string name="category_kcal_extras">Rgb</string>
     <string name="rgb_min">Minimum rgb değeri</string>
     <string name="sat_intensity">Doygunluk yoğunluğu</string>
     <string name="scr_hue">Ekran tonu</string>
@@ -37,13 +37,14 @@
     <string name="minus_one">-1</string>
     <string name="restore_default">Varsayılan</string>
     <string name="restore_on_boot">Açılışta ayarları uygula</string>
-    <string name="category_kcal_presets">Kcal ön ayarı</string>
+    <string name="restore_on_boot_summary">Ön yükleme sırasında ayarları geri yükle</string>
+    <string name="category_kcal_presets">Kcal</string>
     <string name="kcal_presets_title">Kcal ön ayar değerini kullan</string>
     <string name="presets_list_title">Kcal ön ayar seçin</string>
-    <string name="slow_wakeup_fix_title">Yüksek dokunma hassasiyeti</string>
+    <string name="slow_wakeup_fix_title">Yüksek dokunmatik hassasiyeti</string>
     <string name="slow_wakeup_fix_summary">Dokunmatik ekran hassasiyetini arttırarak eldiven ile kullanıma olanak verir</string>
     <string name="category_sound">Ses</string>
-    <string name="category_misc">Çeşitli</string>
+    <string name="category_misc">Diğer</string>
     <string name="dirac_title">Dirac ayarları</string>
     <string name="dirac_summary">Dirac yapılandırma seçeneklerini başlat</string>
 

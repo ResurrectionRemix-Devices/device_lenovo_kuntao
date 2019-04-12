@@ -24,9 +24,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicerec=false \
     persist.vendor.audio.hw.binder.size_kbyte=1024 \
-    ro.af.client_heap_size_kbyte=7168 \
-    ro.config.media_vol_steps=25 \
-    ro.config.vc_call_vol_steps=7 \
     ro.vendor.audio.sdk.fluencetype=fluence \
     vendor.audio_hal.period_size=192 \
     vendor.audio.hw.aac.encoder=true \
@@ -45,16 +42,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.bt.enable.splita2dp=false \
-    bluetooth.hfp.client=1 \
-    vendor.qcom.bluetooth.soc=smd \
-    ro.bluetooth.hfp.ver=1.7 \
-    ro.vendor.qualcomm.bt.hci_transport=smd
+    vendor.qcom.bluetooth.soc=smd
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.camera.hal1.packagelist=com.skype.raider,com.android.facelock,com.google.android.talk, com.instagram.android \
-    camera.hal1.packagelist=com.skype.raider,com.android.facelock,com.google.android.talk, com.instagram.android \
     persist.vendor.camera.display.umax=1920x1080 \
     persist.vendor.camera.display.lmax=1280x720 \
     camera.lowpower.record.enable=1 \
@@ -80,16 +72,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.gralloc.enable_fb_ubwc=1 \
     ro.opengles.version=196610 \
     ro.sf.lcd_density=480 \
     ro.vendor.display.cabl=0 \
-    debug.sdm.support_writeback=0 \
     vendor.display.disable_rotator_downscale=1 \
     vendor.display.disable_skip_validate=1 \
-    vendor.display.enable_default_color_mode=1 \
-	debug.sf.latch_unsignaled=1 \
-    vendor.gralloc.enable_fb_ubwc=1
+    vendor.display.enable_default_color_mode=0
 
 # Miracast
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -125,7 +113,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.gps.agps_provider=1
 
-
 # IMS
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
@@ -142,10 +129,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.vidc.enc.disable_bframes=1 \
     vendor.vidc.enc.disable_pframes=1 \
     vendor.vidc.enc.narrow.searchrange=1
-
-# Memory optimizations
-#PRODUCT_PROPERTY_OVERRIDES += \
-   # ro.vendor.qti.sys.fw.bservice_enable=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -167,7 +150,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
-    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.radio.multisim.config=dsds \
     ro.telephony.default_network=9,1 \
@@ -176,19 +158,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.sib16_support=1 \
     persist.vendor.radio.add_power_save=1 \
     persist.vendor.radio.atfwd.start=true \
-    persist.vendor.radio.aosp_usr_pref_sel=true \
-    persist.radio.aosp_usr_pref_sel=true
+    persist.vendor.radio.aosp_usr_pref_sel=true
 
 # Netmgrd
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.use_data_netmgrd=true \
     persist.data.netmgrd.qos.enable=true \
     persist.vendor.data.mode=concurrent
-
-# Fling velocities
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.min.fling_velocity=160 \
-    ro.max.fling_velocity=20000
 
 # RescueParty
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -201,10 +177,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # SdcardFS
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.storaged.event.interval=999999
-	
-# UI
+
+# Google
 PRODUCT_PROPERTY_OVERRIDES += \
-sys.use_fifo_ui=1
+   ro.opa.eligible_device=true
 
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -159,25 +159,6 @@ echo 1 > /sys/devices/system/cpu/cpu7/online
 # Enable low power modes
 echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
 
-# Re-enable thermal & BCL core_control now
-echo 1 > /sys/module/msm_thermal/core_control/enabled
-for mode in /sys/devices/soc.0/qcom,bcl.*/mode
-do
-    echo -n disable > $mode
-done
-for hotplug_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_mask
-do
-    echo $bcl_hotplug_mask > $hotplug_mask
-done
-for hotplug_soc_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_soc_mask
-do
-    echo $bcl_soc_hotplug_mask > $hotplug_soc_mask
-done
-for mode in /sys/devices/soc.0/qcom,bcl.*/mode
-do
-    echo -n enable > $mode
-done
-
 # SMP scheduler
 echo 85 > /proc/sys/kernel/sched_upmigrate
 echo 85 > /proc/sys/kernel/sched_downmigrate

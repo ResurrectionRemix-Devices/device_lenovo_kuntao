@@ -112,6 +112,7 @@
         android:key="key_category_misc">
         <SwitchPreference
             android:key="key_restore_on_boot"
+            android:summary="@string/restore_on_boot_summary"
             android:title="@string/restore_on_boot"
             android:defaultValue="false" />
         <SwitchPreference

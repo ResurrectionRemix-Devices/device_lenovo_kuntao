@@ -6,7 +6,6 @@ service vfmservice /vendor/bin/vfmService
     user system
     group system
     class main
-    disabled
 
 on property:vendor.sys.listeners.registered=true
     setprop persist.vendor.fp.gesture 1
@@ -30,6 +29,10 @@ on boot
     chown system system /sys/board_properties/tpd_suspend_status
     chmod 0664 /sys/board_properties/tpd_suspend_status
 
+     # Glove mode
+    chmod 0664 /sys/board_properties/tpd_glove_status
+    chown system system /sys/board_properties/tpd_glove_status
+
     # Fingerprint
     chown system system /dev/vfsspi
     chmod 0660 /dev/vfsspi
@@ -49,12 +52,7 @@ on post-fs
     # G-sensor autocalibration
     chown system system /persist/GSSET.txt
     chmod 0660 /persist/GSSET.txt
-  
-    # default country code
-    setprop ro.boot.wificountrycode 00
-
-
-
+ 
 on post-fs-data
     # Fingerprint
     mkdir /data/validity 0775 system system

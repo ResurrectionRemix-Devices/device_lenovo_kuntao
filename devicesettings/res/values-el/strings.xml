@@ -16,6 +16,6 @@
      limitations under the License.
 -->
 <resources>
-    <string name="fingerprint_gestures_title">Parmak izi hareketleri</string>
-    <string name="fingerprint_gestures_summary">Geri gitmek için dokunun, son uygulamaları görüntülemek için uzun basın</string>
+    <string name="fingerprint_gestures_title">Χειρονομίες αισθητήρα δακτυλικού αποτυπώματος</string>
+    <string name="fingerprint_gestures_summary">Πιέστε για να πάτε πίσω, πιέστε παρατεταμένα για να δείτε τις πρόσφατες εφαρμογές</string>
 </resources>

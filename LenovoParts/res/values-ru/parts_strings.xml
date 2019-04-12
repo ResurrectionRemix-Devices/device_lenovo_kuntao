@@ -14,16 +14,16 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">Lenovo 3апчасти</string>
-    <string name="advanced_settings">Lenovo Запчасти</string>
+    <string name="app_name">Раздел Lenovo</string>
+    <string name="advanced_settings">Раздел Lenovo</string>
     <string name="advanced_settings_summary">Pасширенные настройки</string> 
     <string name="category_system">Bибрация</string>
-    <string name="vib_strength_title_head">Сила вибрации</string>
+    <string name="vib_strength_title_head">Интенсивность вибрации</string>
 
     <!-- s2s -->
-    <string name="s2s_title">Подметать спать</string>
-    <string name="category_s2s">Подметать</string>
-    <string name="s2s_summary">Выберите позиции развертки</string>
+    <string name="s2s_title">Жесты для отключенич</string>
+    <string name="category_s2s">Жесты</string>
+    <string name="s2s_summary">Выберите жестт для отключения</string>
 
     <!-- Kcal -->
     <string name="kcal_title">Цвет дисплея</string>
@@ -39,14 +39,14 @@
     <string name="kcal_color_temp">Цветовая температура (к)</string>
 
     <!-- Spectrum Profiles -->
-    <string name="spectrum_profile_title">ядро</string>
+    <string name="spectrum_profile_title">Ядро</string>
     <string name="spectrum_title">Профиль ядра</string>
     <string name="spectrum_summary">Выберите свой профиль ядра</string>
     <string name="spectrum_dialogTitle">Выберите свой профиль ядра</string>
 
    <!-- Ambient Display -->
-    <string name="display_title">дисплей</string>
-    <string name="ambient_display_title">Окружающий дисплей</string>
-    <string name="ambient_display_title_summary">Настройте свой внешний дисплей</string>
+    <string name="display_title">Дисплей</string>
+    <string name="ambient_display_title">Ambient display</string>
+    <string name="ambient_display_title_summary">Настройки Ambient display</string>
 
 </resources>

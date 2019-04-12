@@ -60,8 +60,6 @@ on early-boot
     chmod 0664 /sys/class/graphics/fb0/mode
     chmod 0664 /sys/class/graphics/fb0/msm_cmd_autorefresh_en
 
-	write /sys/class/graphics/fb0/idle_time 100
-	
     # SSR setup
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
     write /sys/bus/msm_subsys/devices/subsys1/restart_level "related"
@@ -92,9 +90,9 @@ on boot
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
-	#FM
-	chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
-	chmod 0660 /sys/module/radio_iris_transport/parameters/fmsmd_set
+	   #FM
+   	chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
+   	chmod 0660 /sys/module/radio_iris_transport/parameters/fmsmd_set
 	
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
@@ -162,18 +160,10 @@ on post-fs-data
     chown radio radio /data/vendor/radio/copy_complete
     chmod 0660 /data/vendor/radio/copy_complete
 
-    # set aggressive read ahead for dm-0 and dm-1 during boot up
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/dm-1/queue/read_ahead_kb 2048
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
     # Reset read ahead for dm-0 and dm-1 to 512kb
     write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/dm-1/queue/read_ahead_kb 512
-    # WDSP FW boot sysfs node used by STHAL
-    chown media audio /sys/kernel/wdsp0/boot
-    # CPE fw_name used by sound trigger HAL
-    chown media audio /sys/kernel/wcd_cpe0/fw_name
 
 on property:vold.decrypt=trigger_restart_framework
     restart vendor.camera-provider-2-4
@@ -217,7 +207,7 @@ service vendor.ipacm /vendor/bin/ipacm
 service vendor.dataqti /vendor/bin/qti
     class main
     user radio
-    group radio oem_2901 usb net_admin
+    group radio oem_2901 diag usb net_admin
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.
@@ -242,6 +232,19 @@ service loc_launcher /vendor/bin/loc_launcher
     user gps
     group gps
 
+# Set vendor-ril lib path based on Meta version
+on property:vendor.rild.libpath=*
+    setprop rild.libpath ${vendor.rild.libpath}
+
+on property:persist.vendor.radio.aosp_usr_pref_sel=*
+    setprop persist.radio.aosp_usr_pref_sel ${persist.vendor.radio.aosp_usr_pref_sel}
+
+on property:ro.vendor.radio.noril=*
+    setprop ro.radio.noril ${ro.vendor.radio.noril}
+
+on property:vendor.camera.hal1.packagelist=*
+    setprop camera.hal1.packagelist ${vendor.camera.hal1.packagelist}
+
 service fm_dl /vendor/bin/init.qti.fm.sh
     class late_start
     user system
@@ -261,7 +264,7 @@ on property:ro.vendor.ril.mbn_copy_completed=1
 service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     class late_start
     user root
-    group root system
+    group root system wakelock graphics
     disabled
     oneshot
 
@@ -273,10 +276,11 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
     user system
     group system radio
 
-service ril-daemon2 /vendor/bin/hw/rild -c 2
+service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
-    group radio cache inet misc audio log readproc wakelock
+    disabled
+    group radio cache inet misc audio sdcard_r sdcard_rw diag log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service charger /charger

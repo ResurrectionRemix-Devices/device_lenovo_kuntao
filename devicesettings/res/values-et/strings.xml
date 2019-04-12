@@ -16,6 +16,6 @@
      limitations under the License.
 -->
 <resources>
-    <string name="fingerprint_gestures_title">Parmak izi hareketleri</string>
-    <string name="fingerprint_gestures_summary">Geri gitmek için dokunun, son uygulamaları görüntülemek için uzun basın</string>
+    <string name="fingerprint_gestures_title">Sõrmejälje žestid</string>
+    <string name="fingerprint_gestures_summary">Koputa, et minna tagasi; pikk vajutus, et vaadata viimatisi</string>
 </resources>
