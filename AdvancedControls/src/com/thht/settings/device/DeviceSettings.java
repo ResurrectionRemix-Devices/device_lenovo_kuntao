@@ -24,7 +24,7 @@ import android.os.Bundle;
 import android.os.ServiceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
-import com.android.internal.statusbar.ThemeAccentUtils;
+//import com.android.internal.statusbar.ThemeAccentUtils;
 
 public class DeviceSettings extends AppCompatActivity {
 
@@ -41,14 +41,14 @@ public class DeviceSettings extends AppCompatActivity {
         IOverlayManager overlayManager;
         overlayManager = IOverlayManager.Stub.asInterface(
                 ServiceManager.getService(Context.OVERLAY_SERVICE));
-        boolean useDarkTheme = ThemeAccentUtils.isUsingDarkTheme(
+        /*boolean useDarkTheme = ThemeAccentUtils.isUsingDarkTheme(
                 overlayManager, ActivityManager.getCurrentUser());
         boolean useBlackTheme = ThemeAccentUtils.isUsingBlackTheme(
                 overlayManager, ActivityManager.getCurrentUser());
         if (useDarkTheme || useBlackTheme) {
             AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_YES);
-        }
+        }*/
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.device_settings);
