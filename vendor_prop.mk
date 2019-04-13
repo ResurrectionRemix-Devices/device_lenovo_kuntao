@@ -24,6 +24,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicerec=false \
     persist.vendor.audio.hw.binder.size_kbyte=1024 \
+    ro.config.media_vol_steps=25 \
+    ro.config.vc_call_vol_steps=7 \
     ro.vendor.audio.sdk.fluencetype=fluence \
     vendor.audio_hal.period_size=192 \
     vendor.audio.hw.aac.encoder=true \
@@ -77,6 +79,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.display.cabl=0 \
     vendor.display.disable_rotator_downscale=1 \
     vendor.display.disable_skip_validate=1 \
+	debug.sf.latch_unsignaled=1 \
     vendor.display.enable_default_color_mode=0
 
 # Miracast
@@ -166,6 +169,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=true \
     persist.vendor.data.mode=concurrent
 
+# Fling velocities
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.min.fling_velocity=160 \
+    ro.max.fling_velocity=20000
+
 # RescueParty
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.disable_rescue=true
@@ -181,6 +189,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Google
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.opa.eligible_device=true
+
+# UI
+PRODUCT_PROPERTY_OVERRIDES += \
+sys.use_fifo_ui=1
 
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -159,6 +159,10 @@ PRODUCT_PACKAGES += \
     qcom.fmradio \
     qcom.fmradio.xml
 
+# For config.fs
+PRODUCT_PACKAGES += \
+    fs_config_files
+
 PRODUCT_BOOT_JARS += \
     qcom.fmradio
 
@@ -340,6 +344,13 @@ PRODUCT_COPY_FILES += \
 # QMI
 PRODUCT_PACKAGES += \
     libjson
+
+# RCS
+PRODUCT_PACKAGES += \
+    rcs_service_aidl \
+    rcs_service_aidl.xml \
+    rcs_service_api \
+    rcs_service_api.xml
 
 # RIL
 PRODUCT_PACKAGES += \
