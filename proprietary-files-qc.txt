@@ -123,11 +123,11 @@ vendor/lib64/libcneqmiutils.so|8f3f62648def2b7aae222b284f36a7aa0f0d1dbd
 vendor/lib64/libwqe.so|fba997dfb8780558c47dc97197b2182afc2615bd
 vendor/lib64/libxml.so|3b6dfa233ad719abbeb65e1f4fc3f9a2329679a1
 vendor/lib64/vendor.qti.data.factory@1.0.so|cf0f34cc9d740a7cc53d152b5b3bc5128f3e0b26
-vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so|cab1951de5402fc18dc53fbbca1cd90de4838196
-vendor/lib64/vendor.qti.hardware.data.latency@1.0.so|8018b457f47228c07bf7cbda56c66e9ddef025ab
+vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so|b8cafbf45cefbb06d5c89a1f77707bbbe02500f3
+vendor/lib64/vendor.qti.hardware.data.latency@1.0.so|9e500d224a97f7355feb6752b984a3f69bc4a0fd
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so|bb2c6f9dabeacf88ecd8a4210716664ae8438feb
-vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so|4cb6683a36ad11b18632fe99d7031e6a3c9a1b9b
-vendor/lib64/vendor.qti.latency@2.0.so|bf9738655d6d3a59e93da9c2b56ae0b3a2428c71
+vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so|5811c07b2fe8a7b05452585ca93507220384a0b6
+vendor/lib64/vendor.qti.latency@2.0.so|511fed2261e65efb633b6661ee25d70ddbca2758
 
 # Other CNE - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 vendor/etc/cne/andsfCne.xml
@@ -162,14 +162,14 @@ vendor/lib64/libssd.so|0e988e6ef7b1d356f4b92a26a61b96a840de1d20
 # DRM - Widevine - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine|458b57eadd116b32d1d288447d3537d00761f506
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc|458dd241f5f8536eccb57f012b3eba0061736e8e
-vendor/lib/libwvhidl.so|8e6513b7e2ad780ced0f55909911e76ab6a7ae49
+vendor/lib64/libwvhidl.so|8e6513b7e2ad780ced0f55909911e76ab6a7ae49
 
 # Gatekeeper - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 vendor/lib64/hw/gatekeeper.msm8953.so|c1b386547234815a0d6116b5e4756de66075cd3f
 
 # FM Radio - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 vendor/bin/fm_qsoc_patches|77f31379d6bf68f2f0b3aa8936150b778c4e89ee
-vendor/lib64/vendor.qti.hardware.fm@1.0.so|dc576dfcb0bf390a106b5ed8861e7f547110cbf1
+vendor/lib64/vendor.qti.hardware.fm@1.0.so|32dd637f377d18e862ad24be7086a71a5fe52f71
 
 # GPS - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 vendor/bin/hw/vendor.qti.gnss@1.0-service|049201d8e22064b87eb52df208d8cda7066d140a
@@ -195,7 +195,7 @@ vendor/lib64/liblowi_client.so|34f65f866c950733c72d5a4f0de00580d2ac3cf5
 vendor/lib64/libulp2.so|275cb2f94d8b59fe8bfd8a28a5c1c39994c4569c
 vendor/lib64/libxtadapter.so|d404e8c5c6e14a556926ba772ca99aa51cbd6a36
 vendor/lib64/libxtwifi_ulp_adaptor.so|58b20fbdbb500add11784acce0808c7198c96c34
-vendor/lib64/vendor.qti.gnss@1.0.so|90b465adc4542f16fbdd935d0592df73d778909b
+vendor/lib64/vendor.qti.gnss@1.0.so|4dfa66f66b406c1aff3d32bb44382898beaaa39a
 
 # Graphics - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 vendor/lib/egl/eglSubDriverAndroid.so|8468cd8e90386a102d202a48b0c69045fed4af21
@@ -292,9 +292,11 @@ vendor/lib64/hw/keystore.msm8953.so|f71f1439c9c356ce05d88b876253b4e3dcb10f4b
 
 # Listen - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 vendor/lib/hw/sound_trigger.primary.msm8953.so|6e41431a0d08f071e4ed8ef9aaadb271a1faf094
+vendor/lib/vendor.qti.voiceprint@1.0.so|2cadfc237c135f092da4d6b73ba42ba1be74167f
 vendor/lib/libadpcmdec.so|7c12a153200fd2e9f1f6139fcf40beee1a96f48d
 vendor/lib/libsmwrapper.so|3ba2c53973436a805dc32395af83129d1b984dca
 vendor/lib64/hw/sound_trigger.primary.msm8953.so|ae6b41c76386b804fb807c6016ba62c1ae698578
+vendor/lib64/vendor.qti.voiceprint@1.0.so|483d0c78115999e3f85fcb99b3b3b43a6b93c616
 
 # Other Listen - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 vendor/lib/libmulawdec.so
@@ -314,7 +316,7 @@ vendor/lib/libOmxApeDec.so|2f3cb8de2efb00c93688b86f1b55e96de3752b4b
 vendor/lib/libOmxApeDecSw.so|5a8bbc06b9cf680f1c5012660c82f37331559f77
 vendor/lib/libOmxEvrcDec.so|6a50e069ae8b769c7c97bf0398557112d105b183
 vendor/lib/libOmxQcelp13Dec.so|c094a365bd872d93e553d50fd65dc3d93ef1f486
-vendor/lib/libOmxVpp.so|0c37dd16995e08be116a3d560fb3465619de0940
+vendor/lib/libOmxVpp.so|c942fe466d4fca870e356de2a452dbfd6e303412
 vendor/lib/libOmxWmaDec.so|015c01595f055fe92ba7210cb9a5bec4a38a06ee
 vendor/lib/libvpplibrary.so|77d1d8d7fa879d1c5df1fb4e210de1e715bf139e
 vendor/lib/libvqzip.so|0b906db131e99cd5460b8a72d05e86721243de95
@@ -324,10 +326,10 @@ vendor/lib/libvqzip.so|0b906db131e99cd5460b8a72d05e86721243de95
 vendor/lib64/libwms.so|57d9f33071f4ae42ac77c98fb82f4e1fe8ac4754
 
 # Perf - from  Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
-lib/vendor.qti.hardware.perf@1.0.so|39a81e7cc35f542e5e2eeed6f38152b44063928f
-lib64/vendor.qti.hardware.perf@1.0.so|978a16bc6f27967f6345c5b51386d50768553ab5
+lib/vendor.qti.hardware.perf@1.0.so|06af4cabd86e643181ecefae95b62338dd319b28
+lib64/vendor.qti.hardware.perf@1.0.so|30798b76c4ef1755b74d17974dc90f39898c9eea
 vendor/bin/energy-awareness|d9b3f1cc791e0e9612a5ff5df6836af4c921a52b
-vendor/bin/hw/vendor.qti.hardware.perf@1.0-service|3f4cf13499019e7e3747679220b280f4f204b8de
+vendor/bin/hw/vendor.qti.hardware.perf@1.0-service|de67bdaaf38ba6e0bfd56847cff1c00a9ff1ef79
 vendor/bin/msm_irqbalance|bf933b58332cf94fe4a2072bc3e976a6a82efe3c
 vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc|b50182aadab2e31409df61c523d0fb914a394e43
 vendor/etc/perf/commonresourceconfigs.xml|20280e40ca43784316e96be09fe2d2296d79e972
@@ -338,12 +340,12 @@ vendor/lib/libperfgluelayer.so|0cda8dd77f3c00b70ad50b7764adfb7869d3537e
 vendor/lib/libqti-perfd-client.so|a4a6da47ee26fcd5116c514f7fed15b91306aea3
 vendor/lib/libqti-perfd.so|2c8af66cbcb941b9da2edb68f428776cbbabdff6
 vendor/lib/libqti-util.so|459a7375feb57c2e11d012c5fb65befd94e91d06
-vendor/lib/vendor.qti.hardware.perf@1.0.so|39a81e7cc35f542e5e2eeed6f38152b44063928f
+vendor/lib/vendor.qti.hardware.perf@1.0.so|06af4cabd86e643181ecefae95b62338dd319b28
 vendor/lib64/libperfgluelayer.so|e8bc850cbb8d2c2b9ed8c6b9c48eb4b1fd197622
 vendor/lib64/libqti-perfd-client.so|d9fb126fb7aff2db61978f46f78e0284e95183be
 vendor/lib64/libqti-perfd.so|96806732f4e5f8c25ba2e12a3a939fc2889c7341
 vendor/lib64/libqti-util.so|30dc90c1636fd100a8e101dfa659e0b7299ff813
-vendor/lib64/vendor.qti.hardware.perf@1.0.so|978a16bc6f27967f6345c5b51386d50768553ab5
+vendor/lib64/vendor.qti.hardware.perf@1.0.so|30798b76c4ef1755b74d17974dc90f39898c9eea
 
 # QCOM Boost - from  Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 -framework/QPerformance.jar|7097b093f8c946892176835a7b80977e8fea570c
@@ -386,7 +388,7 @@ vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|b7f648c81773214202aaa3620863
 vendor/bin/power_off_alarm|459ccd83df3fcc076bb82bff60f47d14ad69ad6e
 vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|c9877b6cae0353d5fdea5bc23dba77101b3d6980
 vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so|df138b77fb116a1a786a70c9c76b69d61b5c04d2
-vendor/lib64/vendor.qti.hardware.alarm@1.0.so|5761eae471e8dcd94ce139e831a1aa5b23f133c6
+vendor/lib64/vendor.qti.hardware.alarm@1.0.so|6f28bd9425af72d48266ff88b728c61f827571a8
 
 # QMI - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 etc/permissions/qti_libpermissions.xml|593bcb72cce68ceb0a70f50bcae7d460114e7c62
@@ -459,46 +461,46 @@ vendor/lib64/libril-qcril-hook-oem.so|159f6addcb48e2e02ddba6278e05bc5a312d8136
 vendor/lib64/librilqmiservices.so|c61998e2944ff427a9d06c0ab5db83986db412ea
 vendor/lib64/libsettings.so|6ee6af1dc861a34110550d8cd58ee461e22c253e
 vendor/lib64/libsystem_health_mon.so|a8a8e75cd251f4f8d8d054d75cea1238e654f7d0
-vendor/lib64/vendor.qti.hardware.radio.am@1.0.so|ef6d56f7aa6ff13866ccb0c31c8ef96de503c17c
-vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0.so|8ad1c06563a4e5cd57eec16ade2509e9647fc8fb
-vendor/lib64/vendor.qti.hardware.radio.ims@1.0.so|da51d4af0363ddca76292dde82857fb4862f4cd2
-vendor/lib64/vendor.qti.hardware.radio.ims@1.1.so|fd7bf0ab14637f67d56ba90aeb07030a138c1996
-vendor/lib64/vendor.qti.hardware.radio.ims@1.2.so|5e2b02e3fcb9d9c1a28f891a0780bc0078b41651
-vendor/lib64/vendor.qti.hardware.radio.ims@1.3.so|a090a9266d6253e747c174d14fd7b874b46b2379
-vendor/lib64/vendor.qti.hardware.radio.ims@1.4.so|7cf2168cda90e908818d438c1585507aabf35219
-vendor/lib64/vendor.qti.hardware.radio.lpa@1.0.so|52abf00004868bb1c2f149a7ea2b7bbc8fc399d7
-vendor/lib64/vendor.qti.hardware.radio.qcrilhook@1.0.so|80507e4b36396686aea0c8ff7d3c28163efea846
-vendor/lib64/vendor.qti.hardware.radio.qtiradio@1.0.so|5c93dad4ae3fa8df677ad44a22045235a91238e2
-vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.0.so|f3727b8015f85e1f22c9da1d46d1b5b8031f2f45
-vendor/lib64/vendor.qti.hardware.radio.uim@1.0.so|bb50c50890a37131579d56e547eccfce6e1ac527
-vendor/lib64/vendor.qti.hardware.radio.uim@1.1.so|b3cc0c6d4eaf6db13ac37118e0b812e8910af002
-vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0.so|f3a3051e4a904268e349a8b5adc91b748e8e0ade
-vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0.so|ab552724f7d723a70a4e730dba52ab220d33a33e
+vendor/lib64/vendor.qti.hardware.radio.am@1.0.so|fab631cbf46f610a0e1c04bfb5a388084894e11b
+vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0.so|826e3a2983f208d083ec210ab1817e6f50476c01
+vendor/lib64/vendor.qti.hardware.radio.ims@1.0.so|730248701dc229c3abe23e071f4ddbbe6443ced2
+vendor/lib64/vendor.qti.hardware.radio.ims@1.1.so|07fe986b6a4cee6f5e9fe0be9f94577753ae14f8
+vendor/lib64/vendor.qti.hardware.radio.ims@1.2.so|c714e323b6ce1e3f090c509be540a3380e85163b
+vendor/lib64/vendor.qti.hardware.radio.ims@1.3.so|365ecc76eda4e2bf524903c6893fac60a8cd3fb8
+vendor/lib64/vendor.qti.hardware.radio.ims@1.4.so|6cb16ad40692b452fa7d681456c0f92dad2795dc
+vendor/lib64/vendor.qti.hardware.radio.lpa@1.0.so|4ae15c8c02a0d201ccb6311c8cdb745f53a9f538
+vendor/lib64/vendor.qti.hardware.radio.qcrilhook@1.0.so|48abd3630ab28be1bef7f9995aa9ce403bfee836
+vendor/lib64/vendor.qti.hardware.radio.qtiradio@1.0.so|7f01d9cbed4a701b5fff5b0b2f7dc44eba0696a2
+vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.0.so|c262d97c9a3d08a7befda9355a7037a3868e6bf5
+vendor/lib64/vendor.qti.hardware.radio.uim@1.0.so|1d53f109141b00d84aa69f90ebfe1dd87913e783
+vendor/lib64/vendor.qti.hardware.radio.uim@1.1.so|81296c2077590e6f16ac8fc0c8e9e6eb0f5661bb
+vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0.so|571a25c2049c68fb8b3201ae2bdfbe02618ac785
+vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0.so|5b9a5cbd38884b854bb98d8aaf6337405ff115d1
 vendor/radio/qcril_database/qcril.db|f25a9215fcc2445e73d1aa0b7ef9bdbd97e33f56
 
 # Radio (IMS) - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 -app/uceShimService/uceShimService.apk|d2ecdb607749b0496664db52b706e9340bd9b9f0
 -priv-app/ims/ims.apk|10d64cbbd275431b5e346296c66d894685f8ff8e
-lib64/com.qualcomm.qti.imscmservice@1.0.so|fef99d1e4e599b438c38d6a31b15dd55f9f9d391
-lib64/com.qualcomm.qti.imscmservice@2.0.so|c14157e35f83b2481b83ca35d4925fcb135325aa
-lib64/com.qualcomm.qti.imscmservice@2.1.so|56310782689ac800060cf045534c7d7cbac6a95a
-lib64/lib-imscamera.so|6d9c63ad43e5dca62dea7a47e7b121bc4df317f9
-lib64/lib-imsvideocodec.so|3450d725416f8f45d788fadc43f88d25937508a0
+lib64/com.qualcomm.qti.imscmservice@1.0.so|f74a427829e40a2fb9eb02ac749d022fed0f5112
+lib64/com.qualcomm.qti.imscmservice@2.0.so|6c861fe25f8237148ecb13152d3e9c6e21973f57
+lib64/com.qualcomm.qti.imscmservice@2.1.so|983ef2de4bc1d584315f77d5da529026479545d4
+lib64/lib-imscamera.so|d842316ddba5bdd8a85eca4830adf99a23e6488a
+lib64/lib-imsvideocodec.so|611e7b41c9e5c936f11806fedf77b308373c39a8
 lib64/lib-imsvt.so|7dfc533fc3c439a608b219838281d6c5f605ee22
 lib64/lib-imsvtextutils.so|dc3340321ee2543bb35248d0f9dac4718116a073
 lib64/lib-imsvtutils.so|13480b644ed5290f7ddc2f7c304c0e912f416098
 lib64/libimscamera_jni.so|133fec4e7be337eb255eb226c4ff96ae53b94be7
-lib64/libimsmedia_jni.so|577b1ed68e2a26e50e9e4dfed9fe1ca685979a56
+lib64/libimsmedia_jni.so|17a2cb31fb5960769b4c2c0636fffe721c4f2a74
 lib64/librcc.so|4d732d9211e3139ed17fae059edfcd71f0e13d7e
 lib64/vendor.qti.imsrtpservice@1.0.so|559a2dbf409d86746ed4303f2e0089256bb91a07
 vendor/bin/ims_rtp_daemon|174be7387753db4b72fa4de305edaa80fe79b6a9
 vendor/bin/imsdatadaemon|56e1ab6f6f6679261bcd36dd218097632da866b6
 vendor/bin/imsqmidaemon|0e5cf08e7cbd4e34fb69e6644a8c7d5e6715c306
 vendor/bin/imsrcsd|a79f373ccb1af6ac4877801191a4b8fed1b2f488
-vendor/lib64/com.qualcomm.qti.imscmservice@1.0.so|fef99d1e4e599b438c38d6a31b15dd55f9f9d391
-vendor/lib64/com.qualcomm.qti.imscmservice@2.0.so|c14157e35f83b2481b83ca35d4925fcb135325aa
-vendor/lib64/com.qualcomm.qti.imscmservice@2.1.so|56310782689ac800060cf045534c7d7cbac6a95a
-vendor/lib64/com.qualcomm.qti.uceservice@2.0.so|927297576baf01c083f08932ed7f69f6c19de89b
+vendor/lib64/com.qualcomm.qti.imscmservice@1.0.so|f74a427829e40a2fb9eb02ac749d022fed0f5112
+vendor/lib64/com.qualcomm.qti.imscmservice@2.0.so|6c861fe25f8237148ecb13152d3e9c6e21973f57
+vendor/lib64/com.qualcomm.qti.imscmservice@2.1.so|983ef2de4bc1d584315f77d5da529026479545d4
+vendor/lib64/com.qualcomm.qti.uceservice@2.0.so|ee50bd8c89b1f8ed2a24286217724dc68e0af18b
 vendor/lib64/lib-dplmedia.so|43bde72ec009c854c755cdc5c95c087b0c04f975
 vendor/lib64/lib-imsSDP.so|ad40ae6910430898eb13f242ca3d383f43ff0b80
 vendor/lib64/lib-imscmservice.so|07c7f9e9b937e4a49a5615916688ea9e87bfd49b
@@ -513,7 +515,7 @@ vendor/lib64/lib-rtpdaemoninterface.so|34a4e7ce92cfebf0c6e030408f0eb1341768ec6d
 vendor/lib64/lib-rtpsl.so|c8e74b54c0a88e8d14f9e48ac33dafb74da67df4
 vendor/lib64/lib-siputility.so|3f87f58f9ca52be34e7003eaef2a213c61268589
 vendor/lib64/lib-uceservice.so|31dae56817e9a47849cac15a8812b12ebec6bca9
-vendor/lib64/vendor.qti.ims.callinfo@1.0.so|5862ab34c0d040dba63eced727146dd233cf92ee
+vendor/lib64/vendor.qti.ims.callinfo@1.0.so|9645007e2ee28fb7ff53bde78fa8bea299a220b6
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so|f4eef520bbf98e6e1ac8697ef7eef0109487dba1
 vendor/lib64/vendor.qti.imsrtpservice@1.0.so|559a2dbf409d86746ed4303f2e0089256bb91a07
 
@@ -529,6 +531,10 @@ vendor/lib64/libthermalfeature.so|829b2fc0aa8c863d4b4b331e0a2c00663e01efe6
 vendor/bin/time_daemon|bc58af8ed0cc94708aa75372565f4251991ab123
 -vendor/lib64/libtime_genoff.so|8f4c1f9ace6af463b241b130d6872b5d39cc7b2a
 
+# WiFi
+etc/firmware/wlan/prima/WCNSS_cfg.dat:vendor/firmware/wlan/prima/WCNSS_cfg.dat
+etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_lenovo.bin:vendor/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+
 # Wi-Fi Display - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 bin/wfdservice|edeb291221024401cbae69c2fa4e58733b7efc4c
 etc/init/wfdservice.rc|311bfdd1675e56499662f39455536b75b78477bb
@@ -541,7 +547,7 @@ lib64/libFileMux.so|c528ef66ce38e8474690b75d6ee1c9380c424be1
 lib64/libmmparser_lite.so|e6cc448614215f4d7b5dc6f36c1336f0044bb3b8
 lib64/libmmosal.so|3d50c7ea56db9c3676be9d6e36e1030386ecdb02
 lib64/libwfdclient.so|c69712162493bdaa8833b5aae342ee4f9b0c2408
-lib64/libwfdnative.so|559148bbb82e1a37883be0926d2d90efe3bf18b8
+lib64/libwfdnative.so|f2d11f94e107a7de8457310ad1e4fc983d5a10fd
 lib/extractors/libmmparser.so|6c50c5d01ceff647de389f3f15b1952c2bcdd2d7
 lib/libFileMux.so|5961dd16c9c6808e8321abf4b0266a9926ef327b
 lib/libmmparser_lite.so|db9e6dafd466fd0aa3b2d7b387fda38ee9838a08
@@ -549,7 +555,7 @@ lib/libmmosal.so|89a3c4404de99e9ee740aeea1883c15470d61a74
 lib/libmmrtpdecoder.so|adb55936e63ff087a9e3458070515e1ab7dbe178
 lib/libmmrtpencoder.so|9a85d450a8633207f7a499962c5821d1a3fec2b8
 lib/libOmxMux.so|6aff8e6e81331f3d5d3a8d46d342e5b5efc237f3
-lib/libwfdavenhancements.so|6a4e5a28579cebcfc66ade3657abce4884ade19c
+lib/libwfdavenhancements.so|9f7c2413da18cf45cd7cd48cda5c6f9c505a1081
 lib/libwfdcodecv4l2.so|b3a3fb10c2d3a8709badb9b3f6c02d0b961136ab
 lib/libwfdcommonutils.so|4672af5a1537df38149b37671f75f9d53e51cfb5
 lib/libwfdconfigutils.so|7c966abaa02eb119d1090e3876fb1b5dac3993c7
