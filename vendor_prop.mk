@@ -44,7 +44,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.qcom.bluetooth.soc=smd
+    persist.vendor.bt.enable.splita2dp=false \
+    bluetooth.hfp.client=1 \
+    vendor.qcom.bluetooth.soc=smd \
+    ro.bluetooth.hfp.ver=1.7 \
+    ro.vendor.qualcomm.bt.hci_transport=smd
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -74,13 +78,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.gralloc.enable_fb_ubwc=1 \
     ro.opengles.version=196610 \
     ro.sf.lcd_density=480 \
     ro.vendor.display.cabl=0 \
+    debug.sdm.support_writeback=0 \
     vendor.display.disable_rotator_downscale=1 \
     vendor.display.disable_skip_validate=1 \
+    vendor.display.enable_default_color_mode=1 \
 	debug.sf.latch_unsignaled=1 \
-    vendor.display.enable_default_color_mode=0
+    vendor.gralloc.enable_fb_ubwc=1
 
 # Miracast
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -153,6 +160,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
+    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.radio.multisim.config=dsds \
     ro.telephony.default_network=9,1 \

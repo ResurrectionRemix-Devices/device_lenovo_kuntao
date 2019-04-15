@@ -120,6 +120,10 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
+    vendor.display.color@1.0-impl \
+    vendor.display.color@1.0-service \
+    vendor.display.config@1.1 \
+    vendor.display.config@1.1_vendor \
     gralloc.msm8953 \
     hwcomposer.msm8953 \
     copybit.msm8953 \
@@ -132,6 +136,15 @@ PRODUCT_PACKAGES += \
     libhwc2on1adapter \
     libaacwrapper \
     libnl
+
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -276,6 +289,11 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag
 
+# Nfc vendor files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/nfc/libnfc-nci-20797b00.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm-20797b00.conf \
+    $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf
+
 # Nfc system files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nci-20797b00.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/ibnfc-nci-20797b00.conf \
@@ -409,6 +427,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
+# ThermalController app
+PRODUCT_PACKAGES += \
+	ThermalController	
+	
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service \
+    thermal.msm8953	
+	
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
