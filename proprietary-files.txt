@@ -223,7 +223,7 @@ bin/smart_charger:vendor/bin/smart_charger|f73a445e7e8d75c7a34aa993b19567e90d2c2
 # Fingerprint
 bin/vfmService:vendor/bin/vfmService
 lib64/hw/fingerprint.default.so:vendor/lib64/hw/fingerprint.msm8953.so
-lib64/libvalAuth.so:vendor/lib64/libvalAuth.so
+lib64/libvalAuth.so:vendor/lib64/libvalAuth.so|d956f850415a67e593ecad3ea9c3ff0bdfc1584a
 lib64/libvcsfp.so:vendor/lib64/libvcsfp.so
 lib64/libvfmAuth.so:vendor/lib64/libvfmAuth.so
 lib64/libvfmClient.so:vendor/lib64/libvfmClient.so
