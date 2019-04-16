@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright (C) 2014-2016 The OmniROM Project
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2014-2016 The OmniROM Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
 
-          http://www.apache.org/licenses/LICENSE-2.0
+          http://www.apache.com/licenses/LICENSE-2.0
 
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,112 +14,78 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!-- Dirac -->
-    <!--<PreferenceCategory
-        android:title="@string/category_sound"
-        android:key="key_category_sound">
-        <Preference
-            android:key="key_dirac"
-            android:persistent="false"
-            android:title="@string/dirac_title"
-            android:summary="@string/dirac_summary">
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetPackage="org.lineageos.settings"
-                android:targetClass="org.lineageos.settings.dirac.DiracActivity" />
-        </Preference>
-    </PreferenceCategory>-->
-
-    <!-- Vibrator -->
     <PreferenceCategory
-        android:title="@string/category_vibrator"
-        android:key="key_category_vibrator">
-        <Preference
-            android:key="key_vib_strength"
-            android:title="@string/vib_strength_title_head"
-            android:summary="@string/vib_strength_summary_head" />
+        android:title="@string/battery_charging_limiter_title">
+        <com.lineageos.settings.device.BatteryChargingLimiterPreference
+            android:key="battery_charging_limite"
+            android:title="@string/battery_charging_limiter_desc" />
     </PreferenceCategory>
-
-    <!-- Torch -->
     <PreferenceCategory
-        android:title="@string/category_torch"
-        android:key="key_category_torch">
-        <Preference
-            android:key="key_yellow_torch_brightness"
-            android:title="@string/yellow_torch_brightness_title_head"
-            android:summary="@string/yellow_torch_brightness_summary_head" />
-        <Preference
-            android:key="key_white_torch_brightness"
-            android:title="@string/white_torch_brightness_title_head"
-            android:summary="@string/white_torch_brightness_summary_head" />
-    </PreferenceCategory>
-
-    <!-- Kcal presets -->
-    <PreferenceCategory
-        android:title="@string/category_kcal_presets"
-        android:key="key_category_kcal_presets">
+        android:title="@string/category_wakeup">
         <SwitchPreference
-            android:key="key_kcal_presets"
-            android:title="@string/kcal_presets_title" />
-        <ListPreference
-            android:key="key_kcal_presets_list"
-            android:title="@string/presets_list_title"
-            android:entries="@array/presets_entries"
-            android:entryValues="@array/presets_values"
-            android:defaultValue="0"
-            android:summary="%s" />
-    </PreferenceCategory>
-
-    <!-- Kcal RGB -->
-    <PreferenceCategory
-        android:title="@string/category_screen_color"
-        android:key="key_category_screen_color">
-        <Preference
-            android:key="key_kcal_rgb_red"
-            android:title="@string/rgb_red" />
-        <Preference
-            android:key="key_kcal_rgb_green"
-            android:title="@string/rgb_green" />
-        <Preference
-            android:key="key_kcal_rgb_blue"
-            android:title="@string/rgb_blue" />
-    </PreferenceCategory>
-
-    <!-- Kcal Extras -->
-    <PreferenceCategory
-        android:title="@string/category_kcal_extras"
-        android:key="key_category_kcal_extras">
-        <Preference
-            android:key="key_kcal_rgb_min"
-            android:title="@string/rgb_min" />
-        <Preference
-            android:key="key_kcal_sat_intensity"
-            android:title="@string/sat_intensity" />
-        <Preference
-            android:key="key_kcal_scr_hue"
-            android:title="@string/scr_hue" />
-        <Preference
-            android:key="key_kcal_scr_val"
-            android:title="@string/scr_val" />
-        <Preference
-            android:key="key_kcal_scr_cont"
-            android:title="@string/scr_cont" />
-    </PreferenceCategory>
-
-    <!-- Miscellaneous -->
-    <PreferenceCategory
-        android:title="@string/category_misc"
-        android:key="key_category_misc">
-        <SwitchPreference
-            android:key="key_restore_on_boot"
-            android:summary="@string/restore_on_boot_summary"
-            android:title="@string/restore_on_boot"
-            android:defaultValue="false" />
-        <SwitchPreference
-            android:key="key_slow_wakeup_fix"
+            android:key="slow_wakeup_fix"
             android:title="@string/slow_wakeup_fix_title"
             android:summary="@string/slow_wakeup_fix_summary"
             android:defaultValue="false" />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/graphics_title">
+        <PreferenceScreen
+            android:key="kcal"
+            android:fragment="com.lineageos.settings.device.DisplayCalibration"
+            android:summary="@string/kcal_summary"
+            android:title="@string/kcal_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="spectrum_profile"
+        android:title="@string/spectrum_profile_title" >
+
+        <ListPreference
+            android:key="spectrum"
+            android:title="@string/spectrum_title"
+            android:defaultValue="0"
+            android:entries="@array/spectrum_profiles"
+            android:entryValues="@array/spectrum_values"
+            android:dialogTitle="@string/spectrum_dialogTitle" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_vibrator">
+        <com.lineageos.settings.device.VibratorStrengthPreference
+            android:key="vib_strength"
+            android:title="@string/vib_strength_title_head" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_torch">
+        <com.lineageos.settings.device.YellowTorchBrightnessPreference
+            android:key="yellow_torch_brightness"
+            android:title="@string/yellow_torch_brightness_title_head" />
+        <com.lineageos.settings.device.WhiteTorchBrightnessPreference
+            android:key="white_torch_brightness"
+            android:title="@string/white_torch_brightness_title_head" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/touchscreen_title">
+        <SwitchPreference
+            android:key="glove_mode"
+            android:title="@string/glove_mode_title"
+            android:summary="@string/glove_mode_summary"
+            android:icon="@null"
+            android:paddingLeft="0dp"
+            android:persistent="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="usb_fastcharge"
+        android:title="@string/usb_fastcharge_title" >
+        <SwitchPreference
+            android:key="fastcharge"
+            android:defaultValue="false"
+            android:title="@string/fastcharge_title"
+            android:summary="@string/fastcharge_summary" />
+    </PreferenceCategory>
+
 </PreferenceScreen>

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2014-2017 The OmniROM Project
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014-2017 The OmniROM Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,41 +14,43 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">Расширенные элементы управления</string>
-    <string name="advanced_settings">Расширенные элементы управления</string>
+    <string name="app_name">Advanced controls</string>
+    <string name="advanced_settings">Advanced controls</string>
     <string name="category_vibrator">Вибрация</string>
-    <string name="vib_strength_title_head">Интенсивность вибрации</string>
-    <string name="vib_strength_summary_head">Задать интенсивность вибрации</string>
+    <string name="vib_strength_title_head">Сила вибрации</string>
     <string name="category_torch">Фонарик</string>
     <string name="yellow_torch_brightness_title_head">Максимальная яркость желтого светодиода</string>
-    <string name="yellow_torch_brightness_summary_head">Задать максимальную яркость желтого светодиода</string>
     <string name="white_torch_brightness_title_head">Максимальная яркость белого светодиода</string>
-    <string name="white_torch_brightness_summary_head">Задать максимальную яркость белого светодиода</string>
-    <string name="category_screen_color">Цвет экрана</string>
-    <string name="rgb_red">красный</string>
-    <string name="rgb_blue">синий</string>
-    <string name="rgb_green">зеленый</string>
-    <string name="category_kcal_extras">Тонкая настройка</string>
-    <string name="rgb_min">Минимальное значение rgb</string>
-    <string name="sat_intensity">Насыщенность</string>
-    <string name="scr_hue">Оттенок</string>
-    <string name="scr_val">Яркость</string>
-    <string name="scr_cont">Контраст</string>
-    <string name="plus_one">+1</string>
-    <string name="minus_one">-1</string>
-    <string name="restore_default">По умолчанию</string>
-    <string name="restore_on_boot">Применить при загрузке</string>
-    <string name="restore_on_boot_summary">Восстановить настройки при загрузке</string>
-    <string name="category_kcal_presets">Пресеты ккал</string>
-    <string name="kcal_presets_title">Используйте предустановленные значения ккал</string>
-    <string name="presets_list_title">Выберите пресет ккал</string>
-    <string name="slow_wakeup_fix_title">Высокая сенсорная чувствительность</string>
-    <string name="slow_wakeup_fix_summary">Увеличьте чувствительность сенсорного экрана чтобы использовать его в перчатках</string>
-    <string name="category_sound">звук</string>
-    <string name="category_misc">Разное</string>
-    <string name="dirac_title">Настройки Дирака</string>
-    <string name="dirac_summary">Запустите параметры конфигурации dirac</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+    <string name="touchscreen_title">Сенсорная панель</string>
+    <string name="glove_mode_title">Режим «В перчатках»</string>
+    <string name="glove_mode_summary">Повышает чувствительность к касаниям (может повлиять на расход батареи)</string>
+    <string name="graphics_title">Графика</string>
+    <string name="kcal_title">Цвет экрана</string>
+    <string name="kcal_summary">Калибровка цвета экрана с помощью KCAL</string>
+    <string name="kcal_enabled_title">Включить KCAL</string>
+    <string name="kcal_enabled_summary">Включить калибровку экрана с помощью KCAL</string>
+    <string name="kcal_red">Красный</string>
+    <string name="kcal_green">Зеленый</string>
+    <string name="kcal_blue">Синий</string>
+    <string name="kcal_saturation">Насыщенность</string>
+    <string name="kcal_contrast">Контраст</string>
+    <string name="kcal_value">Значение</string>
+    <string name="kcal_hue">Тон</string>
+    <string name="kcal_invert_title">Инвертировать</string>
+    <string name="kcal_invert_summary">Инвертировать все цвета экрана</string>
+    <string name="kcal_greyscale_title">Оттенки серого</string>
+    <string name="kcal_greyscale_summary">Полностью отключить насыщенность</string>
+    <string name="menu_reset">Сбросить</string>
+    <string name="presets_list_title">Применить профиль KCAL</string>
+    <string name="default_values">По умолчанию</string>
+    <string name="version_1">Версия 1</string>
+    <string name="version_2">Версия 2</string>
+    <string name="version_3">Версия 3</string>
+    <string name="triluminous">Triluminous</string>
+    <string name="deep_black_and_white">Насыщенный черный и белый</string>
+    <string name="deep_natural">Насыщенный естественный</string>
+    <string name="cool_amoled">Холодный Amoled</string>
+    <string name="extreme_amoled">Екстримальный Amoled</string>
+    <string name="warm_amoled">Теплый Amoled</string>
+    <string name="hybrid_mamba">Гибридный Мамба</string>
 </resources>
