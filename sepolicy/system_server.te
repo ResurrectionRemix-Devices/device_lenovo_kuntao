@@ -2,7 +2,7 @@ allow system_server vendor_keylayout_file:file r_file_perms;
 allow system_server vendor_camera_prop:file { open read getattr };
 
 allow system_server vfmService:process signull;
-r_dir_file(system_server, idc_file)
+
 r_dir_file(system_server, keylayout_file)
 r_dir_file(system_server, keylayout_file_sysfs)
 
