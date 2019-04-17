@@ -95,8 +95,8 @@ PRODUCT_PACKAGES += \
     LenovoDirac
 
 # Lenovo Parts
-PRODUCT_PACKAGES += \
-    LenovoParts
+#PRODUCT_PACKAGES += \
+   # LenovoParts
 
 # Charger
 PRODUCT_PACKAGES += \
