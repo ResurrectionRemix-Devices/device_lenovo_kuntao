@@ -21,5 +21,4 @@ dontaudit thermalserviced thermalserviced:capability {sys_admin};
 dontaudit time_daemon time_daemon:capability {sys_admin};
 dontaudit ueventd ueventd:capability {sys_admin};
 dontaudit vdc vdc:capability {sys_admin};
-dontaudit storaged storaged:capability {sys_admin};
 dontaudit sysinit sysinit:capability {sys_admin};
