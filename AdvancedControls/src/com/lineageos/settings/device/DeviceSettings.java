@@ -118,14 +118,14 @@ public class DeviceSettings extends PreferenceFragment implements
             mSpectrum.setSummary(mSpectrum.getEntry());
         }
 
-        if (Utils.fileWritable(USB_FASTCHARGE_PATH)) {
+        //if (Utils.fileWritable(USB_FASTCHARGE_PATH)) {
           mFastcharge = (SwitchPreference) findPreference(USB_FASTCHARGE_KEY);
           mFastcharge.setChecked(Utils.getFileValueAsBoolean(USB_FASTCHARGE_PATH, false));
           mFastcharge.setOnPreferenceChangeListener(this);
-        } else {
-          mUsbFastcharge = (PreferenceCategory) prefSet.findPreference("usb_fastcharge");
-          prefSet.removePreference(mUsbFastcharge);
-        }
+        //} else {
+        //  mUsbFastcharge = (PreferenceCategory) prefSet.findPreference("usb_fastcharge");
+       //   prefSet.removePreference(mUsbFastcharge);
+       // }
 
         slowWakeupFixPreference = (SwitchPreference) findPreference(KEY_SLOW_WAKEUP_FIX);
         slowWakeupFixPreference.setChecked(Utils.getFileValueAsBoolean(FILE_LEVEL_WAKEUP, false));

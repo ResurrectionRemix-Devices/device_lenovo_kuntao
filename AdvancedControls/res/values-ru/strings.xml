@@ -53,4 +53,14 @@
     <string name="extreme_amoled">Екстримальный Amoled</string>
     <string name="warm_amoled">Теплый Amoled</string>
     <string name="hybrid_mamba">Гибридный Мамба</string>
+
+    <!-- Ambient Display -->
+    <string name="display_title">Дисплей</string>
+    <string name="ambient_display_title">Ambient display</string>
+    <string name="ambient_display_title_summary">Настройки Ambient display</string>
+
+    <!-- s2s -->
+    <string name="s2s_title">Жесты для отключенич</string>
+    <string name="category_s2s">Жесты</string>
+    <string name="s2s_summary">Выберите жестт для отключения</string>
 </resources>

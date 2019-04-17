@@ -72,4 +72,16 @@
     <string name="battery_charging_limiter_title">Battery</string>
     <string name="battery_charging_limiter_desc">Set limit to stop battery charging</string>
 
+    <!-- Ambient Display -->
+    <string name="display_title">Display</string>
+    <string name="ambient_display_title">Ambient display</string>
+    <string name="ambient_display_title_summary">Configure your ambient display</string>
+
+    <!-- s2s -->
+    <string name="category_s2s">Sweep</string>
+    <string name="s2s_title">Sweep to sleep</string>
+    <string name="s2s_summary">Choose sweep positions</string>
+
+
+
 </resources>

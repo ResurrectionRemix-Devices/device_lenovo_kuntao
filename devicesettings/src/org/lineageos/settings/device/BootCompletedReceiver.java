@@ -31,7 +31,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
     private void setFingerprintGesturesState(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean enabled = prefs.getBoolean(Constants.FINGERPRINT_GESTURES_KEY, true);
+        boolean enabled = prefs.getBoolean(Constants.FINGERPRINT_GESTURES_KEY, false);
         Utils.broadcastFingerprintGesturesEnabled(context, enabled);
     }
 }
