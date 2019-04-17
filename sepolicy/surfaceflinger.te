@@ -1,1 +1,2 @@
 allow surfaceflinger device:chr_file ioctl;
+allow surfaceflinger crash_dump:process { noatsecure };

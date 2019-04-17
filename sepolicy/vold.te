@@ -4,3 +4,4 @@ allow vold {
  fsck_untrusted
  sdcardd
  vold_prepare_subdirs}:process { noatsecure };
+allow vold persist_file:dir r_dir_perms;

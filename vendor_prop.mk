@@ -188,7 +188,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Time Services
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.delta_time.enable=true
+    persist.vendor.delta_time.enable=true \
+    persist.timed.enable=true
 
 # SdcardFS
 PRODUCT_PROPERTY_OVERRIDES += \

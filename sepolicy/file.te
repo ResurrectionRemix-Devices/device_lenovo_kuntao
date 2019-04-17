@@ -13,3 +13,6 @@ type sysfs_s2s, fs_type, sysfs_type;
 type fsg_file, fs_type, contextmount_type;
 
 type sysfs_smart_charger, fs_type, sysfs_type;
+type charging_limiter_sysfs, fs_type, sysfs_type;
+
+type sysfs_msm_subsys, sysfs_type, fs_type;
