@@ -3,9 +3,6 @@ allow system_server vendor_camera_prop:file { open read getattr };
 
 allow system_server vfmService:process signull;
 
-r_dir_file(system_server, keylayout_file)
-r_dir_file(system_server, keylayout_file_sysfs)
-
 allow system_server vfsspi_device:dir search;
 allow system_server vfsspi_device:fifo_file rw_file_perms;
 
