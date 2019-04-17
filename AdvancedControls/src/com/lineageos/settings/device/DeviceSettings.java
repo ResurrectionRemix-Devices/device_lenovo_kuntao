@@ -137,10 +137,17 @@ public class DeviceSettings extends PreferenceFragment implements
         }
     }
 
-    private void setFastcharge(boolean value) {
-            Utils.writeValue(USB_FASTCHARGE_PATH, value ? "1" : "0");
+    //public static void setFastcharge(boolean value) {
+    //        Utils.writeValue(USB_FASTCHARGE_PATH, value ? "1" : "0");
+    //}
+	
+	public static void setFastcharge(boolean value) {
+        if (value) 
+            Utils.writeValue(USB_FASTCHARGE_PATH, "1");
+        else
+            Utils.writeValue(USB_FASTCHARGE_PATH, "0"); 
     }
-
+	
     public static void restore(Context context) {
         boolean gloveModeData = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.KEY_GLOVE_MODE, false);
         Utils.writeValue(GLOVE_MODE_FILE, gloveModeData ? "1" : "0");
