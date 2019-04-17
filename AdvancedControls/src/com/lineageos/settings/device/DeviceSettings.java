@@ -147,7 +147,7 @@ public class DeviceSettings extends PreferenceFragment implements
         else
             Utils.writeValue(USB_FASTCHARGE_PATH, "0"); 
     }
-	
+
     public static void restore(Context context) {
         boolean gloveModeData = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.KEY_GLOVE_MODE, false);
         Utils.writeValue(GLOVE_MODE_FILE, gloveModeData ? "1" : "0");
