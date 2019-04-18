@@ -19,7 +19,7 @@
         <com.lineageos.settings.device.BatteryChargingLimiterPreference
             android:key="battery_charging_limite"
             android:title="@string/battery_charging_limiter_desc"
-			android:icon="@drawable/ic_restore" />
+            android:icon="@drawable/ic_restore" />
     </PreferenceCategory>
 
     <PreferenceCategory
