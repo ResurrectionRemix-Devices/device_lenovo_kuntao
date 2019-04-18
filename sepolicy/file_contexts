@@ -7,7 +7,7 @@
 
 # Charging Limiter
 /sys/kernel/charger_limiter/charging_limit		u:object_r:charging_limiter_sysfs:s0
-
+/sys/kernel/fast_charge/force_fast_charge       u:object_r:force_fast_charge_sysfs:s0
 
 # DRM
 /vendor/bin/hw/android\.hardware\.drm@1\.1-service\.clearkey               u:object_r:hal_drm_clearkey_exec:s0
@@ -26,6 +26,7 @@
 /sys/devices/virtual/timed_output/vibrator/vtg_level                       u:object_r:sysfs_vibrator:s0
 /sys/sweep2sleep/sweep2sleep                                               u:object_r:sysfs_s2s:s0
 /sys/devices/soc/qpnp-fg-18/power_supply/bms/hi_power           u:object_r:sysfs_battery_supply:s0
+
 
 # Fingerprint hal
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service\.kuntao		u:object_r:hal_fingerprint_default_exec:s0
