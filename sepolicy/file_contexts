@@ -7,7 +7,6 @@
 
 # Charging Limiter
 /sys/kernel/charger_limiter/charging_limit		u:object_r:charging_limiter_sysfs:s0
-/sys/kernel/fast_charge/force_fast_charge       u:object_r:force_fast_charge_sysfs:s0
 
 # DRM
 /vendor/bin/hw/android\.hardware\.drm@1\.1-service\.clearkey               u:object_r:hal_drm_clearkey_exec:s0
