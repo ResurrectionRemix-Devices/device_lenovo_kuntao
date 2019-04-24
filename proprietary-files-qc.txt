@@ -298,17 +298,25 @@ vendor/lib/libhdr_tm.so|37381160c5f44f3974af22fb09f394c0fd1fd3bd
 vendor/lib64/libhdr_tm.so|7a05d56d8305c8df87392b93929949178c336b83
 
 # Graphics (Postprocessing) - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
+etc/permissions/com.qti.snapdragon.sdk.display.xml
+framework/com.qti.snapdragon.sdk.display.jar
 vendor/bin/mm-pp-dpps|c89656e2349f6c81fe9a26e7c70e304ea77e1079
 vendor/bin/hw/vendor.display.color@1.0-service|2ca340c7fd7689ac8ddf36f948fd95a7cd3bfc2e
+vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
 vendor/etc/init/vendor.display.color@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
 vendor/lib/libdisp-aba.so
+
 vendor/lib/vendor.display.color@1.0.so|d5f3693e462c1832ea5407ce2eded800641f6d80
+vendor/lib/vendor.display.color@1.1.so
+vendor/lib/vendor.display.postproc@1.0.so|13e1e398997cbb7da4bb24392e4b13578c4644fc
+vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so|5a99b7a09a4ccda16d0fa4aaa6f04be2bb676f7d
 vendor/lib64/libdisp-aba.so|95cafbc303cbf3017c7f10276454ef908b258b1c
 vendor/lib64/vendor.display.color@1.0.so|a41a76b08f60c0e8787d0e5b6a3155f11f58a5fc
 vendor/lib64/vendor.display.color@1.1.so|388404f39cd0c2dd3ea9fc59ee950edf24f78a87
 vendor/lib64/vendor.display.color@1.2.so|da1c83747c7bb4a64cf380bdb889cb811b67bc2e
 vendor/lib64/vendor.display.postproc@1.0.so|f6dae960f3f4eea0d5d36aea4ac0a2e0039691f5
-
+vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so|e0fd5a17e9ce0fddda384b9810acd736e5905458
 
 # Graphics (Vulkan) - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 vendor/lib/hw/vulkan.msm8953.so
@@ -347,7 +355,7 @@ vendor/lib/libOmxQcelp13Dec.so|5388cb90be81f05cfadd553b6c2ec46243fc58fc
 vendor/lib/libOmxVideoDSMode.so|45bbcc28e169f18bc4a783c304c6f80e223ab7c7
 vendor/lib/libOmxVpp.so|73b7e5d6bd4d4dae37c28dac0f52cfa788ac79f7
 vendor/lib/libOmxWmaDec.so|e5e418df146f9f3c22d060857182557f1197962b
-vendor/lib/libgpustats.so|83d8856717923ab389aecf17445e33fc21b90afc
+-vendor/lib/libgpustats.so|83d8856717923ab389aecf17445e33fc21b90afc
 vendor/lib/libmm-color-convertor.so|01a87ba3433679bde836d6ac8c8f44efcc24bf10
 vendor/lib/libvpphvx.so|f9e3229d44ad22e808ee7ed4d8d1c529195ed6a9
 vendor/lib/libvpplibrary.so|316e22a194a84d9eb5732d4e25c159575dac91e3
@@ -364,7 +372,7 @@ vendor/lib64/libOmxEvrcDec.so|e14ec750035c45a8d880309fa8109e340f74dad1
 vendor/lib64/libOmxQcelp13Dec.so|fe50f41d5d8bcdd09f22d6a6a453086eb237ee77
 vendor/lib64/libOmxVpp.so|b95c8028374e39af0f71a5502f44b2a41d8db621
 vendor/lib64/libOmxWmaDec.so|3c9284a401b7d060cf3429a8e07392b7698502b5
-vendor/lib64/libgpustats.so|1a091475fb4a744f091bec101a51044fb8854a15
+-vendor/lib64/libgpustats.so|1a091475fb4a744f091bec101a51044fb8854a15
 vendor/lib64/libmm-color-convertor.so|e286810ccbfc31ff237c32c03037da41ebb87da2
 vendor/lib64/libvpplibrary.so|982ff0f95c59b8ff126abd9758b5c13aa89efa0f
 
