@@ -300,6 +300,12 @@ vendor/lib64/libhdr_tm.so|7a05d56d8305c8df87392b93929949178c336b83
 # Graphics (Postprocessing) - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 etc/permissions/com.qti.snapdragon.sdk.display.xml
 framework/com.qti.snapdragon.sdk.display.jar
+-lib/vendor.display.color@1.0.so
+lib/vendor.display.postproc@1.0.so
+lib/vendor.qti.hardware.qdutils_disp@1.0.so
+-lib64/vendor.display.color@1.0.so
+lib64/vendor.display.postproc@1.0.so
+lib64/vendor.qti.hardware.qdutils_disp@1.0.so
 vendor/bin/mm-pp-dpps|c89656e2349f6c81fe9a26e7c70e304ea77e1079
 vendor/bin/hw/vendor.display.color@1.0-service|2ca340c7fd7689ac8ddf36f948fd95a7cd3bfc2e
 vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
