@@ -328,9 +328,6 @@ vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so|e0fd5a17e9ce0fddda384b9810a
 vendor/lib/hw/vulkan.msm8953.so|cb71b03698184afedf476227b817105ccafb3aff
 vendor/lib64/hw/vulkan.msm8953.so|156a536638b0f88e9771d06e02a41c2f562b46b2
 
-# Ipacm - from Tissot
-vendor/bin/ipacm|cca13482623000ec92391c80633b92184d3f09d4
-
 # Keystore - from Mi A1 tissot_sprout 9 PKQ1.180917.001.V10.0.7.0.PDHMIXM release-keys
 vendor/lib64/hw/keystore.msm8953.so|f71f1439c9c356ce05d88b876253b4e3dcb10f4b
 
