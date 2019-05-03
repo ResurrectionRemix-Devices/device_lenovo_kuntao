@@ -1,8 +1,7 @@
+typeattribute untrusted_app data_between_core_and_vendor_violators;
 allow untrusted_app{
  bg_boot_complete_prop
  bg_daemon_prop
- bluetooth_prop
- bootloader_boot_reason_prop
  boottime_prop
  cnd_vendor_prop
  console_silent_prop
@@ -35,12 +34,9 @@ allow untrusted_app{
  ctl_vendor_wigigsvc_prop
  device_logging_prop
  dumpstate_options_prop
- firstboot_prop
  fm_prop
  vendor_fp_gesture_prop
  fst_prop
  graphics_vulkan_prop
  hvdcp_opti_prop
- proc_vmstat
- runtime_event_log_tags_file
  vendor_camera_prop }:file { r_file_perms };

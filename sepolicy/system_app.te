@@ -9,8 +9,6 @@ allow system_app sysfs_torch:dir search;
 allow system_app sysfs_torch:file rw_file_perms;
 allow system_app sysfs_touchpanel:dir search;
 allow system_app sysfs_touchpanel:file rw_file_perms;
-allow system_app charging_limiter_sysfs:dir search;
-allow system_app charging_limiter_sysfs:file rw_file_perms;
 
 # Spectrum
 allow system_app spectrum_prop:property_service set;
@@ -19,7 +17,6 @@ allow system_app fingerprintd:binder { call };
 allow system_app {
  bg_boot_complete_prop
  bg_daemon_prop
- bootloader_boot_reason_prop
  boottime_prop
  cnd_vendor_prop
  console_silent_prop
@@ -27,9 +24,3 @@ allow system_app {
  ctl_bootanim_prop
  ctl_console_prop
  ctl_LKCore_prop }:file { r_file_perms };
-
-allow system_app sysfs_battery_supply:file open;
-allow system_app sysfs_battery_supply:file getattr;
-allow system_app sysfs_battery_supply:file write; 
-allow system_app sysfs_battery_supply:dir search;
-allow system_app sysfs_battery_supply:lnk_file read;
