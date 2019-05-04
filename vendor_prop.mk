@@ -86,6 +86,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.disable_rotator_downscale=1 \
     vendor.display.disable_skip_validate=1 \
     vendor.display.enable_default_color_mode=1 \
+	debug.sf.latch_unsignaled=1 \
     vendor.gralloc.enable_fb_ubwc=1
 
 # Miracast
@@ -197,6 +198,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Google
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.opa.eligible_device=true
+
+# UI
+PRODUCT_PROPERTY_OVERRIDES += \
+sys.use_fifo_ui=1
 
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \
