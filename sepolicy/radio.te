@@ -1,7 +1,10 @@
 allow radio {
  bg_boot_complete_prop
  bg_daemon_prop
+ bluetooth_prop
+ bootloader_boot_reason_prop
  boottime_prop
  cnd_vendor_prop
  console_silent_prop
  ctl_LKCore_prop }:file { read };
+allow radio system_app_data_file:dir getattr;

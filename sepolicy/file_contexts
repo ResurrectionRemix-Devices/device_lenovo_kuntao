@@ -5,6 +5,9 @@
 # Camera
 /data/vendor/qcam(/.*)?                                                    u:object_r:vendor_camera_data_file:s0
 
+# Charging Limiter
+/sys/kernel/charger_limiter/charging_limit		u:object_r:charging_limiter_sysfs:s0
+
 # DRM
 /vendor/bin/hw/android\.hardware\.drm@1\.1-service\.clearkey               u:object_r:hal_drm_clearkey_exec:s0
 /vendor/bin/hw/android\.hardware\.drm@1\.1-service\.widevine               u:object_r:hal_drm_widevine_exec:s0
@@ -21,6 +24,8 @@
 /sys/devices/platform/kcal_ctrl.0(/.*)?                                    u:object_r:sysfs_kcal:s0
 /sys/devices/virtual/timed_output/vibrator/vtg_level                       u:object_r:sysfs_vibrator:s0
 /sys/sweep2sleep/sweep2sleep                                               u:object_r:sysfs_s2s:s0
+/sys/devices/soc/qpnp-fg-18/power_supply/bms/hi_power           u:object_r:sysfs_battery_supply:s0
+
 
 # Fingerprint hal
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service\.kuntao		u:object_r:hal_fingerprint_default_exec:s0
@@ -30,6 +35,8 @@
 /dev/vfsspi                                                                u:object_r:vfsspi_device:s0
 /dev/validity(/.*)?                                                        u:object_r:vfsspi_device:s0
 /data/validity(/.*)?                                                       u:object_r:vfsspi_data_file:s0
+/vendor/lib64/libvcsfp\.so                                                 u:object_r:vfsspi_vendor_file:s0
+/vendor/lib64/libvfmClient\.so                                             u:object_r:vfsspi_vendor_file:s0
 
 # Keylayout
 /vendor/usr/keylayout/gpio-keys\.kl                                        u:object_r:vendor_keylayout_file:s0

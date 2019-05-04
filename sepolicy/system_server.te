@@ -1,11 +1,10 @@
 allow system_server vendor_keylayout_file:file r_file_perms;
+allow system_server vendor_camera_prop:file { open read getattr };
 
 allow system_server vfmService:process signull;
 
 allow system_server vfsspi_device:dir search;
 allow system_server vfsspi_device:fifo_file rw_file_perms;
-
-
 
 allow system_server vendor_camera_prop:file { r_file_perms };
 allow system_server thermal_service:service_manager { find };
@@ -14,5 +13,7 @@ allow system_server {
  cnd_vendor_prop
  console_silent_prop
  ctl_LKCore_prop }:file { r_file_perms };
+
+allow system_server sysfs_vibrator:file read;
 
 set_prop(system_server, sensors_prop);

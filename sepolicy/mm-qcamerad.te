@@ -10,4 +10,4 @@ allow mm-qcamerad persist_file:file r_file_perms;
 
 
 allow mm-qcamerad vendor_camera_data_file:file { r_file_perms create_file_perms };
-set_prop(mm-qcamerad, vendor_camera_prop)
+set_prop(mm-qcamerad, vendor_camera_prop);

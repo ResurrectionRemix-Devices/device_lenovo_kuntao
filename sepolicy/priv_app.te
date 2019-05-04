@@ -1,10 +1,20 @@
 allow priv_app device:chr_file ioctl;
 allow priv_app device:dir { read open };
 allow priv_app device:dir { r_dir_perms };
+allow priv_app proc:file { r_file_perms };
+allow priv_app rfs_system_file:dir getattr;
+allow priv_app storage_stub_file:dir { getattr search open read };
+allow priv_app proc_interrupts:file { read open };
+allow priv_app adsprpcd_file:filesystem getattr;
+allow priv_app { proc_stat }:file r_file_perms;
+allow priv_app firmware_file:filesystem getattr;
+allow priv_app proc_modules:file read;
 
 allow priv_app {
  bg_boot_complete_prop
  bg_daemon_prop
+ bluetooth_prop
+ bootloader_boot_reason_prop
  boottime_prop
  console_silent_prop
  cnd_vendor_prop
@@ -37,6 +47,9 @@ allow priv_app {
  ctl_vendor_wigigsvc_prop
  device_logging_prop
  dumpstate_options_prop
+ firstboot_prop
  fm_prop
  proc_interrupts
- proc_modules }:file { r_file_perms };
+ proc_modules
+ sysfs }:file { r_file_perms };
+get_prop(priv_app, camera_prop)
