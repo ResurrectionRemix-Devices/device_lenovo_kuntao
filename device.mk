@@ -60,6 +60,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@2.0-impl \
     android.hardware.audio.effect@4.0 \
     android.hardware.audio.effect@4.0-impl \
+	android.hardware.audio.effect@2.0-service \
     android.hardware.soundtrigger@2.1-impl
 
 PRODUCT_COPY_FILES += \
@@ -221,7 +222,8 @@ PRODUCT_PACKAGES += \
 # IPA Manager
 PRODUCT_PACKAGES += \
     ipacm \
-    IPACM_cfg.xml
+    IPACM_cfg.xml \
+    liboffloadhal
 
 # IRQ balance
 PRODUCT_COPY_FILES += \
