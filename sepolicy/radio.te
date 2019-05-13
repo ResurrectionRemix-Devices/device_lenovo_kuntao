@@ -8,3 +8,4 @@ allow radio {
  console_silent_prop
  ctl_LKCore_prop }:file { read };
 allow radio system_app_data_file:dir getattr;
+allow atfwd sysfs:file {open read write};
