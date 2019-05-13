@@ -24,8 +24,8 @@
 /sys/devices/platform/kcal_ctrl.0(/.*)?                                    u:object_r:sysfs_kcal:s0
 /sys/devices/virtual/timed_output/vibrator/vtg_level                       u:object_r:sysfs_vibrator:s0
 /sys/sweep2sleep/sweep2sleep                                               u:object_r:sysfs_s2s:s0
-/sys/devices/soc/qpnp-fg-18/power_supply/bms/hi_power           u:object_r:sysfs_battery_supply:s0
-
+/sys/devices/soc/qpnp-fg-18/power_supply/bms/hi_power                      u:object_r:sysfs_battery_supply:s0
+/sys/kernel/fast_charge/force_fast_charge                                  u:object_r:fastcharge_sysfs:s0
 
 # Fingerprint hal
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service\.kuntao		u:object_r:hal_fingerprint_default_exec:s0
