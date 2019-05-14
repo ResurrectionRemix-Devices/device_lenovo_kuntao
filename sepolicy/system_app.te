@@ -11,8 +11,7 @@ allow system_app sysfs_touchpanel:dir search;
 allow system_app sysfs_touchpanel:file rw_file_perms;
 allow system_app charging_limiter_sysfs:dir search;
 allow system_app charging_limiter_sysfs:file rw_file_perms;
-allow system_app fastcharge_sysfs:dir search;
-allow system_app fastcharge_sysfs:file rw_file_perms;
+
 
 # Spectrum
 allow system_app spectrum_prop:property_service set;
