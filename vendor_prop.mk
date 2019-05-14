@@ -118,10 +118,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.fm.transmitter=false \
     vendor.hw.fm.init=0
 
-# GPS
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.gps.agps_provider=1
-
 # IMS
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
