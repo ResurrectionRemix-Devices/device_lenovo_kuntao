@@ -49,6 +49,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qcom.bluetooth.soc=smd \
     ro.bluetooth.hfp.ver=1.7
 
+# Boot
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.vendor.shutdown.waittime=500
+
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.camera.hal1.packagelist=com.skype.raider,com.android.facelock,com.google.android.talk, com.instagram.android \
