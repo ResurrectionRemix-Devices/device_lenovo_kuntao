@@ -108,6 +108,18 @@ USE_OPENGL_RENDERER := true
 # CNE and DPM
 BOARD_USES_QCNE := true
 
+# Dexpreopt
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
+    endif
+  endif
+endif
+
+PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
+
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
