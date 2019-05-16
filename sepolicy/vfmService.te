@@ -9,6 +9,8 @@ allow vfmService fingerprintd_data_file:file create_file_perms;
 allow vfmService firmware_file:dir search;
 allow vfmService firmware_file:file r_file_perms;
 
+allow vfmService property_service::sock_file write;
+
 allow vfmService hal_fingerprint_default:process signull;
 
 allow vfmService ion_device:chr_file rw_file_perms;

@@ -23,5 +23,10 @@ allow platform_app{
  ctl_rildaemon_prop
  ctl_sigstop_prop
  ctl_start_prop
+ ctl_stop_prop
+ ctl_vendor_hbtp_prop
+ ctl_vendor_imsrcsservice_prop
+ ctl_vendor_mmid_prop
+ ctl_vendor_netmgrd_prop
  cnd_vendor_prop
  console_silent_prop }:file { r_file_perms };

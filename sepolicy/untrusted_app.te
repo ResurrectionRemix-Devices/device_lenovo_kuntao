@@ -37,6 +37,13 @@ allow untrusted_app{
  dumpstate_options_prop
  firstboot_prop
  fm_prop
+ last_boot_reason_prop
+ lineage_recovery_prop
+ location_prop
+ logpersistd_logging_prop
+ dirac_prop
+ vendor_coresight_prop
+ vendor_data_ko_prop
  vendor_fp_gesture_prop
  fst_prop
  graphics_vulkan_prop

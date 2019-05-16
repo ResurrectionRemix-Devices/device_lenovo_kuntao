@@ -1,0 +1,1 @@
+allow sgdisk vold:process { noatsecure };
