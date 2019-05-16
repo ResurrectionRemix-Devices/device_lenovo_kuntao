@@ -15,6 +15,10 @@ allow untrusted_app_27 {
  ctl_dumpstate_prop
  ctl_fuse_prop
  dirac_prop
+ nfc_nq_prop
+ overlay_prop
+ persist_khung_prop
+ persistent_properties_ready_prop
  last_boot_reason_prop
  location_prop
  logpersistd_logging_prop

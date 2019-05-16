@@ -34,6 +34,10 @@ allow platform_app{
  dumpstate_options_prop
  firstboot_prop
  fm_prop
+ fst_prop
+ graphics_vulkan_prop
+ hvdcp_opti_prop
+ last_boot_reason_prop
  vendor_ssr_prop
  vendor_system_prop
  vendor_tee_listener_prop

@@ -24,6 +24,10 @@ allow untrusted_app{
  ctl_sigstop_prop
  ctl_start_prop
  ctl_stop_prop
+ nfc_nq_prop
+ overlay_prop
+ persist_khung_prop
+ persistent_properties_ready_prop
  ctl_vendor_hbtp_prop
  ctl_vendor_imsrcsservice_prop
  ctl_vendor_mmid_prop

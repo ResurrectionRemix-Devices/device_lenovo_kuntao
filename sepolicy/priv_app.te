@@ -43,6 +43,10 @@ allow priv_app {
  location_prop
  logpersistd_logging_prop
  lowpan_prop
+ net_dns_prop
+ netd_stable_secret_prop
+ nfc_nq_prop
+ overlay_prop
  mm_parser_prop
  mm_video_prop
  mmc_prop
