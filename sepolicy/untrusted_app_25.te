@@ -39,6 +39,10 @@ allow untrusted_app_25 {
  dumpstate_options_prop
  firstboot_prop
  fm_prop
+ location_prop
+ logpersistd_logging_prop
+ lowpan_prop
+ mm_parser_prop
  vendor_fp_gesture_prop
  fst_prop
  graphics_vulkan_prop

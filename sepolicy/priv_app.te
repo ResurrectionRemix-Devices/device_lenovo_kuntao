@@ -44,6 +44,10 @@ allow priv_app {
  logpersistd_logging_prop
  lowpan_prop
  mm_parser_prop
+ mm_video_prop
+ mmc_prop
+ msm_irqbalance_prop
+ msm_irqbl_sdm630_prop
  ctl_vendor_hbtp_prop
  ctl_vendor_imsrcsservice_prop
  ctl_vendor_mmid_prop

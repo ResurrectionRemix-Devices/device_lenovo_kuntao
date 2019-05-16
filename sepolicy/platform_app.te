@@ -29,6 +29,16 @@ allow platform_app{
  ctl_sigstop_prop
  ctl_start_prop
  ctl_stop_prop
+ device_logging_prop
+ dirac_prop
+ dumpstate_options_prop
+ firstboot_prop
+ fm_prop
+ vendor_ssr_prop
+ vendor_system_prop
+ vendor_tee_listener_prop
+ vendor_time_service_prop
+ vendor_usb_prop
  ctl_vendor_hbtp_prop
  ctl_vendor_imsrcsservice_prop
  ctl_vendor_mmid_prop

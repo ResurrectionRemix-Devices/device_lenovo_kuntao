@@ -29,6 +29,11 @@ allow system_app {
  ctl_rildaemon_prop
  ctl_sigstop_prop
  ctl_start_prop
+ ctl_stop_prop
+ ctl_vendor_hbtp_prop
+ ctl_vendor_imsrcsservice_prop
+ ctl_vendor_mmid_prop
+ ctl_vendor_netmgrd_prop
  ctl_interface_restart_prop
  ctl_interface_start_prop
  ctl_interface_stop_prop

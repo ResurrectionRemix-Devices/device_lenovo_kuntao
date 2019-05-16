@@ -32,6 +32,10 @@ allow untrusted_app_27 {
  mm_parser_prop
  mm_video_prop
  mmc_prop
+ msm_irqbalance_prop
+ msm_irqbl_sdm630_prop
+ net_dns_prop
+ netd_stable_secret_prop
  ctl_vendor_hbtp_prop
  ctl_vendor_imsrcsservice_prop
  ctl_vendor_mmid_prop

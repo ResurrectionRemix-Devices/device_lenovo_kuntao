@@ -45,6 +45,10 @@ allow untrusted_app{
  mm_parser_prop
  mm_video_prop
  mmc_prop
+ msm_irqbalance_prop
+ msm_irqbl_sdm630_prop
+ net_dns_prop
+ netd_stable_secret_prop
  vendor_coresight_prop
  vendor_data_ko_prop
  vendor_fp_gesture_prop
