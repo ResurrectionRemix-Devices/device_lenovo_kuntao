@@ -40,6 +40,10 @@ allow priv_app {
  ctl_sigstop_prop
  ctl_start_prop
  ctl_stop_prop
+ location_prop
+ logpersistd_logging_prop
+ lowpan_prop
+ mm_parser_prop
  ctl_vendor_hbtp_prop
  ctl_vendor_imsrcsservice_prop
  ctl_vendor_mmid_prop

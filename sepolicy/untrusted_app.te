@@ -41,6 +41,10 @@ allow untrusted_app{
  location_prop
  logpersistd_logging_prop
  dirac_prop
+ lowpan_prop
+ mm_parser_prop
+ mm_video_prop
+ mmc_prop
  vendor_coresight_prop
  vendor_data_ko_prop
  vendor_fp_gesture_prop

@@ -24,6 +24,8 @@ allow untrusted_app_25 {
  ctl_sigstop_prop
  ctl_start_prop
  ctl_stop_prop
+ dirac_prop
+ last_boot_reason_prop
  ctl_vendor_hbtp_prop
  ctl_vendor_imsrcsservice_prop
  ctl_vendor_mmid_prop
