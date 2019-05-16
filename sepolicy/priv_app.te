@@ -52,6 +52,14 @@ allow priv_app {
  mmc_prop
  msm_irqbalance_prop
  msm_irqbl_sdm630_prop
+ persist_khung_prop
+ persistent_properties_ready_prop
+ qcom_ims_prop
+ qvr_prop
+ spcomlib_prop
+ spectrum_prop
+ system_boot_reason_prop
+ test_boot_reason_prop
  ctl_vendor_hbtp_prop
  ctl_vendor_imsrcsservice_prop
  ctl_vendor_mmid_prop

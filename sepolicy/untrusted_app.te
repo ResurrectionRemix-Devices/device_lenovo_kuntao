@@ -26,6 +26,10 @@ allow untrusted_app{
  ctl_stop_prop
  nfc_nq_prop
  overlay_prop
+ qcom_ims_prop
+ qvr_prop
+ safemode_prop
+ scr_enabled_prop
  persist_khung_prop
  persistent_properties_ready_prop
  ctl_vendor_hbtp_prop

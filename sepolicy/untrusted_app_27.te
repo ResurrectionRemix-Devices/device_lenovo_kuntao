@@ -17,6 +17,10 @@ allow untrusted_app_27 {
  dirac_prop
  nfc_nq_prop
  overlay_prop
+ qcom_ims_prop
+ qvr_prop
+ safemode_prop
+ scr_enabled_prop
  persist_khung_prop
  persistent_properties_ready_prop
  last_boot_reason_prop

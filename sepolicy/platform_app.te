@@ -35,6 +35,10 @@ allow platform_app{
  firstboot_prop
  fm_prop
  fst_prop
+ location_prop
+ logpersistd_logging_prop
+ lowpan_prop
+ mm_parser_prop
  graphics_vulkan_prop
  hvdcp_opti_prop
  last_boot_reason_prop

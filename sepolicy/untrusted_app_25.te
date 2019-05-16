@@ -25,6 +25,10 @@ allow untrusted_app_25 {
  ctl_start_prop
  ctl_stop_prop
  dirac_prop
+ netd_stable_secret_prop
+ nfc_nq_prop
+ overlay_prop
+ persist_khung_prop
  last_boot_reason_prop
  ctl_vendor_hbtp_prop
  ctl_vendor_imsrcsservice_prop
