@@ -10,7 +10,7 @@ allow priv_app { proc_stat }:file r_file_perms;
 allow priv_app firmware_file:filesystem getattr;
 allow priv_app proc_modules:file read;
 
-allow priv_app block:dir { r_dir_perms };
+#allow priv_app block:dir { r_dir_perms };
 
 allow priv_app mnt_vendor_file:dir search; 
 
