@@ -16,7 +16,6 @@ allow untrusted_app_27 {
  ctl_fuse_prop
  dirac_prop
  last_boot_reason_prop
- lineage_recovery_prop
  location_prop
  logpersistd_logging_prop
  ctl_interface_restart_prop
