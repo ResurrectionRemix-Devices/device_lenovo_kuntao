@@ -35,6 +35,13 @@ allow platform_app{
  firstboot_prop
  fm_prop
  fst_prop
+ net_dns_prop
+ netd_stable_secret_prop
+ nfc_nq_prop
+ overlay_prop
+ persist_khung_prop
+ persistent_properties_ready_prop
+ qcom_ims_prop
  mm_video_prop
  mmc_prop
  msm_irqbalance_prop

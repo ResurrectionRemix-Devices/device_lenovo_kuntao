@@ -34,6 +34,10 @@ allow system_app {
  dumpstate_options_prop
  firstboot_prop
  fst_prop
+ hvdcp_opti_prop
+ last_boot_reason_prop
+ location_prop
+ lowpan_prop
  graphics_vulkan_prop
  ctl_vendor_port-bridge_prop
  ctl_vendor_qmuxd_prop

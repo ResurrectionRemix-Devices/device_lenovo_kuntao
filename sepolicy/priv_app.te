@@ -41,6 +41,11 @@ allow priv_app {
  ctl_start_prop
  ctl_stop_prop
  location_prop
+ vendor_alarm_boot_prop
+ vendor_am_prop
+ vendor_audio_debug_prop
+ vendor_audio_prop
+ vendor_bluetooth_prop
  logpersistd_logging_prop
  lowpan_prop
  net_dns_prop

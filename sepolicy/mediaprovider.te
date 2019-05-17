@@ -6,6 +6,8 @@ allow mediaprovider {
  ctl_LKCore_prop
  ctl_atfwd_prop
  ctl_bootanim_prop
+ ctl_default_prop
+ ctl_dumpstate_prop
  ctl_bugreport_prop
  ctl_console_prop
  bootloader_boot_reason_prop

@@ -32,6 +32,13 @@ allow untrusted_app{
  serialno_prop
  slpi_prop
  spcomlib_prop
+ spectrum_prop
+ traced_enabled_prop
+ usf_prop
+ vendor_alarm_boot_prop
+ system_boot_reason_prop
+ test_boot_reason_prop
+ theme_prop
  safemode_prop
  scr_enabled_prop
  persist_khung_prop

@@ -37,6 +37,7 @@ allow isolated_app {
  dumpstate_options_prop
  firstboot_prop
  fm_prop
+ dirac_prop
  vendor_fp_gesture_prop
  fst_prop
  graphics_vulkan_prop
