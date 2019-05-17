@@ -60,7 +60,6 @@ allow priv_app {
  spectrum_prop
  theme_prop
  traced_enabled_prop
- userinit_prop
  usf_prop
  system_boot_reason_prop
  test_boot_reason_prop
