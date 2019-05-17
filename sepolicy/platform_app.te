@@ -35,6 +35,10 @@ allow platform_app{
  firstboot_prop
  fm_prop
  fst_prop
+ mm_video_prop
+ mmc_prop
+ msm_irqbalance_prop
+ msm_irqbl_sdm630_prop
  location_prop
  logpersistd_logging_prop
  lowpan_prop

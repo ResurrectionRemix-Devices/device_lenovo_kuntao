@@ -58,6 +58,10 @@ allow priv_app {
  qvr_prop
  spcomlib_prop
  spectrum_prop
+ theme_prop
+ traced_enabled_prop
+ userinit_prop
+ usf_prop
  system_boot_reason_prop
  test_boot_reason_prop
  ctl_vendor_hbtp_prop

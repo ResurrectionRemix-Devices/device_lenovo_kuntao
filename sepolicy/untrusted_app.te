@@ -28,6 +28,10 @@ allow untrusted_app{
  overlay_prop
  qcom_ims_prop
  qvr_prop
+ sensors_prop
+ serialno_prop
+ slpi_prop
+ spcomlib_prop
  safemode_prop
  scr_enabled_prop
  persist_khung_prop
