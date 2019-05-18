@@ -1,3 +1,5 @@
+allow untrusted_app proc_qtaguid_stat:file read;
+allow untrusted_app proc_zoneinfo:file read;
 allow untrusted_app{
  bg_boot_complete_prop
  bg_daemon_prop
@@ -35,6 +37,9 @@ allow untrusted_app{
  spectrum_prop
  traced_enabled_prop
  usf_prop
+ vendor_pd_locater_dbg_prop
+ vendor_per_mgr_state_prop
+ vendor_qdcmss_prop
  vendor_mirrorlink_prop
  vendor_mmi_prop
  vendor_mpctl_prop

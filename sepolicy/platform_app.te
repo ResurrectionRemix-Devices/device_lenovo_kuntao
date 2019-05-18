@@ -37,6 +37,12 @@ allow platform_app{
  fst_prop
  qvr_prop
  usf_prop
+ vendor_audio_debug_prop
+ vendor_audio_prop
+ vendor_bluetooth_prop
+ vendor_boot_mode_prop
+ vendor_cgroup_follow_prop
+ vendor_core_ctl_prop
  vendor_alarm_boot_prop
  vendor_am_prop
  safemode_prop

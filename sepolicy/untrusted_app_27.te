@@ -56,6 +56,10 @@ allow untrusted_app_27 {
  ctl_start_prop
  ctl_stop_prop
  lowpan_prop
+ vendor_dataqti_prop
+ vendor_disable_spu_prop
+ vendor_display_prop
+ vendor_dolphin_prop
  mm_parser_prop
  mm_video_prop
  mmc_prop
