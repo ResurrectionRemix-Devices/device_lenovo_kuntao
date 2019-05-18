@@ -43,6 +43,9 @@ allow platform_app{
  slpi_prop
  spcomlib_prop
  spectrum_prop
+ system_boot_reason_prop
+ theme_prop
+ traced_enabled_prop
  net_dns_prop
  netd_stable_secret_prop
  nfc_nq_prop

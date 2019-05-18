@@ -74,6 +74,9 @@ allow untrusted_app_27 {
  firstboot_prop
  fm_prop
  vendor_fp_gesture_prop
+ vendor_cgroup_follow_prop
+ vendor_core_ctl_prop
+ vendor_coresight_prop
  fst_prop
  graphics_vulkan_prop
  hvdcp_opti_prop

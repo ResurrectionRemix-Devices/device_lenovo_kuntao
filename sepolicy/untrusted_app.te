@@ -82,6 +82,13 @@ allow untrusted_app{
  vendor_coresight_prop
  vendor_data_ko_prop
  vendor_fp_gesture_prop
+ vendor_display_prop
+ vendor_dolphin_prop
+ vendor_gpu_prop
+ vendor_ipacm-diag_prop
+ vendor_ipacm_prop
+ vendor_mdm_helper_prop
+ vendor_media_msm8953_version_prop
  fst_prop
  graphics_vulkan_prop
  hvdcp_opti_prop

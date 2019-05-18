@@ -58,6 +58,17 @@ allow priv_app {
  vendor_dataqti_prop
  vendor_disable_spu_prop
  vendor_display_prop
+ vendor_dolphin_prop
+ vendor_fp_gesture_prop
+ vendor_gpu_prop
+ vendor_wlc_prop
+ vendor_xlat_prop
+ wfd_debug_prop
+ wfd_service_prop
+ wifi_prop
+ vendor_ipacm-diag_prop
+ vendor_ipacm_prop
+ vendor_mdm_helper_prop
  overlay_prop
  mm_parser_prop
  mm_video_prop
