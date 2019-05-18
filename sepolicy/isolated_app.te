@@ -40,6 +40,11 @@ allow isolated_app {
  dumpstate_options_prop
  firstboot_prop
  fm_prop
+ mmc_prop
+ msm_irqbalance_prop
+ msm_irqbl_sdm630_prop
+ net_dns_prop
+ netd_stable_secret_prop
  logpersistd_logging_prop
  lowpan_prop
  mm_parser_prop

@@ -51,6 +51,9 @@ allow priv_app {
  net_dns_prop
  netd_stable_secret_prop
  nfc_nq_prop
+ vendor_qdma_prop
+ vendor_radio_prop
+ vendor_rild_libpath_prop
  vendor_pd_locater_dbg_prop
  vendor_per_mgr_state_prop
  vendor_qdcmss_prop

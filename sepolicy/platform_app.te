@@ -34,6 +34,9 @@ allow platform_app{
  dumpstate_options_prop
  firstboot_prop
  fm_prop
+ vendor_coresight_prop
+ vendor_data_ko_prop
+ vendor_dataadpl_prop
  fst_prop
  qvr_prop
  usf_prop

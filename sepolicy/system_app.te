@@ -42,6 +42,10 @@ allow system_app {
  mm_parser_prop
  mm_video_prop
  mmc_prop
+ msm_irqbl_sdm630_prop
+ net_dns_prop
+ netd_stable_secret_prop
+ nfc_nq_prop
  msm_irqbalance_prop
  ctl_vendor_port-bridge_prop
  ctl_vendor_qmuxd_prop

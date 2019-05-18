@@ -1,5 +1,6 @@
 allow untrusted_app proc_qtaguid_stat:file read;
-allow untrusted_app proc_zoneinfo:file read;
+allow untrusted_app proc_zoneinfo:file { read open };
+allow untrusted_app proc_qtaguid_stat:file open;
 allow untrusted_app{
  bg_boot_complete_prop
  bg_daemon_prop
@@ -30,6 +31,9 @@ allow untrusted_app{
  overlay_prop
  qcom_ims_prop
  qvr_prop
+ vendor_qdma_prop
+ vendor_radio_prop
+ vendor_rild_libpath_prop
  sensors_prop
  serialno_prop
  slpi_prop

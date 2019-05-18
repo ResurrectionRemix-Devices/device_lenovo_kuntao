@@ -19,6 +19,9 @@ allow untrusted_app_27 {
  overlay_prop
  qcom_ims_prop
  qvr_prop
+ vendor_gpu_prop
+ vendor_ipacm-diag_prop
+ vendor_ipacm_prop
  sensors_prop
  serialno_prop
  slpi_prop
