@@ -36,6 +36,9 @@ allow platform_app{
  fm_prop
  fst_prop
  qvr_prop
+ usf_prop
+ vendor_alarm_boot_prop
+ vendor_am_prop
  safemode_prop
  scr_enabled_prop
  sensors_prop

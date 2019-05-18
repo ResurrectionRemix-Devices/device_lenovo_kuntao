@@ -10,6 +10,7 @@ allow vfmService firmware_file:dir search;
 allow vfmService firmware_file:file r_file_perms;
 
 #allow vfmService property_service:sock_file write;
+allow vfmService property_socket:sock_file write;
 
 allow vfmService hal_fingerprint_default:process signull;
 

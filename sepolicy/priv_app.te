@@ -9,7 +9,7 @@ allow priv_app adsprpcd_file:filesystem getattr;
 allow priv_app { proc_stat }:file r_file_perms;
 allow priv_app firmware_file:filesystem getattr;
 allow priv_app proc_modules:file read;
-
+allow priv_app sysfs_android_usb:file read;
 #allow priv_app block:dir { r_dir_perms };
 
 allow priv_app mnt_vendor_file:dir search; 
@@ -51,6 +51,11 @@ allow priv_app {
  net_dns_prop
  netd_stable_secret_prop
  nfc_nq_prop
+ vendor_media_msm8953_version_prop
+ vendor_mirrorlink_prop
+ vendor_mmi_prop
+ vendor_mpctl_prop
+ vendor_opengles_prop
  vendor_coresight_prop
  vendor_data_ko_prop
  vendor_dataadpl_prop
