@@ -28,6 +28,10 @@ allow untrusted_app_25 {
  persistent_properties_ready_prop
  qcom_ims_prop
  qvr_prop
+ scr_enabled_prop
+ sensors_prop
+ serialno_prop
+ slpi_prop
  safemode_prop
  netd_stable_secret_prop
  nfc_nq_prop

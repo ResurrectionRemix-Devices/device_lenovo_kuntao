@@ -61,6 +61,9 @@ allow priv_app {
  persistent_properties_ready_prop
  qcom_ims_prop
  qvr_prop
+ vendor_boot_mode_prop
+ vendor_cgroup_follow_prop
+ vendor_core_ctl_prop
  spcomlib_prop
  spectrum_prop
  theme_prop

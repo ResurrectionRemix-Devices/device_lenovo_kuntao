@@ -33,6 +33,11 @@ allow untrusted_app_27 {
  system_boot_reason_prop
  test_boot_reason_prop
  theme_prop
+ traced_enabled_prop
+ usf_prop
+ vendor_alarm_boot_prop
+ vendor_am_prop
+ vendor_audio_debug_prop
  logpersistd_logging_prop
  ctl_interface_restart_prop
  ctl_interface_start_prop

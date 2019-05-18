@@ -39,6 +39,10 @@ allow untrusted_app{
  system_boot_reason_prop
  test_boot_reason_prop
  theme_prop
+ vendor_am_prop
+ vendor_audio_debug_prop
+ vendor_audio_prop
+ vendor_bluetooth_prop
  safemode_prop
  scr_enabled_prop
  persist_khung_prop

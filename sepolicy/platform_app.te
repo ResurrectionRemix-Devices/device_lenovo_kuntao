@@ -35,6 +35,10 @@ allow platform_app{
  firstboot_prop
  fm_prop
  fst_prop
+ qvr_prop
+ safemode_prop
+ scr_enabled_prop
+ sensors_prop
  net_dns_prop
  netd_stable_secret_prop
  nfc_nq_prop
