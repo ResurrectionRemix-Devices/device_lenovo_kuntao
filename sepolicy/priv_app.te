@@ -51,6 +51,13 @@ allow priv_app {
  net_dns_prop
  netd_stable_secret_prop
  nfc_nq_prop
+ vendor_coresight_prop
+ vendor_data_ko_prop
+ vendor_dataadpl_prop
+ vendor_dataqdp_prop
+ vendor_dataqti_prop
+ vendor_disable_spu_prop
+ vendor_display_prop
  overlay_prop
  mm_parser_prop
  mm_video_prop

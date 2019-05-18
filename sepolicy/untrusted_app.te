@@ -60,6 +60,13 @@ allow untrusted_app{
  dumpstate_options_prop
  firstboot_prop
  fm_prop
+ vendor_boot_mode_prop
+ vendor_cgroup_follow_prop
+ vendor_core_ctl_prop
+ vendor_dataadpl_prop
+ vendor_dataqdp_prop
+ vendor_dataqti_prop
+ vendor_disable_spu_prop
  last_boot_reason_prop
  location_prop
  logpersistd_logging_prop
