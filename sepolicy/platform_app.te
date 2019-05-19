@@ -18,6 +18,9 @@ allow platform_app{
  ctl_interface_stop_prop
  ctl_LKCore_prop
  ctl_mdnsd_prop
+ vendor_dataqdp_prop
+ vendor_dataqti_prop
+ vendor_disable_spu_prop
  ctl_vendor_wigigsvc_prop
  ctl_vendor_rmt_storage_prop
  ctl_vendor_rild_prop
