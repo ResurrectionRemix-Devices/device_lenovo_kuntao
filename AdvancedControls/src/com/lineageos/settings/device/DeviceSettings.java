@@ -143,7 +143,7 @@ public class DeviceSettings extends PreferenceFragment implements
         }
     }
 
-	public static void restore(Context context) {
+	public static void restore1(Context context) {
         boolean fastCharegeData = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.USB_FASTCHARGE_KEY, false);
         Utils.writeValue(USB_FASTCHARGE_PATH, fastCharegeData ? "1" : "0");
     }
