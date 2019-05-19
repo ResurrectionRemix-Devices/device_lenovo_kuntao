@@ -187,7 +187,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 		if (preference == mS2S) {
             String strvalue = (String) newValue;
-            Utils.writeValue("/sys/sweep2sleep/sweep2sleep", strvalue);
+            Utils.writeValue(FILE_S2S_TYPE, strvalue);
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
             editor.putString(S2S_KEY, strvalue);
             editor.apply();
