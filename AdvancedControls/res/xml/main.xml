@@ -49,7 +49,7 @@
             android:key="slow_wakeup_fix"
             android:title="@string/slow_wakeup_fix_title"
             android:summary="@string/slow_wakeup_fix_summary"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -78,10 +78,10 @@
         android:title="@string/usb_fastcharge_title" >
         <SwitchPreference
             android:key="fastcharge"
+            android:defaultValue="false"
             android:title="@string/fastcharge_title"
             android:summary="@string/fastcharge_summary"
-            android:icon="@drawable/ic_lenovo"
-			android:persistent="false"/>
+            android:icon="@drawable/ic_lenovo" />
     </PreferenceCategory>
 
     <PreferenceCategory
