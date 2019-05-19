@@ -62,7 +62,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String SPECTRUM_KEY = "spectrum";
     private static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
 
-    private static final String KEY_CATEGORY_USB_FASTCHARGE = "usb_fastcharge";
+    //private static final String KEY_CATEGORY_USB_FASTCHARGE = "usb_fastcharge";
 
     public static final String KEY_SLOW_WAKEUP_FIX = "slow_wakeup_fix";
     public static final String FILE_LEVEL_WAKEUP = "/sys/devices/soc/qpnp-smbcharger-18/power_supply/battery/subsystem/bms/hi_power";
@@ -72,7 +72,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private WhiteTorchBrightnessPreference mWhiteTorchBrightness;
     private TwoStatePreference mGloveMode;
     private ListPreference mSpectrum;
-    private SwitchPreference mFastcharge;
+    private TwoStatePreference mFastcharge;
     private PreferenceCategory mUsbFastcharge;
     private SwitchPreference slowWakeupFixPreference;
     private BatteryChargingLimiterPreference mBatteryChargingLimiter;
@@ -129,14 +129,9 @@ public class DeviceSettings extends PreferenceFragment implements
             mSpectrum.setSummary(mSpectrum.getEntry());
         }
 
-        //if (Utils.fileWritable(USB_FASTCHARGE_PATH)) {
-          mFastcharge = (SwitchPreference) findPreference(USB_FASTCHARGE_KEY);
-          mFastcharge.setChecked(Utils.getFileValueAsBoolean(USB_FASTCHARGE_PATH, false));
-          mFastcharge.setOnPreferenceChangeListener(this);
-        //} else {
-        //  mUsbFastcharge = (PreferenceCategory) prefSet.findPreference("usb_fastcharge");
-       //   prefSet.removePreference(mUsbFastcharge);
-       // }
+		mFastcharge = (TwoStatePreference) findPreference(USB_FASTCHARGE_KEY);
+        mFastcharge.setChecked(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean(DeviceSettings.USB_FASTCHARGE_KEY, false));
+        mFastcharge.setOnPreferenceChangeListener(this);
 
         slowWakeupFixPreference = (SwitchPreference) findPreference(KEY_SLOW_WAKEUP_FIX);
         slowWakeupFixPreference.setChecked(Utils.getFileValueAsBoolean(FILE_LEVEL_WAKEUP, false));
@@ -148,15 +143,9 @@ public class DeviceSettings extends PreferenceFragment implements
         }
     }
 
-    //public static void setFastcharge(boolean value) {
-    //        Utils.writeValue(USB_FASTCHARGE_PATH, value ? "1" : "0");
-    //}
-	
-	public static void setFastcharge(boolean value) {
-        if (value) 
-            Utils.writeValue(USB_FASTCHARGE_PATH, "1");
-        else
-            Utils.writeValue(USB_FASTCHARGE_PATH, "0"); 
+	public static void restore(Context context) {
+        boolean fastCharegeData = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.USB_FASTCHARGE_KEY, false);
+        Utils.writeValue(USB_FASTCHARGE_PATH, fastCharegeData ? "1" : "0");
     }
 
     public static void restore(Context context) {
@@ -184,12 +173,11 @@ public class DeviceSettings extends PreferenceFragment implements
             SystemProperties.set(SPECTRUM_SYSTEM_PROPERTY, strvalue);
             return true;
         } else if (preference == mFastcharge) {
-            boolean value = (Boolean) newValue;
-            mFastcharge.setChecked(value);
-            setFastcharge(value);
-            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-            editor.putBoolean(USB_FASTCHARGE_KEY, value);
-            editor.apply();
+			
+			Boolean enabled = (Boolean) newValue;
+            SharedPreferences.Editor prefChange = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
+            prefChange.putBoolean(USB_FASTCHARGE_KEY, enabled).commit();
+            Utils.writeValue(USB_FASTCHARGE_PATH, enabled ? "1" : "0");
             return true;
         } else if (preference == slowWakeupFixPreference) {
             boolean value = (Boolean) newValue;
