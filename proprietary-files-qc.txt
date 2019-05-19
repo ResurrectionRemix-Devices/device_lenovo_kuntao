@@ -397,12 +397,12 @@ vendor/etc/perf/perfboostsconfig.xml|2ed8d78b096b9da23afde5acfcacd561ab4f9b4b
 vendor/etc/perf/targetconfig.xml|1e240759319696ae5920a35d675317b7a4456685
 vendor/etc/perf/targetresourceconfigs.xml|f905a4f59091686d732d7121a9066e79d395056d
 vendor/lib/libperfgluelayer.so|0cda8dd77f3c00b70ad50b7764adfb7869d3537e
-vendor/lib/libqti-perfd-client.so|a4a6da47ee26fcd5116c514f7fed15b91306aea3
+vendor/lib/libqti-perfd-client.so|08c3c3d419f4171ddf3b5809ec89ff8311c0af98
 vendor/lib/libqti-perfd.so|2c8af66cbcb941b9da2edb68f428776cbbabdff6
 vendor/lib/libqti-util.so|459a7375feb57c2e11d012c5fb65befd94e91d06
 vendor/lib/vendor.qti.hardware.perf@1.0.so|06af4cabd86e643181ecefae95b62338dd319b28
 vendor/lib64/libperfgluelayer.so|e8bc850cbb8d2c2b9ed8c6b9c48eb4b1fd197622
-vendor/lib64/libqti-perfd-client.so|d9fb126fb7aff2db61978f46f78e0284e95183be
+vendor/lib64/libqti-perfd-client.so|3a2899e8aaa6cc1d853487da3859083d2a7f3801
 vendor/lib64/libqti-perfd.so|96806732f4e5f8c25ba2e12a3a939fc2889c7341
 vendor/lib64/libqti-util.so|30dc90c1636fd100a8e101dfa659e0b7299ff813
 vendor/lib64/vendor.qti.hardware.perf@1.0.so|30798b76c4ef1755b74d17974dc90f39898c9eea

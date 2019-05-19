@@ -40,6 +40,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.safx.pbe.enabled=true \
     vendor.voice.path.for.pcm.voip=true \
     persist.audio.dirac.speaker=true \
+	hpx_send_params=1 \
+    vendor.audio.use.dts_eagle=true \
+    use.dts_eagle=true \
     persist.vendor.audio.hw.binder.size_kbyte=1024
 
 # Bluetooth
