@@ -25,6 +25,10 @@ import android.support.v7.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.TextUtils;
 
+import com.lineageos.settings.device.sound.HeadphoneGainPreference;
+import com.lineageos.settings.device.sound.SpeakerGainPreference;
+import com.lineageos.settings.device.sound.MicGainPreference;
+
 public class Startup extends BroadcastReceiver {
 
     private void restore(String file, boolean enabled) {
@@ -58,5 +62,8 @@ public class Startup extends BroadcastReceiver {
         Utils.writeValue(DeviceSettings.FILE_LEVEL_WAKEUP, shouldFixSlowWakeup ? "1" : "0" );
         DisplayCalibration.restore(context);
         BatteryChargingLimiterPreference.restore(context);
+		HeadphoneGainPreference.restore(context);
+        SpeakerGainPreference.restore(context);
+        MicGainPreference.restore(context);
     }
 }

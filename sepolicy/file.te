@@ -16,3 +16,6 @@ type sysfs_smart_charger, fs_type, sysfs_type;
 type charging_limiter_sysfs, fs_type, sysfs_type;
 
 type sysfs_msm_subsys, sysfs_type, fs_type;
+
+#Sound Control
+type sysfs_sound_control, fs_type, sysfs_type;

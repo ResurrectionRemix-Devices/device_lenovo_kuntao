@@ -92,6 +92,15 @@
             android:icon="@drawable/ic_vibrate" />
     </PreferenceCategory>
 
+	<PreferenceCategory
+        android:title="@string/sound_title">
+        <PreferenceScreen
+            android:key="sound_control"
+            android:fragment="com.lineageos.settings.device.sound.SoundControlSettings"
+            android:summary="@string/sound_control_summary"
+            android:title="@string/sound_control_title" />
+    </PreferenceCategory>
+
     <PreferenceCategory
         android:key="spectrum_profile"
         android:title="@string/spectrum_profile_title" >

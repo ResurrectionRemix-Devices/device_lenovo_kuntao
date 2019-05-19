@@ -63,4 +63,11 @@
     <string name="s2s_title">Жесты для отключенич</string>
     <string name="category_s2s">Жесты</string>
     <string name="s2s_summary">Выберите жестт для отключения</string>
+		
+    <string name="sound_title">Звук</string>
+	<string name="sound_control_title">Управління звуком</string>
+    <string name="sound_control_summary">Налаштування підсилення звуку навушників, динаміка та мікрофону</string>
+    <string name="headphone_gain">Усиление наушников</string>
+    <string name="speaker_gain">Усиление динамика</string>
+    <string name="mic_gain">Усиление микрофона</string>
 </resources>
