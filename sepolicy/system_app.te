@@ -11,15 +11,15 @@ allow system_app sysfs_touchpanel:dir search;
 allow system_app sysfs_touchpanel:file rw_file_perms;
 allow system_app charging_limiter_sysfs:dir search;
 allow system_app charging_limiter_sysfs:file rw_file_perms;
-
+#Sound Control
+allow system_app sysfs_sound_control:dir search;
+allow system_app sysfs_sound_control:file rw_file_perms;
 
 # Spectrum
 allow system_app spectrum_prop:property_service set;
 get_prop(system_app, spectrum_prop);
 
-#Sound Control
-allow system_app sysfs_sound_control:dir search;
-allow system_app sysfs_sound_control:file rw_file_perms;
+
 
 allow system_app fingerprintd:binder { call };
 allow system_app {
