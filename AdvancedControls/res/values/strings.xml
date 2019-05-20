@@ -63,11 +63,6 @@
     <string name="fastcharge_title">Enable USB Fastcharge</string>
     <string name="fastcharge_summary">Use fastcharge when connected to a computer via usb port</string>
 
-    <!-- wakeup fix -->
-    <string name="category_wakeup">Fingerprint</string>
-    <string name="slow_wakeup_fix_title">Improve wakeup speed</string>
-    <string name="slow_wakeup_fix_summary">Disabled by default as it drains battery!!!</string>
-
     <!-- Charging Limiter -->
     <string name="battery_charging_limiter_title">Battery</string>
     <string name="battery_charging_limiter_desc">Set limit to stop battery charging</string>
@@ -81,11 +76,4 @@
     <string name="category_s2s">Sweep</string>
     <string name="s2s_title">Sweep to sleep</string>
     <string name="s2s_summary">Choose sweep positions</string>
-
-    <string name="sound_title">Sound</string>
-    <string name="sound_control_title">Sound control</string>
-    <string name="sound_control_summary">Setup headphones, speaker and microphone gains\nWarning!!! Higher values lead to audio distortion</string>
-    <string name="headphone_gain">Headphone gain</string>
-    <string name="speaker_gain">Speaker gain</string>
-    <string name="mic_gain">Microphone gain</string>
 </resources>

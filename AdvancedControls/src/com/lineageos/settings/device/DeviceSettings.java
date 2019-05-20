@@ -44,7 +44,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.util.Log;
-import com.lineageos.settings.device.sound.SoundControlActivity;
 
 public class DeviceSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -64,9 +63,6 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String S2S_KEY = "sweep2sleep";
     private static final String KEY_CATEGORY_USB_FASTCHARGE = "usb_fastcharge";
 
-    public static final String KEY_SLOW_WAKEUP_FIX = "slow_wakeup_fix";
-    public static final String FILE_LEVEL_WAKEUP = "/sys/devices/soc/qpnp-smbcharger-18/power_supply/battery/subsystem/bms/hi_power";
-
     private VibratorStrengthPreference mVibratorStrength;
     private YellowTorchBrightnessPreference mYellowTorchBrightness;
     private WhiteTorchBrightnessPreference mWhiteTorchBrightness;
@@ -74,7 +70,6 @@ public class DeviceSettings extends PreferenceFragment implements
     private ListPreference mSpectrum;
     private SwitchPreference mFastcharge;
     private PreferenceCategory mUsbFastcharge;
-    private SwitchPreference slowWakeupFixPreference;
     private BatteryChargingLimiterPreference mBatteryChargingLimiter;
 	private ListPreference mS2S;
 
@@ -83,16 +78,6 @@ public class DeviceSettings extends PreferenceFragment implements
         setPreferencesFromResource(R.xml.main, rootKey);
 
         PreferenceScreen prefSet = getPreferenceScreen();
-
-        PreferenceScreen mSoundControlPref = (PreferenceScreen) findPreference("sound_control");
-        mSoundControlPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-             @Override
-             public boolean onPreferenceClick(Preference preference) {
-                 Intent intent = new Intent(getActivity().getApplicationContext(), SoundControlActivity.class);
-                 startActivity(intent);
-                 return true;
-             }
-        });
 
         PreferenceScreen mKcalPref = (PreferenceScreen) findPreference("kcal");
         mKcalPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -134,18 +119,9 @@ public class DeviceSettings extends PreferenceFragment implements
             mSpectrum.setSummary(mSpectrum.getEntry());
         }
 
-        //if (Utils.fileWritable(USB_FASTCHARGE_PATH)) {
-          mFastcharge = (SwitchPreference) findPreference(USB_FASTCHARGE_KEY);
-          mFastcharge.setChecked(Utils.getFileValueAsBoolean(USB_FASTCHARGE_PATH, false));
-          mFastcharge.setOnPreferenceChangeListener(this);
-        //} else {
-        //  mUsbFastcharge = (PreferenceCategory) prefSet.findPreference("usb_fastcharge");
-       //   prefSet.removePreference(mUsbFastcharge);
-       // }
-
-        slowWakeupFixPreference = (SwitchPreference) findPreference(KEY_SLOW_WAKEUP_FIX);
-        slowWakeupFixPreference.setChecked(Utils.getFileValueAsBoolean(FILE_LEVEL_WAKEUP, false));
-        slowWakeupFixPreference.setOnPreferenceChangeListener(this);
+        mFastcharge = (SwitchPreference) findPreference(USB_FASTCHARGE_KEY);
+        mFastcharge.setChecked(Utils.getFileValueAsBoolean(USB_FASTCHARGE_PATH, false));
+        mFastcharge.setOnPreferenceChangeListener(this);
 
         mBatteryChargingLimiter = (BatteryChargingLimiterPreference) findPreference(KEY_BATTERY_CHARGING_LIMITER);
         if (mBatteryChargingLimiter != null) {
@@ -159,19 +135,6 @@ public class DeviceSettings extends PreferenceFragment implements
         else
             Utils.writeValue(USB_FASTCHARGE_PATH, "0"); 
     }
-
-	public static void setSlowWakeupFix(boolean value) {
-        if (value) 
-            Utils.writeValue(FILE_LEVEL_WAKEUP, "1");
-        else
-            Utils.writeValue(FILE_LEVEL_WAKEUP, "0"); 
-    }
-
-    //public static void setFastcharge(boolean value) {
-    //        Utils.writeValue(USB_FASTCHARGE_PATH, value ? "1" : "0");
-    //}
-	
-	
 
     public static void restore(Context context) {
         boolean gloveModeData = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.KEY_GLOVE_MODE, false);
@@ -210,15 +173,6 @@ public class DeviceSettings extends PreferenceFragment implements
             setFastcharge(value);
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
             editor.putBoolean(USB_FASTCHARGE_KEY, value);
-            editor.apply();
-            return true;
-			
-        } else if (preference == slowWakeupFixPreference) {
-            boolean value = (Boolean) newValue;
-            slowWakeupFixPreference.setChecked(value);
-            setSlowWakeupFix(value);
-            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-            editor.putBoolean(KEY_SLOW_WAKEUP_FIX, value);
             editor.apply();
             return true;
         }
