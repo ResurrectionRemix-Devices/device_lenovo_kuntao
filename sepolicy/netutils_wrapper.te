@@ -1,2 +1,4 @@
 allow netutils_wrapper netmgrd:netlink_socket { read write };
 allow netutils_wrapper netmgrd:socket { read write };
+allow netutils_wrapper kernel:system { module_request };
+allow netutils_wrapper netutils_wrapper:capability { sys_module };

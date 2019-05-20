@@ -10,6 +10,9 @@ allow mediaprovider {
  ctl_interface_start_prop
  ctl_interface_stop_prop
  ctl_mdnsd_prop
+ ctl_start_prop
+ ctl_stop_prop
+ ctl_vendor_hbtp_prop
  ctl_qcrild_prop
  ctl_restart_prop
  ctl_rildaemon_prop

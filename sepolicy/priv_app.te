@@ -41,6 +41,9 @@ allow priv_app {
  ctl_start_prop
  ctl_stop_prop
  location_prop
+ vendor_system_prop
+ vendor_tee_listener_prop
+ vendor_time_service_prop
  vendor_seccam_prop
  vendor_softap_prop
  vendor_ssr_prop

@@ -43,6 +43,9 @@ allow platform_app{
  fst_prop
  qvr_prop
  usf_prop
+ vendor_display_prop
+ vendor_dolphin_prop
+ vendor_fp_gesture_prop
  vendor_audio_debug_prop
  vendor_audio_prop
  vendor_bluetooth_prop

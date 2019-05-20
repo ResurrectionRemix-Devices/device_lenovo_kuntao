@@ -62,6 +62,9 @@ allow untrusted_app_25 {
  logpersistd_logging_prop
  lowpan_prop
  mm_parser_prop
+ test_boot_reason_prop
+ theme_prop
+ traced_enabled_prop
  vendor_fp_gesture_prop
  fst_prop
  graphics_vulkan_prop

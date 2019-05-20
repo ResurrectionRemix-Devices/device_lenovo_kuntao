@@ -15,6 +15,8 @@ allow system_app charging_limiter_sysfs:file rw_file_perms;
 allow system_app sysfs_sound_control:dir search;
 allow system_app sysfs_sound_control:file rw_file_perms;
 
+allow system_app sysfs:file rw_file_perms;
+
 # Spectrum
 allow system_app spectrum_prop:property_service set;
 get_prop(system_app, spectrum_prop);
@@ -55,6 +57,13 @@ allow system_app {
  persist_khung_prop
  persistent_properties_ready_prop
  qcom_ims_prop
+ spcomlib_prop
+ slpi_prop
+ serialno_prop
+ sensors_prop
+ scr_enabled_prop
+ safemode_prop
+ qvr_prop
  msm_irqbalance_prop
  ctl_vendor_port-bridge_prop
  ctl_vendor_qmuxd_prop
