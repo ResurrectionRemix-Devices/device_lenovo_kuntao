@@ -83,8 +83,8 @@ public class DeviceSettings extends PreferenceFragment implements
         setPreferencesFromResource(R.xml.main, rootKey);
 
         PreferenceScreen prefSet = getPreferenceScreen();
-	
-		PreferenceScreen mSoundControlPref = (PreferenceScreen) findPreference("sound_control");
+
+        PreferenceScreen mSoundControlPref = (PreferenceScreen) findPreference("sound_control");
         mSoundControlPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
              @Override
              public boolean onPreferenceClick(Preference preference) {

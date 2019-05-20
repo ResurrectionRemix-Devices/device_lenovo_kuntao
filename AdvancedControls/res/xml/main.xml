@@ -23,6 +23,15 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/sound_title">
+        <PreferenceScreen
+            android:key="sound_control"
+            android:fragment="com.lineageos.settings.device.sound.SoundControlSettings"
+            android:summary="@string/sound_control_summary"
+            android:title="@string/sound_control_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="display"
         android:title="@string/display_title">
         <PreferenceScreen
@@ -90,15 +99,6 @@
             android:key="vib_strength"
             android:title="@string/vib_strength_title_head"
             android:icon="@drawable/ic_vibrate" />
-    </PreferenceCategory>
-
-	<PreferenceCategory
-        android:title="@string/sound_title">
-        <PreferenceScreen
-            android:key="sound_control"
-            android:fragment="com.lineageos.settings.device.sound.SoundControlSettings"
-            android:summary="@string/sound_control_summary"
-            android:title="@string/sound_control_title" />
     </PreferenceCategory>
 
     <PreferenceCategory

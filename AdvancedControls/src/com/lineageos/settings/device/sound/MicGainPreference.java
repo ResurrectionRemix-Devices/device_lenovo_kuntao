@@ -47,7 +47,7 @@ public class MicGainPreference extends ProperSeekBarPreference {
         mMaxValue = mMaxVal;
         mDefaultValueExists = true;
         mDefaultValue = mDefVal;
-		mValue = Integer.parseInt(loadValue());
+        mValue = Integer.parseInt(loadValue());
 
         setPersistent(false);
     }
@@ -65,7 +65,7 @@ public class MicGainPreference extends ProperSeekBarPreference {
         Utils.writeValue(MICROPHONE_GAIN_PATH, storedValue);
     }
 
-	public static String loadValue() {
+    public static String loadValue() {
         int value = Integer.valueOf(Utils.getFileValue(MICROPHONE_GAIN_PATH, String.valueOf(mDefVal)));
         if (value >= 0 && value <= 20) {
             return String.valueOf(value);

@@ -47,7 +47,7 @@ public class SpeakerGainPreference extends ProperSeekBarPreference {
         mMaxValue = mMaxVal;
         mDefaultValueExists = true;
         mDefaultValue = mDefVal;
-		mValue = Integer.parseInt(loadValue());
+        mValue = Integer.parseInt(loadValue());
 
         setPersistent(false);
     }
@@ -65,7 +65,7 @@ public class SpeakerGainPreference extends ProperSeekBarPreference {
         Utils.writeValue(SPEAKER_GAIN_PATH, storedValue);
     }
 
-	public static String loadValue() {
+    public static String loadValue() {
         int value = Integer.valueOf(Utils.getFileValue(SPEAKER_GAIN_PATH, String.valueOf(mDefVal)));
         if (value >= 0 && value <= 20) {
             return String.valueOf(value);

@@ -47,7 +47,7 @@ public class HeadphoneGainPreference extends ProperSeekBarPreference {
         mMaxValue = mMaxVal;
         mDefaultValueExists = true;
         mDefaultValue = mDefVal;
-		mValue = Integer.parseInt(loadValue());
+        mValue = Integer.parseInt(loadValue());
 
         setPersistent(false);
     }
@@ -65,7 +65,7 @@ public class HeadphoneGainPreference extends ProperSeekBarPreference {
         Utils.writeValue(HEADPHONE_GAIN_PATH, storedValue + " " + storedValue);
     }
 
-	public static String loadValue() {
+    public static String loadValue() {
         String storedValue = Utils.getFileValue(HEADPHONE_GAIN_PATH, String.valueOf(mDefVal));
         int value = Integer.valueOf(storedValue.substring(0, storedValue.indexOf(' ')));
         if (value >= 0 && value <= 20) {
