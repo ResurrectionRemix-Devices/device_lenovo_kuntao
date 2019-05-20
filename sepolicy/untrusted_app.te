@@ -32,6 +32,9 @@ allow untrusted_app{
  overlay_prop
  qcom_ims_prop
  qvr_prop
+ vendor_wlc_prop
+ vendor_xlat_prop
+ wfd_debug_prop
  vendor_usb_prop
  vendor_vm_bms_prop
  vendor_wifi_ftmd_prop

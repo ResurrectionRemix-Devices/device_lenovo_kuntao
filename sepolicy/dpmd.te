@@ -1,1 +1,3 @@
 allow dpmd netutils_wrapper:process { noatsecure };
+allow dpmd kernel:system { module_request };
+allow dpmd dpmd:capability { sys_module };

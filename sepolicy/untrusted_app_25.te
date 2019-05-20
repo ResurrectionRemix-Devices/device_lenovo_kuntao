@@ -54,6 +54,7 @@ allow untrusted_app_25 {
  dumpstate_options_prop
  firstboot_prop
  fm_prop
+ usf_prop
  mm_video_prop
  mmc_prop
  msm_irqbalance_prop

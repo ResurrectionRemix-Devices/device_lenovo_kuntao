@@ -21,16 +21,6 @@
             android:title="@string/battery_charging_limiter_desc"
             android:icon="@drawable/ic_restore" />
     </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/sound_title">
-        <PreferenceScreen
-            android:key="sound_control"
-            android:fragment="com.lineageos.settings.device.sound.SoundControlSettings"
-            android:summary="@string/sound_control_summary"
-            android:title="@string/sound_control_title" />
-    </PreferenceCategory>
-
     <PreferenceCategory
         android:key="display"
         android:title="@string/display_title">
@@ -51,16 +41,6 @@
                  android:targetClass="org.lineageos.settings.doze.DozeSettingsActivity" />
         </Preference>
     </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/category_wakeup">
-        <SwitchPreference
-            android:key="slow_wakeup_fix"
-            android:title="@string/slow_wakeup_fix_title"
-            android:summary="@string/slow_wakeup_fix_summary"
-            android:defaultValue="true" />
-    </PreferenceCategory>
-
     <PreferenceCategory
         android:title="@string/category_torch">
         <com.lineageos.settings.device.YellowTorchBrightnessPreference

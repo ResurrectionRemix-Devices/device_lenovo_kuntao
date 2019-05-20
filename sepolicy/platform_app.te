@@ -37,6 +37,9 @@ allow platform_app{
  dumpstate_options_prop
  firstboot_prop
  fm_prop
+ vendor_gpu_prop
+ vendor_ipacm-diag_prop
+ vendor_ipacm_prop
  vendor_coresight_prop
  vendor_data_ko_prop
  vendor_dataadpl_prop
