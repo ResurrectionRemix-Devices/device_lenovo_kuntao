@@ -55,6 +55,10 @@ allow untrusted_app_25 {
  firstboot_prop
  fm_prop
  usf_prop
+ vendor_ipacm-diag_prop
+ vendor_ipacm_prop
+ vendor_mdm_helper_prop
+ vendor_media_msm8953_version_prop
  vendor_display_prop
  vendor_dolphin_prop
  vendor_gpu_prop

@@ -24,6 +24,10 @@ allow mediaprovider {
  firstboot_prop
  fm_prop
  fst_prop
+ logpersistd_logging_prop
+ lowpan_prop
+ mm_parser_prop
+ mm_video_prop
  last_boot_reason_prop
  location_prop
  graphics_vulkan_prop
