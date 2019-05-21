@@ -25,6 +25,10 @@ allow isolated_app {
  ctl_start_prop
  ctl_stop_prop
  nfc_nq_prop
+ qcom_ims_prop
+ qvr_prop
+ safemode_prop
+ scr_enabled_prop
  overlay_prop
  persist_khung_prop
  persistent_properties_ready_prop
