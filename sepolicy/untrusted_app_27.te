@@ -1,3 +1,4 @@
+allow untrusted_app_27 proc_zoneinfo:file { read open };
 allow untrusted_app_27 {
  bg_boot_complete_prop
  bg_daemon_prop
@@ -19,6 +20,10 @@ allow untrusted_app_27 {
  overlay_prop
  qcom_ims_prop
  qvr_prop
+ vendor_qdma_prop
+ vendor_radio_prop
+ vendor_rild_libpath_prop
+ vendor_seccam_prop
  vendor_pd_locater_dbg_prop
  vendor_per_mgr_state_prop
  vendor_qdcmss_prop

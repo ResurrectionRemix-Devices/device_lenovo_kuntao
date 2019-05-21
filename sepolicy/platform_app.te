@@ -18,6 +18,9 @@ allow platform_app{
  ctl_interface_stop_prop
  ctl_LKCore_prop
  ctl_mdnsd_prop
+ vendor_mdm_helper_prop
+ vendor_media_msm8953_version_prop
+ vendor_mirrorlink_prop
  vendor_dataqdp_prop
  vendor_dataqti_prop
  vendor_disable_spu_prop
