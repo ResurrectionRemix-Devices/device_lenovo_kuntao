@@ -54,6 +54,9 @@ allow platform_app{
  dumpstate_options_prop
  firstboot_prop
  fm_prop
+ wfd_debug_prop
+ wfd_service_prop
+ wifi_prop
  vendor_gpu_prop
  vendor_ipacm-diag_prop
  vendor_ipacm_prop

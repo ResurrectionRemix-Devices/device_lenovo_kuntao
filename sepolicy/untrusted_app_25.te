@@ -55,6 +55,10 @@ allow untrusted_app_25 {
  firstboot_prop
  fm_prop
  usf_prop
+ vendor_dataadpl_prop
+ vendor_dataqdp_prop
+ vendor_dataqti_prop
+ vendor_disable_spu_prop
  vendor_cgroup_follow_prop
  vendor_core_ctl_prop
  vendor_coresight_prop

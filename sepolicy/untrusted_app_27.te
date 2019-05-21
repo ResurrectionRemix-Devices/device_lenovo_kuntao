@@ -20,6 +20,11 @@ allow untrusted_app_27 {
  overlay_prop
  qcom_ims_prop
  qvr_prop
+ vendor_xlat_prop
+ wfd_debug_prop
+ wfd_service_prop
+ wifi_prop
+ wigig_prop
  vendor_usb_prop
  vendor_vm_bms_prop
  vendor_wifi_ftmd_prop

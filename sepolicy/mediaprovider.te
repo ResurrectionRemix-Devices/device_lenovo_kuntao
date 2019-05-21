@@ -24,6 +24,8 @@ allow mediaprovider {
  firstboot_prop
  fm_prop
  fst_prop
+ last_boot_reason_prop
+ location_prop
  graphics_vulkan_prop
  hvdcp_opti_prop
  dumpstate_options_prop

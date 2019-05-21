@@ -45,6 +45,9 @@ allow system_app {
  last_boot_reason_prop
  location_prop
  lowpan_prop
+ vendor_dataqdp_prop
+ vendor_dataadpl_prop
+ vendor_data_ko_prop
  vendor_audio_prop
  vendor_cgroup_follow_prop
  vendor_core_ctl_prop
