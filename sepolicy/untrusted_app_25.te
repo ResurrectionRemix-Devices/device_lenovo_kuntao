@@ -55,7 +55,6 @@ allow untrusted_app_25 {
  firstboot_prop
  fm_prop
  usf_prop
- userinit_prop
  vendor_cgroup_follow_prop
  vendor_core_ctl_prop
  vendor_coresight_prop
