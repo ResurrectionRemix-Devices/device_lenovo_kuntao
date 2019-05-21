@@ -55,6 +55,9 @@ allow untrusted_app_25 {
  firstboot_prop
  fm_prop
  usf_prop
+ vendor_display_prop
+ vendor_dolphin_prop
+ vendor_gpu_prop
  vendor_dataadpl_prop
  vendor_dataqdp_prop
  vendor_dataqti_prop

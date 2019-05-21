@@ -45,6 +45,13 @@ allow system_app {
  last_boot_reason_prop
  location_prop
  lowpan_prop
+ vendor_dataqti_prop
+ vendor_disable_spu_prop
+ vendor_display_prop
+ vendor_dolphin_prop
+ vendor_fp_gesture_prop
+ vendor_gpu_prop
+ vendor_ipacm-diag_prop
  vendor_dataqdp_prop
  vendor_dataadpl_prop
  vendor_data_ko_prop
