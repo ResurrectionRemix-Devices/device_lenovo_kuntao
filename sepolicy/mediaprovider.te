@@ -21,6 +21,11 @@ allow mediaprovider {
  ctl_vendor_wigigsvc_prop
  device_logging_prop
  dirac_prop
+ firstboot_prop
+ fm_prop
+ fst_prop
+ graphics_vulkan_prop
+ hvdcp_opti_prop
  dumpstate_options_prop
  ctl_vendor_rmt_storage_prop
  ctl_vendor_hbtp_prop

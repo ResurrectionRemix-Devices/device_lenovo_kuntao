@@ -18,6 +18,7 @@ allow platform_app{
  ctl_interface_stop_prop
  ctl_LKCore_prop
  ctl_mdnsd_prop
+ vendor_rild_libpath_prop
  vendor_mmi_prop
  vendor_opengles_prop
  vendor_pd_locater_dbg_prop

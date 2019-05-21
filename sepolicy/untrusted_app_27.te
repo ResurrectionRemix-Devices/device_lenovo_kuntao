@@ -20,6 +20,8 @@ allow untrusted_app_27 {
  overlay_prop
  qcom_ims_prop
  qvr_prop
+ vendor_tee_listener_prop
+ vendor_time_service_prop
  vendor_softap_prop
  vendor_ssr_prop
  vendor_system_prop

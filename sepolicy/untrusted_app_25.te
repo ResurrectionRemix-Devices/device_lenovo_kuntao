@@ -55,6 +55,11 @@ allow untrusted_app_25 {
  firstboot_prop
  fm_prop
  usf_prop
+ userinit_prop
+ vendor_cgroup_follow_prop
+ vendor_core_ctl_prop
+ vendor_coresight_prop
+ vendor_data_ko_prop
  vendor_boot_mode_prop
  vendor_bluetooth_prop
  vendor_audio_prop
