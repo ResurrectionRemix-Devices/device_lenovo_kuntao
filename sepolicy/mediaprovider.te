@@ -26,6 +26,9 @@ allow mediaprovider {
  fst_prop
  logpersistd_logging_prop
  lowpan_prop
+ mmc_prop
+ msm_irqbalance_prop
+ msm_irqbl_sdm630_prop
  mm_parser_prop
  mm_video_prop
  last_boot_reason_prop

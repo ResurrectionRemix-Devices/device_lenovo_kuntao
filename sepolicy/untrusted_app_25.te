@@ -55,6 +55,12 @@ allow untrusted_app_25 {
  firstboot_prop
  fm_prop
  usf_prop
+ vendor_per_mgr_state_prop
+ vendor_qdcmss_prop
+ vendor_qdma_prop
+ vendor_radio_prop
+ vendor_rild_libpath_prop
+ vendor_seccam_prop
  vendor_mirrorlink_prop
  vendor_mmi_prop
  vendor_mpctl_prop
