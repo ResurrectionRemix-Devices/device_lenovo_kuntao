@@ -131,6 +131,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.vt_avail_ovr=1 \
     persist.vendor.qti.telephony.vt_cam_interface=1
 
+# IMS debug
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.vendor.ims.disableADBLogs=1 \
+persist.vendor.ims.disableDebugLogs=1 \
+persist.vendor.ims.disableIMSLogs=1 \
+persist.vendor.ims.disableQXDMLogs=1
+
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.mm.en.sec.smoothstreaming=true \
