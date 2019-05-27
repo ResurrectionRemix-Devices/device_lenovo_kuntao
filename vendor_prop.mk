@@ -95,6 +95,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	debug.sf.latch_unsignaled=1 \
     vendor.gralloc.enable_fb_ubwc=1
 
+#DPI
+PRODUCT_PROPERTY_OVERRIDES += \
+	vendor.display.lcd_density=480
+
 # Miracast
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_hwc_vds=1 \
