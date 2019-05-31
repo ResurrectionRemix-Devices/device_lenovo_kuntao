@@ -292,7 +292,7 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
 service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
-    group radio cache inet misc audio sdcard_r sdcard_rw diag log
+    group radio cache inet misc audio sdcard_r sdcard_rw diag log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service charger /charger
@@ -304,6 +304,9 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqb
     class core
     user root
     group root
+
+on property:init.svc.surfaceflinger=restarting
+    restart vendor.hwcomposer-2-1
 
 service time_daemon /vendor/bin/time_daemon
     class main
