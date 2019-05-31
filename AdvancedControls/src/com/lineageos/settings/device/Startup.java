@@ -50,7 +50,7 @@ public class Startup extends BroadcastReceiver {
         VibratorStrengthPreference.restore(context);
         WhiteTorchBrightnessPreference.restore(context);
         YellowTorchBrightnessPreference.restore(context);
-        DeviceSettings.restore(context);
+        //DeviceSettings.restore(context);
         DeviceSettings.restoreSpectrumProp(context);
         String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.S2S_KEY, "0");
         Utils.writeValue(DeviceSettings.FILE_S2S_TYPE, storedValue);
