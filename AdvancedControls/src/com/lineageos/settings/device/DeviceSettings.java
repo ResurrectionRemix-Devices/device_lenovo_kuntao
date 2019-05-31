@@ -52,7 +52,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_VIBSTRENGTH = "vib_strength";
     public static final String KEY_YELLOW_TORCH_BRIGHTNESS = "yellow_torch_brightness";
     public static final String KEY_WHITE_TORCH_BRIGHTNESS = "white_torch_brightness";
-    public static final String KEY_GLOVE_MODE = "glove_mode";
+    //public static final String KEY_GLOVE_MODE = "glove_mode";
     public static final String USB_FASTCHARGE_KEY = "fastcharge";
     public static final String USB_FASTCHARGE_PATH = "/sys/kernel/fast_charge/force_fast_charge";
     public static final String FILE_S2S_TYPE = "/sys/sweep2sleep/sweep2sleep";
@@ -66,7 +66,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private VibratorStrengthPreference mVibratorStrength;
     private YellowTorchBrightnessPreference mYellowTorchBrightness;
     private WhiteTorchBrightnessPreference mWhiteTorchBrightness;
-    private TwoStatePreference mGloveMode;
+    //private TwoStatePreference mGloveMode;
     private ListPreference mSpectrum;
     private SwitchPreference mFastcharge;
     private PreferenceCategory mUsbFastcharge;
@@ -104,9 +104,9 @@ public class DeviceSettings extends PreferenceFragment implements
             mWhiteTorchBrightness.setEnabled(WhiteTorchBrightnessPreference.isSupported());
         }
 
-        mGloveMode = (TwoStatePreference) findPreference(KEY_GLOVE_MODE);
+        /*mGloveMode = (TwoStatePreference) findPreference(KEY_GLOVE_MODE);
         mGloveMode.setChecked(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean(DeviceSettings.KEY_GLOVE_MODE, false));
-        mGloveMode.setOnPreferenceChangeListener(this);
+        mGloveMode.setOnPreferenceChangeListener(this);*/
 
 		mS2S = (ListPreference) findPreference(S2S_KEY);
         mS2S.setValue(Utils.getFileValue(FILE_S2S_TYPE, "0"));
@@ -136,10 +136,10 @@ public class DeviceSettings extends PreferenceFragment implements
             Utils.writeValue(USB_FASTCHARGE_PATH, "0"); 
     }
 
-    public static void restore(Context context) {
+    /*public static void restore(Context context) {
         boolean gloveModeData = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DeviceSettings.KEY_GLOVE_MODE, false);
         Utils.writeValue(GLOVE_MODE_FILE, gloveModeData ? "1" : "0");
-    }
+    }*/
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
@@ -155,13 +155,13 @@ public class DeviceSettings extends PreferenceFragment implements
             editor.putString(S2S_KEY, strvalue);
             editor.apply();
             return true;
-		} else if (preference == mGloveMode) {
+		} /*else if (preference == mGloveMode) {
             Boolean enabled = (Boolean) newValue;
             SharedPreferences.Editor prefChange = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
             prefChange.putBoolean(KEY_GLOVE_MODE, enabled).commit();
             Utils.writeValue(GLOVE_MODE_FILE, enabled ? "1" : "0");
             return true;
-        } else if (preference == mSpectrum) {
+        }*/ else if (preference == mSpectrum) {
             String strvalue = (String) newValue;
             int index = mSpectrum.findIndexOfValue(strvalue);
             mSpectrum.setSummary(mSpectrum.getEntries()[index]);
