@@ -97,9 +97,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=480 \
     ro.vendor.display.cabl=0 \
     debug.sdm.support_writeback=0 \
+	vendor.display.disable_partial_split=1 \
     vendor.display.disable_rotator_downscale=1 \
     vendor.display.disable_skip_validate=1 \
     vendor.display.enable_default_color_mode=1 \
+	vendor.display.perf_hint_window=50 \
 	debug.sf.latch_unsignaled=1 \
     vendor.gralloc.enable_fb_ubwc=1
 
