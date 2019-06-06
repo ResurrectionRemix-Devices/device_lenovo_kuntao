@@ -82,6 +82,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapminfree=2m \
     dalvik.vm.heapmaxfree=8m
 
+# Dex2oat limits
+PRODUCT_PROPERTY_OVERRIDES += \
+dalvik.vm.boot-dex2oat-threads=4 \
+dalvik.vm.dex2oat-threads=2 \
+dalvik.vm.image-dex2oat-threads=4 \
+dalvik.vm.dex2oat-filter=everything \
+dalvik.vm.image-dex2oat-filter=everything
+
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.gralloc.enable_fb_ubwc=1 \
