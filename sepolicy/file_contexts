@@ -54,8 +54,6 @@
 # NFC
 /dev/bcm2079x-i2c                                                          u:object_r:nfc_device:s0
 
-/system/vendor/bin/hw/android\.hardware\.power@1\.2-service          u:object_r:hal_power_default_exec:s0
-
 # Sound Control
 /sys/kernel/sound_control(/.*)?                                            u:object_r:sysfs_sound_control:s0
 
